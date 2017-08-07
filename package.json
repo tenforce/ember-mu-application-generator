@@ -1,7 +1,7 @@
 {
-  "name": "books",
+  "name": "ember-mu-application-generator",
   "version": "0.0.0",
-  "description": "Small description for books goes here",
+  "description": "Generators for a full browseable CRUD front-end for a mu-cl-resources back-end based on its domain.lisp configuration.",
   "license": "MIT",
   "author": "",
   "directories": {
