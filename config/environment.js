@@ -3,7 +3,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'books',
+    modulePrefix: 'ember-mu-application-generator',
     environment,
     rootURL: '/',
     locationType: 'auto',
