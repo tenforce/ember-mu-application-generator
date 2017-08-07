@@ -24,6 +24,7 @@ module.exports = {
 
     var attrs = [];
     var needs = [];
+    var properties = [];
     var entityOptions = options.entity.options;
     var importStatements = ['import Model from \'ember-data/model\';'];
     var shouldImportAttr = false;
@@ -74,6 +75,16 @@ module.exports = {
       if (/has-many|belongs-to/.test(dasherizedType)) {
         needs.push('\'model:' + dasherizedForeignModelSingular + '\'');
       }
+
+
+      properties.push({
+				name: name,
+				kind: type,
+				itemVar: entityToVariable(name),
+				itemVarSingle: inflection.singularize(entityToVariable(name)),
+				itemRoute: entityItemRoute(name),
+				itemListRoute: entityItemListRoute(name)
+      });
     }
 
     var needsDeduplicated = needs.filter(function(need, i) {
@@ -102,25 +113,56 @@ module.exports = {
 
     // Templates and code
 
-
+    // TODO merge with code above where possible
+		var attributes = properties.filter( function(prop) {
+      return prop.kind != "has-many" && prop.kind != "belongs-to";
+    } );
+    var relationships = properties.filter( function(relationship) {
+      return relationship.kind == "has-many" || relationship.kind == "belongs-to";
+    } );
+    var belongsToRelationships = relationships.filter( function(relationship) {
+      return relationship.kind == "belongs-to";
+    } );
+    var hasManyRelationships = relationships.filter( function(relationship) {
+      return relationship.kind == "has-many";
+    } );
 
     // Return
 
     result = {
+      // Model
       importStatements: importStatements,
       attrs: attrs, // attrs and relationships, ready to be pasted in the model template
-      // TODO add raw information for generating the other stuff, or make it drop-in as well.
       needs: needs, // for dependencies in unit tests
 
+      // Router
       moduleName: moduleName,
 
-
+      // Templates and code
+      attributes: attributes,
+      relationships: relationships,
+      belongsToRelationships: belongsToRelationships,
+      hasManyRelationships: hasManyRelationships,
+      entityName: options.entity.name,
+      entitiesName: inflection.pluralize(options.entity.name),
+      entityVar: entityToVariable(options.entity.name),
+      entityPathVar: entityPathVariable(options.entity.name)
+      // TODO do we need all these?
+      // TODO some can be moved to template for clarity
     };
 
     console.log(result);
 
     return result;
   },
+
+  fileMapTokens: function(options) {
+			return {
+					__plural_name__: function(options) {
+							return options.locals.entitiesName
+					}
+			}
+	},
 
   shouldEntityTouchRouter: function(name) {
     var isIndex = name === 'index';
@@ -223,4 +265,28 @@ function writeRoute(action, name, routeOptions, options) {
   var newRoutes = routes[action](name, routeOptions);
 
   fs.writeFileSync(routerPath, newRoutes.code());
+}
+
+// Templates and code
+var entityToVariable = function(entityName) {
+  var splits = entityName.split("-");
+  return [splits[0]].concat(
+    splits.slice(1).map(function(word) {
+      return word[0].toUpperCase() + word.substring(1);
+    })
+  ).join("");
+}
+
+var entityItemRoute = function(name) {
+		var pluralName = inflection.pluralize(name);
+		return pluralName + ".show";
+}
+
+var entityItemListRoute = function(name) {
+		var pluralName = inflection.pluralize(name);
+		return pluralName + ".index";
+}
+
+var entityPathVariable = function(entityName) {
+  return entityName.replace(/-/g,"_");
 }
