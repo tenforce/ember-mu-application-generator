@@ -1,7 +1,33 @@
-//
-// .main-content {
-//   @import 'index';
-// }
+.main-content {
+  @import 'index';
+  @import 'edit';
+  @import 'new';
+  @import 'show';
+  background: white;
+  width: 95%;
+  margin: 2% auto;
+  padding: 1%;
+
+
+  h1 {
+    text-align: center;
+  }
+
+}
+
+
 html {
+  font-size: 62.5%;
+}
+body {
+  background: #D4D4D4;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
   color: black;
+
+  zoom: 100%;
+	min-width: 1000px;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
