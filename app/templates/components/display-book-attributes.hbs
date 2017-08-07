@@ -1,0 +1,15 @@
+{{log model}}
+
+<div class="properties__title">Data</div>
+<dl>
+   <dt class="properties__label">title</dt>
+  <dd class="properties__data">{{gr-display-field model=model field='title' }}</dd>
+  <dt class="properties__label">isbn</dt>
+  <dd class="properties__data">{{gr-display-field model=model field='isbn' }}</dd>
+
+</dl>
+Or
+<div class="content">
+  <h2 class="h2">books</h2>
+  {{data-table content=model fields="title isbn" sort=sort page=page link='books.show' pagination='page'}}
+</div>

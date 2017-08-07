@@ -1,0 +1,10 @@
+<table>
+  <th><td>Name</td><td>Value</td></th>
+  <%=
+    // this currently only understands regular inputs
+    attributes.map( function(attribute) {
+      return "<tr><td>" + attribute.name + "</td><td>{{input value=model." + attribute.itemVar +"}}</td></tr>";
+    }).join("\n  ")
+  %>
+</table> 
+<button {{action 'save' model}}>Save</button>

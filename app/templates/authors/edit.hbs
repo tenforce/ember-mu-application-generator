@@ -1,0 +1,13 @@
+<div class="content">
+  <h5>authors</h5>
+  <div class="form">
+    <div class="row"><div class="col s4">name</div><div class="col s8">{{input type="text" value=model.name}}</div></div>
+    
+    <div class="row">
+      <div class="col s12">
+	<div class="btn btn--submit right" {{action "save" model}}>Save changes</div>
+	<div class="btn btn--submit right" {{action "cancel" model}}>Cancel</div>
+      </div>
+    </div>
+  </div>  
+</div>
