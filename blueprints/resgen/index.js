@@ -34,7 +34,7 @@ module.exports = {
     for (var name in entityOptions) {
       var type = entityOptions[name] || '';
       var foreignModel = name;
-      var inverseName = ''; // TODO handle and render
+      var inverseName = '';
       if (type.indexOf(':') > -1) {
         foreignModel = type.split(':')[1];
         type = type.split(':')[0];
@@ -49,7 +49,7 @@ module.exports = {
       var camelizedName = stringUtils.camelize(name);
       var dasherizedType = stringUtils.dasherize(type);
       var dasherizedForeignModel = stringUtils.dasherize(foreignModel);
-      // TODO name is given, inflect anyways? should be correct in domain.lisp?
+      // TODO name is given, inflect anyways? should be correct in domain.lisp, right?
       var dasherizedForeignModelSingular = inflection.singularize(dasherizedForeignModel);
       // TODO pluralize?? condionally? but then what with 1-to-1 rels?
       // bestFriend: DS.belongsTo('user', { inverse: 'bestFriend' }),
@@ -84,6 +84,7 @@ module.exports = {
 				itemVarSingle: inflection.singularize(entityToVariable(name)),
 				itemRoute: entityItemRoute(name),
 				itemListRoute: entityItemListRoute(name)
+        // TODO some can be moved to template for clarity
       });
     }
 
@@ -107,18 +108,13 @@ module.exports = {
     attrs = attrs.join(',' + EOL + '  ');
     needs = '  needs: [' + needsDeduplicated.join(', ') + ']';
 
-    // Router
-
-    var moduleName = stringUtil.dasherize(options.entity.name);
-
     // Templates and code
 
-    // TODO merge with code above where possible
 		var attributes = properties.filter( function(prop) {
       return prop.kind != "has-many" && prop.kind != "belongs-to";
     } );
-    var relationships = properties.filter( function(relationship) {
-      return relationship.kind == "has-many" || relationship.kind == "belongs-to";
+    var relationships = properties.filter( function(prop) {
+      return prop.kind == "has-many" || prop.kind == "belongs-to";
     } );
     var belongsToRelationships = relationships.filter( function(relationship) {
       return relationship.kind == "belongs-to";
@@ -135,9 +131,6 @@ module.exports = {
       attrs: attrs, // attrs and relationships, ready to be pasted in the model template
       needs: needs, // for dependencies in unit tests
 
-      // Router
-      moduleName: moduleName,
-
       // Templates and code
       attributes: attributes,
       relationships: relationships,
@@ -145,10 +138,8 @@ module.exports = {
       hasManyRelationships: hasManyRelationships,
       entityName: options.entity.name,
       entitiesName: inflection.pluralize(options.entity.name),
-      entityVar: entityToVariable(options.entity.name),
-      entityPathVar: entityPathVariable(options.entity.name)
-      // TODO do we need all these?
-      // TODO some can be moved to template for clarity
+
+      readonly: options.readonly,
     };
 
     console.log(result);
@@ -303,7 +294,6 @@ function updateRouter(action, options) {
     { name: entitiesName + '/show', options: { path: ':id' } }
   ];
   if (!options.readonly) {
-    console.log("not readonly " + options.readonly)
     routes = routes.concat([
       { name: entitiesName + '/new', options: {} },
       { name: entitiesName + '/edit', options: { path: ':id/edit' } }
@@ -357,8 +347,4 @@ var entityItemRoute = function(name) {
 var entityItemListRoute = function(name) {
 		var pluralName = inflection.pluralize(name);
 		return pluralName + ".index";
-}
-
-var entityPathVariable = function(entityName) {
-  return entityName.replace(/-/g,"_");
 }
