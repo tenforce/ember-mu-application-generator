@@ -164,6 +164,36 @@ module.exports = {
 			}
 	},
 
+
+  // https://github.com/ember-cli/ember-cli/issues/7287
+
+  // filesPath(options) {
+  //   console.log(options.target);
+  //   return path.join(this.path, 'files');
+  // },
+
+  // files() {
+  //   // console.log(this.options);
+  //   return [ 'app/',
+  //     'app/components/',
+  //     'app/components/display-__name__-attributes.js',
+  //     'app/models/',
+  //     'app/models/__name__.js',
+  //     'app/routes/',
+  //     'app/routes/__plural_name__/',
+  //     'app/routes/__plural_name__/index.js',
+  //     'app/routes/__plural_name__/show.js',
+  //     'app/serializers/',
+  //     'app/serializers/application.js',
+  //     'app/templates/',
+  //     'app/templates/__plural_name__/',
+  //     'app/templates/__plural_name__/index.hbs',
+  //     'app/templates/__plural_name__/show.hbs',
+  //     'app/templates/components/',
+  //     'app/templates/components/display-__name__-attributes.hbs',
+  //   ];
+  // },
+
   shouldEntityTouchRouter: function(name) {
     var isIndex = name === 'index';
     var isBasic = name === 'basic';
