@@ -1,3 +1,12 @@
-<h2 class="h2">{{t '<%= entityName %>'}} {{model.id}}</h2>
-
-{{display-<%= entityName %>-attributes model=model}}
+<div class="details">
+  <h2 class="title">{{t '<%= entityName %>'}} details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    {{display-<%= entityName %>-attributes model=model}}
+  </table>
+</div>
