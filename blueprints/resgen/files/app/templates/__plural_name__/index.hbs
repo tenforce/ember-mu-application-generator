@@ -2,7 +2,7 @@
   <h2 class="title">{{t '<%= entitiesName %>'}}</h2>
   {{#unless <%= readonly %>}}
     <div class="actions">
-      {{#link-to "<%= entitiesName %>.new" class="btn new" title="Create new item" tagName='button' }}{{/link-to}}
+      {{#link-to "<%= entitiesName %>.new" class="btn new" title="Create new item" tagName='button' }}Create{{/link-to}}
     </div>
   {{/unless}}
   {{#if model}}
@@ -19,7 +19,7 @@
   {{else}}
     <div class="empty">
       No {{t '<%= entitiesName %>'}} in the database.
-      {{#unless <%= readonly %>}} Click on the <i class="fa fa-plus" aria-hidden="true"></i> to create a new {{t '<%= entityName %>'}}.
+      {{#unless <%= readonly %>}} Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t '<%= entityName %>'}}.
       {{/unless}}
     </div>
   {{/if}}
