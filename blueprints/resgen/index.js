@@ -172,27 +172,61 @@ module.exports = {
   //   return path.join(this.path, 'files');
   // },
 
-  // files() {
-  //   // console.log(this.options);
-  //   return [ 'app/',
-  //     'app/components/',
-  //     'app/components/display-__name__-attributes.js',
-  //     'app/models/',
-  //     'app/models/__name__.js',
-  //     'app/routes/',
-  //     'app/routes/__plural_name__/',
-  //     'app/routes/__plural_name__/index.js',
-  //     'app/routes/__plural_name__/show.js',
-  //     'app/serializers/',
-  //     'app/serializers/application.js',
-  //     'app/templates/',
-  //     'app/templates/__plural_name__/',
-  //     'app/templates/__plural_name__/index.hbs',
-  //     'app/templates/__plural_name__/show.hbs',
-  //     'app/templates/components/',
-  //     'app/templates/components/display-__name__-attributes.hbs',
-  //   ];
-  // },
+  files() {
+    // TODO update file list
+    if (this.options && this.options.readonly){
+    return [ 'app/',
+      'app/components/',
+      'app/components/display-__name__-attributes-details.js',
+      'app/components/display-__name__-attributes-header.js',
+      'app/components/display-__name__-attributes-row.js',
+      'app/models/',
+      'app/models/__name__.js',
+      'app/routes/',
+      'app/routes/__plural_name__/',
+      // 'app/routes/__plural_name__/edit.js',
+      'app/routes/__plural_name__/index.js',
+      // 'app/routes/__plural_name__/new.js',
+      'app/routes/__plural_name__/show.js',
+      'app/serializers/',
+      'app/serializers/application.js',
+      'app/templates/',
+      'app/templates/__plural_name__/',
+      // 'app/templates/__plural_name__/edit.hbs',
+      'app/templates/__plural_name__/index.hbs',
+      // 'app/templates/__plural_name__/new.hbs',
+      'app/templates/__plural_name__/show.hbs',
+      'app/templates/components/',
+      'app/templates/components/display-__name__-attributes-details.hbs',
+      'app/templates/components/display-__name__-attributes-header.hbs',
+      'app/templates/components/display-__name__-attributes-row.hbs' ];    } else {
+    return [ 'app/',
+      'app/components/',
+      'app/components/display-__name__-attributes-details.js',
+      'app/components/display-__name__-attributes-header.js',
+      'app/components/display-__name__-attributes-row.js',
+      'app/models/',
+      'app/models/__name__.js',
+      'app/routes/',
+      'app/routes/__plural_name__/',
+      'app/routes/__plural_name__/edit.js',
+      'app/routes/__plural_name__/index.js',
+      'app/routes/__plural_name__/new.js',
+      'app/routes/__plural_name__/show.js',
+      'app/serializers/',
+      'app/serializers/application.js',
+      'app/templates/',
+      'app/templates/__plural_name__/',
+      'app/templates/__plural_name__/edit.hbs',
+      'app/templates/__plural_name__/index.hbs',
+      'app/templates/__plural_name__/new.hbs',
+      'app/templates/__plural_name__/show.hbs',
+      'app/templates/components/',
+      'app/templates/components/display-__name__-attributes-details.hbs',
+      'app/templates/components/display-__name__-attributes-header.hbs',
+      'app/templates/components/display-__name__-attributes-row.hbs' ];
+    }
+  },
 
   shouldEntityTouchRouter: function(name) {
     var isIndex = name === 'index';
@@ -212,6 +246,8 @@ module.exports = {
   },
 
   afterInstall: function(options) {
+    // console.log(this.files()) // TODO update file list
+
     return updateRouter.call(this, 'add', options);
     // TODO install conditionally? npm will run even if packages are already there
     // TODO are these the right packages?
@@ -261,12 +297,18 @@ function updateRouter(action, options) {
 
   // TODO check consistency
   var entitiesName = inflection.pluralize(entity.name)
+  // TODO update routes list
   var routes = [
     { name: entitiesName, options: {} },
-    { name: entitiesName + '/new', options: {} },
-    { name: entitiesName + '/show', options: { path: ':id' } },
-    { name: entitiesName + '/edit', options: { path: ':id/edit' } }
+    { name: entitiesName + '/show', options: { path: ':id' } }
   ];
+  if (!options.readonly) {
+    console.log("not readonly " + options.readonly)
+    routes = routes.concat([
+      { name: entitiesName + '/new', options: {} },
+      { name: entitiesName + '/edit', options: { path: ':id/edit' } }
+    ]);
+  }
   var self = this;
   this.ui.writeLine('updating router');
   routes.forEach(function(route) {
