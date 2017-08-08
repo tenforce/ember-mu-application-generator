@@ -55,6 +55,22 @@ input {
   text-transform: capitalize;
 }
 
+i {
+  margin: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-transition: all 0.35s ease;
+  -moz-osx-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+
+  &:hover {
+    color: crimson;
+  }
+}
+
 .btn {
   border: none;
   background: none;
@@ -105,7 +121,7 @@ input {
 }
 
 html {
-  font-size: 85%;
+  font-size: 90%;
 }
 
 body {
