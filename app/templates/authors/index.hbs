@@ -1,4 +1,24 @@
 <div class="content">
-  <h2 class="h2">{{t 'authors'}}</h2>
-  {{data-table content=model fields="name" sort=sort page=page link='authors.show' pagination='page'}}
+  <h2 class="title">{{t 'authors'}}</h2>
+  <div class="actions">
+    {{#link-to "authors.new" class="btn new" title="Create new item" tagName='button' }}{{/link-to}}
+  </div>
+
+  {{#if model}}
+    <table>
+      <thead>
+        {{display-author-attributes-header model=model}}
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{display-author-attributes-row model=item}}
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="empty">
+      No {{t 'authors'}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> to create a new {{t 'author'}}.
+    </div>
+  {{/if}}
 </div>

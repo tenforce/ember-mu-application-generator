@@ -9,9 +9,18 @@ export default Ember.Route.extend({
     save(model) {
       var self = this;
       return model.save().then( function(model) {
-        self.transitionTo( "author", model );
+        self.transitionTo( "authors");
       }).catch( function() {
         alert("Creation of author failed");
+      });
+    },
+    cancel(model) {
+      var self = this;
+      model.rollbackAttributes();
+      return model.save().then( function(model) {
+        self.transitionTo( "authors");
+      }).catch( function() {
+        alert("Cancelling creation of author failed");
       });
     }
   }

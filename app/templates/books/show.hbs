@@ -1,5 +1,9 @@
 <div class="details">
-  <h2 class="title">{{t 'book'}} details</h2>
+  <h2 class="title">{{t 'book details'}}</h2>
+  <div class="actions">
+    {{#link-to "books" class="btn back" title="Return to list" tagName='button'}}{{/link-to}}
+    {{#link-to "books.edit" model class="btn edit" title="Edit this item" tagName='button'}}{{/link-to}}
+  </div>
   <table>
     <thead>
       <tr>
@@ -7,6 +11,6 @@
         <th>Data</th>
       </tr>
     </thead>
-    {{display-book-attributes model=model}}
+    {{display-book-attributes-details model=model}}
   </table>
 </div>
