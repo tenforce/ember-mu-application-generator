@@ -1,5 +1,10 @@
 <div class="details">
-  <h2 class="title">{{t '<%= entityName %>'}} details</h2>
+  <h2 class="title">{{t '<%= entityName %> details'}}</h2>
+  <div class="actions">
+    <button type="button" class="btn back" title="Return to list" {{action 'backToList' model}}></button>
+    <button type="button" class="btn edit" title="Edit this item"></button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}></button>
+  </div>
   <table>
     <thead>
       <tr>

@@ -18,3 +18,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.btn {
+  border: none;
+	background: none;
+	outline: none;
+	cursor: pointer;
+  padding: 1%;
+  -webkit-transition: all 0.35s ease;
+  -moz-osx-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+
+  &:after {
+    font-family: "FontAwesome";
+    font-size: 24px;
+  }
+
+  &:hover {
+    color: crimson;
+  }
+}
