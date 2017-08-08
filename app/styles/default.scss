@@ -1,22 +1,41 @@
-* {
-  margin: 0;
-  padding: 0;
+
+table {
+  margin: 0 auto;
+  width: 50%;
+  text-align: left;
+  border: 1px solid #e8e8e8;
+  border-collapse: collapse;
+
+  td,
+  th {
+    padding: 1% 2%;
+    vertical-align: middle;
+    border: 1px solid #e8e8e8;
+  }
+
+  thead {
+    tr {
+      background: #eee;
+      text-transform: uppercase;
+
+      td,
+      th {
+        padding: 2%;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background: #eee;
+      }
+    }
+  }
 }
 
-html {
-  font-size: 85%;
-}
-
-body {
-  background: #fff;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 300;
-  color: black;
-  zoom: 100%;
-  min-width: 1000px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.title {
+  text-transform: capitalize;
 }
 
 .btn {
@@ -37,4 +56,25 @@ body {
   &:hover {
     color: crimson;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 85%;
+}
+
+body {
+  background: #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  color: black;
+  zoom: 100%;
+  min-width: 1000px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

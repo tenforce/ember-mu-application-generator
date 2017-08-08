@@ -1,5 +1,8 @@
 <div class="content">
   <h2 class="title">{{t '<%= entitiesName %>'}}</h2>
+  <div class="actions">
+    {{#link-to "<%= entitiesName %>.new" class="btn new" title="Create new item" tagName='button'}}{{/link-to}}
+  </div>
   <table>
     <thead>
       {{display-<%= entityName %>-attributes-header model=model}}
