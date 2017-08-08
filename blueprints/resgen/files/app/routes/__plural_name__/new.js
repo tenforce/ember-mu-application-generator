@@ -9,9 +9,18 @@ export default Ember.Route.extend({
     save(model) {
       var self = this;
       return model.save().then( function(model) {
-        self.transitionTo( "<%= entitiesName %>" );
+        self.transitionTo( "<%= entitiesName %>");
       }).catch( function() {
         alert("Creation of <%= entityName %> failed");
+      });
+    },
+    cancel(model) {
+      var self = this;
+      model.rollbackAttributes();
+      return model.save().then( function(model) {
+        self.transitionTo( "<%= entitiesName %>");
+      }).catch( function() {
+        alert("Cancelling creation of <%= entityName %> failed");
       });
     }
   }

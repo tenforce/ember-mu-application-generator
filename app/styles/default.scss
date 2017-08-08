@@ -1,3 +1,4 @@
+@import 'mixin';
 
 table {
   margin: 0 auto;
@@ -34,15 +35,31 @@ table {
   }
 }
 
+input {
+  font-family: 'Source Sans Pro', sans-serif;
+  outline: none;
+  border: 1px solid #d4d4d4;
+  font-size: 17px;
+  font-weight: 300;
+  padding: 1%;
+  @include transition(all .5s ease);
+  @include border-radius(4px);
+
+  &:focus,
+  &:hover {
+    border: 1px solid crimson;
+  }
+}
+
 .title {
   text-transform: capitalize;
 }
 
 .btn {
   border: none;
-	background: none;
-	outline: none;
-	cursor: pointer;
+  background: none;
+  outline: none;
+  cursor: pointer;
   padding: 1%;
   -webkit-transition: all 0.35s ease;
   -moz-osx-transition: all 0.35s ease;
@@ -55,6 +72,30 @@ table {
 
   &:hover {
     color: crimson;
+  }
+
+  &.delete {
+    &:after {
+      content: "\F1F8";
+    }
+  }
+
+  &.cancel {
+    &:after {
+      content: "\F00D";
+    }
+  }
+
+  &.new {
+    &:after {
+      content: "\F067";
+    }
+  }
+
+  &.save {
+    &:after {
+      content: "\F00C";
+    }
   }
 }
 
