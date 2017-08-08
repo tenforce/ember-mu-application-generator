@@ -1,0 +1,24 @@
+.content {
+  text-align: center;
+  .title {
+    padding-bottom: 1%;
+  }
+
+  .actions {
+    padding-bottom: 1%;
+
+    .new {
+      &:after {
+        content: "\F067";
+      }
+    }
+  }
+
+  table {
+    tbody {
+      tr {
+        cursor: pointer;
+      }
+    }
+  }
+}

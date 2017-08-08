@@ -2,16 +2,18 @@
   text-align: center;
 
   .title {
-    padding-bottom: 2%;
+    padding-bottom: 1%;
   }
 
   .actions {
-    padding-bottom: 2%;
+    padding-bottom: 1%;
+
     .back {
       &:after {
-        content: "\F060"
+        content: "\F060";
       }
     }
+
     .edit {
       &:after {
         content: "\F040";
@@ -21,41 +23,6 @@
     .delete {
       &:after {
         content: "\F1F8";
-      }
-    }
-  }
-
-  table {
-    margin: 0 auto;
-    width: 50%;
-    text-align: left;
-    border: 1px solid #e8e8e8;
-    border-collapse: collapse;
-
-    td,
-    th {
-      padding: 1% 2%;
-      vertical-align: middle;
-      border: 1px solid #e8e8e8;
-    }
-
-    thead {
-      tr {
-        background: #eee;
-        text-transform: uppercase;
-
-        td,
-        th {
-          padding: 2%;
-        }
-      }
-    }
-
-    tbody {
-      tr {
-        &:nth-child(even) {
-          background: #eee;
-        }
       }
     }
   }
