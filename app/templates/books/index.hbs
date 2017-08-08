@@ -1,16 +1,24 @@
 <div class="content">
   <h2 class="title">{{t 'books'}}</h2>
   <div class="actions">
-    {{#link-to "books.new" class="btn new" title="Create new item" tagName='button'}}{{/link-to}}
+    {{#link-to "books.new" class="btn new" title="Create new item" tagName='button' }}{{/link-to}}
   </div>
-  <table>
-    <thead>
-      {{display-book-attributes-header model=model}}
-    </thead>
-    <tbody>
-      {{#each model as |item|}}
-        {{display-book-attributes-row model=item}}
-      {{/each}}
-    </tbody>
-  </table>
+
+  {{#if model}}
+    <table>
+      <thead>
+        {{display-book-attributes-header model=model}}
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{display-book-attributes-row model=item}}
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="empty">
+      No {{t 'books'}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> to create a new {{t 'book'}}.
+    </div>
+  {{/if}}
 </div>
