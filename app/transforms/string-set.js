@@ -3,11 +3,10 @@
  * DS102: Remove unnecessary code created because of implicit returns
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-import DS from 'ember-data';
 import Ember from 'ember';
 import Transform from 'ember-data/transform';
 
-const StringSet = DS.Transform.extend({
+const StringSet = Transform.extend({
   deserialize(serialized) {
     Ember.assert(`expected array got ${Ember.typeOf(serialized)}`, (!serialized) || (Ember.typeOf(serialized) === "array"));
     return serialized || [];
