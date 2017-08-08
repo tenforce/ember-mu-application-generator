@@ -15,9 +15,6 @@ export default Ember.Route.extend({
         model.rollbackAttributes();
         alert("Deletion of <%= entityName %> failed");
       });
-    },
-    backToList () {
-      this.transitionTo("<%= entitiesName %>");
     }
   }
 });
