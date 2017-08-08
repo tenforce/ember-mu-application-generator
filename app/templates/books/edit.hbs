@@ -1,14 +1,40 @@
+<div class="edit">
+  <h2 class="title">{{t 'Edit book'}}</h2>
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new book" {{action 'save' model}}></button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}></button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}></button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>title</td><td align='middle'>{{input value=model.title placeholder=attribute.name}}</td></tr>
+  <tr><td>isbn</td><td align='middle'>{{input value=model.isbn placeholder=attribute.name}}</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
 <div class="content">
   <h5>books</h5>
   <div class="form">
     <div class="row"><div class="col s4">title</div><div class="col s8">{{input type="text" value=model.title}}</div></div>
   <div class="row"><div class="col s4">isbn</div><div class="col s8">{{input type="text" value=model.isbn}}</div></div>
-    
+
     <div class="row">
       <div class="col s12">
 	<div class="btn btn--submit right" {{action "save" model}}>Save changes</div>
 	<div class="btn btn--submit right" {{action "cancel" model}}>Cancel</div>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
