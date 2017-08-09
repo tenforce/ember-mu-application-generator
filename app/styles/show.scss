@@ -20,4 +20,27 @@
       }
     }
   }
+
+  table {
+    tbody {
+      ul {
+        list-style: square inside;
+
+        li {
+          .content-string {
+            display: inline-block;
+          }
+
+          span {
+            font-style: italic;
+            color: #666;
+
+            .language-string {
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+  }
 }
