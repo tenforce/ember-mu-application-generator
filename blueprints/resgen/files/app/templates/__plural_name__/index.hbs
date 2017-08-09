@@ -22,7 +22,7 @@
       </thead>
       <tbody>
         {{#each model as |item|}}
-          {{#link-to "<%= entitiesName %>.show" model tagName='tr' }}
+          {{#link-to "<%= entitiesName %>.show" item tagName='tr' }}
             {{handle-attribute model=item attribute='id' tagName='td' classes='properties__data'}}
             <%= attributes.map( function(property) {
                 if(property.kind == "lang-string-set") {
