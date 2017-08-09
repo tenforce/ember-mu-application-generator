@@ -8,11 +8,20 @@
   {{#if model}}
     <table>
       <thead>
-        {{display-book-attributes-header model=model}}
+        <tr>
+          <th class="properties__label">id</th>
+            <th class="properties__label">{{t 'title'}}</th>
+  <th class="properties__label">{{t 'isbn'}}</th>
+            
+        </tr>
       </thead>
       <tbody>
         {{#each model as |item|}}
-          {{display-book-attributes-row model=item}}
+          {{#link-to "books.show" item tagName='tr' }}
+            {{handle-attribute model=item attribute='id' tagName='td' classes='properties__data'}}
+            <td>{{display-attribute-string-set model=item attribute='title' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>
+{{handle-attribute model=item attribute='isbn' tagName='td' classes='properties__data'}}
+          {{/link-to}}
         {{/each}}
       </tbody>
     </table>

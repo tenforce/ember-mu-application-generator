@@ -8,11 +8,18 @@
   {{#if model}}
     <table>
       <thead>
-        {{display-author-attributes-header model=model}}
+        <tr>
+          <th class="properties__label">id</th>
+            <th class="properties__label">{{t 'name'}}</th>
+              <th class="properties__label">{{t 'book'}}</th>
+        </tr>
       </thead>
       <tbody>
         {{#each model as |item|}}
-          {{display-author-attributes-row model=item}}
+          {{#link-to "authors.show" item tagName='tr' }}
+            {{handle-attribute model=item attribute='id' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='name' tagName='td' classes='properties__data'}}
+          {{/link-to}}
         {{/each}}
       </tbody>
     </table>
