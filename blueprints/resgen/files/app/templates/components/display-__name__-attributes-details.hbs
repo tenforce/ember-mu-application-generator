@@ -1,18 +1,23 @@
 <tr>
   <td class="properties__label">id</td>
-  <td class="properties__data">{{gr-display-field model=model field='id' }}</td>
+  <td class="properties__data">{{id}}</td>
 </tr>
- <%= attributes.map( function(property) {
-    return "<tr>" +
-    '  <td class="properties__label">{{t \'' + property.itemVar + '\'}}</td>' + "\n" +
-		'  <td class="properties__data">{{gr-display-field model=model field=\'' + property.itemVar +'\' }}</td>' + "\n" +
-    '</tr>';
-}).join("\n") %>
-   <%=
-    relationships.map( function(relationship) {
-      return "<tr>" +
-			  '  <td class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</td>' +
-				"\n" + '  {{display-model-relationship model=model.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'id\'}}' + "\n" +
+
+<%= attributes.map( function(property) {
+     if(property.kind == "lang-string-set") {
+       return "<div class=\"row\"><div class=\"col s4\">" + property.name + "</div>"
+       + "<div class=\"col s8\">"
+       + "{{#each model." + property.itemVar + " as |label index|}}"
+         + "<div class=\"row\">"
+         + "<div class=\"col s8 field--location\">{{label.content}}{{input type=\"text\" value=label.content}}</div>"
+         + "<div class=\"col s4 field--language\">{{label.language}}{{input type=\"text\" value=label.language}}</div>"
+         + "</div>"
+       + "{{/each}}</div></div>";
+     }
+     else {
+        return "<tr>" +
+        '  <td class="properties__label">{{t \'' + property.itemVar + '\'}}</td>' + "\n" +
+    		'  <td class="properties__data">{{t \'' + property.itemVar +'\' }}</td>' + "\n" +
         '</tr>';
-    } ).join("\n")
-    %>
+      }
+}).join("\n") %>
