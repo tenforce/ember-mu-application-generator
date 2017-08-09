@@ -21,7 +21,7 @@ export default Ember.Route.extend({
     delete(model) {
       var self = this;
       model.deleteRecord();
-      return model.save().then( function(model) {
+      return model.save().then( function() {
         self.transitionTo( "authors");
       }).catch( function() {
         model.rollbackAttributes();

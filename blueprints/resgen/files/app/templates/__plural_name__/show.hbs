@@ -1,8 +1,10 @@
 <div class="details">
   <h2 class="title">{{t '<%= entityName %> details'}}</h2>
   <div class="actions">
-    {{#link-to "<%= entitiesName %>" class="btn back" title="Return to list" tagName='button'}}{{/link-to}}
-    {{#link-to "<%= entitiesName %>.edit" model class="btn edit" title="Edit this item" tagName='button'}}{{/link-to}}
+    {{#link-to "<%= entitiesName %>" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#unless <%= readonly %>}}
+      {{#link-to "<%= entitiesName %>.edit" model class="btn edit" title="Edit this item" tagName='button'}}Edit{{/link-to}}
+    {{/unless}}
   </div>
   <table>
     <thead>

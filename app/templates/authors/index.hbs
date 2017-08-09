@@ -1,9 +1,10 @@
 <div class="content">
   <h2 class="title">{{t 'authors'}}</h2>
-  <div class="actions">
-    {{#link-to "authors.new" class="btn new" title="Create new item" tagName='button' }}{{/link-to}}
-  </div>
-
+  {{#unless }}
+    <div class="actions">
+      {{#link-to "authors.new" class="btn new" title="Create new item" tagName='button' }}Create{{/link-to}}
+    </div>
+  {{/unless}}
   {{#if model}}
     <table>
       <thead>
@@ -18,7 +19,8 @@
   {{else}}
     <div class="empty">
       No {{t 'authors'}} in the database.
-      Click on the <i class="fa fa-plus" aria-hidden="true"></i> to create a new {{t 'author'}}.
+      {{#unless }} Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t 'author'}}.
+      {{/unless}}
     </div>
   {{/if}}
 </div>

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+// import Ember from 'ember';
 import Transform from 'ember-data/transform';
 
 // TODO : delete me when mu-cl-resources (or virtuoso ?) is patched

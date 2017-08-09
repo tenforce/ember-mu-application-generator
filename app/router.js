@@ -8,45 +8,20 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('authors', function() {
-    this.route('new');
-
     this.route('show', {
       path: ':id'
     });
+    this.route('new');
 
     this.route('edit', {
       path: ':id/edit'
     });
   });
   this.route('books', function() {
-    this.route('new');
-
     this.route('show', {
       path: ':id'
     });
-
-    this.route('edit', {
-      path: ':id/edit'
-    });
-  });
-  this.route('bliblablo');
-  this.route('blablas', function() {
     this.route('new');
-
-    this.route('show', {
-      path: ':id'
-    });
-
-    this.route('edit', {
-      path: ':id/edit'
-    });
-  });
-  this.route('blaBlas', function() {
-    this.route('new');
-
-    this.route('show', {
-      path: ':id'
-    });
 
     this.route('edit', {
       path: ':id/edit'

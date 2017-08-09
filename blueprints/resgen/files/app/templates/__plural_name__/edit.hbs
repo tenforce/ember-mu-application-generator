@@ -1,9 +1,9 @@
 <div class="edit">
   <h2 class="title">{{t 'Edit <%= entityName %>'}}</h2>
   <div class="actions">
-    <button type="button" class="btn save" title="Save new <%= entityName %>" {{action 'save' model}}></button>
-    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}></button>
-    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}></button>
+    <button type="button" class="btn save" title="Save new <%= entityName %>" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}>Delete</button>
   </div>
   <table>
     <thead>
@@ -27,11 +27,8 @@
 
 
 
-
-<div class="content">
-  <h5><%= entitiesName %></h5>
-  <div class="form">
-    <%=
+{{!-- TODO: relationships and lang-string-set!!! --}}
+    {{!-- <%=
     attributes.map( function(attribute) {
       if(attribute.kind == "language-string-set") {
         return "<div class=\"row\"><div class=\"col s4\">" + attribute.name + "</div>"
@@ -43,18 +40,6 @@
     + "</div>"
     + "{{/each}}</div></div>";
     }
-      else {
-        return "<div class=\"row\"><div class=\"col s4\">" + attribute.name + "</div><div class=\"col s8\">{{input type=\"text\" value=model." + attribute.itemVar +"}}</div></div>";
-    }
     }).join("\n  ")
 
-    %>
-
-    <div class="row">
-      <div class="col s12">
-	<div class="btn btn--submit right" {{action "save" model}}>Save changes</div>
-	<div class="btn btn--submit right" {{action "cancel" model}}>Cancel</div>
-      </div>
-    </div>
-  </div>
-</div>
+    %> --}}
