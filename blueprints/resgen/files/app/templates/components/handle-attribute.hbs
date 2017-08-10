@@ -1,0 +1,9 @@
+{{#if model}}
+  {{#if editable}}
+    {{input value=(get model attribute) placeholder=attribute}}
+  {{else}}
+    {{t (get model attribute)}}
+  {{/if}}
+{{else}}
+  {{t attribute}}
+{{/if}}

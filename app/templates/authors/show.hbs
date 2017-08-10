@@ -9,10 +9,19 @@
   <table>
     <thead>
       <tr>
-        <th>Attribute</th>
-        <th>Data</th>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
       </tr>
     </thead>
-    {{display-author-attributes-details model=model}}
+    <tbody>
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+  <td>{{t 'name'}}</td>
+  {{handle-attribute model=model attribute='name' tagName='td' classes='properties__data'}}
+</tr>
+      </tbody>
   </table>
 </div>

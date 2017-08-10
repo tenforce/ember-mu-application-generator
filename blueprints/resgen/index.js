@@ -1,11 +1,11 @@
 // TODO clean up packages
-var inflection  = require('inflection'); // TODO less aggressive inflector?
+var inflection = require('inflection'); // TODO less aggressive inflector?
 var stringUtils = require('ember-cli-string-utils');
-var EOL         = require('os').EOL;
-var fs                   = require('fs-extra');
-var path                 = require('path');
-var chalk                = require('chalk');
-var stringUtil           = require('ember-cli-string-utils');
+var EOL = require('os').EOL;
+var fs = require('fs-extra');
+var path = require('path');
+var chalk = require('chalk');
+var stringUtil = require('ember-cli-string-utils');
 var EmberRouterGenerator = require('ember-router-generator');
 
 /* eslint-env node */
@@ -78,12 +78,12 @@ module.exports = {
 
 
       properties.push({
-				name: name,
-				kind: type,
-				itemVar: entityToVariable(name),
-				itemVarSingle: inflection.singularize(entityToVariable(name)),
-				itemRoute: entityItemRoute(name),
-				itemListRoute: entityItemListRoute(name)
+        name: name,
+        kind: type,
+        itemVar: entityToVariable(name),
+        itemVarSingle: inflection.singularize(entityToVariable(name)),
+        itemRoute: entityItemRoute(name),
+        itemListRoute: entityItemListRoute(name)
         // TODO some can be moved to template for clarity
       });
     }
@@ -110,18 +110,18 @@ module.exports = {
 
     // Templates and code
 
-		var attributes = properties.filter( function(prop) {
+    var attributes = properties.filter(function(prop) {
       return prop.kind != "has-many" && prop.kind != "belongs-to";
-    } );
-    var relationships = properties.filter( function(prop) {
+    });
+    var relationships = properties.filter(function(prop) {
       return prop.kind == "has-many" || prop.kind == "belongs-to";
-    } );
-    var belongsToRelationships = relationships.filter( function(relationship) {
+    });
+    var belongsToRelationships = relationships.filter(function(relationship) {
       return relationship.kind == "belongs-to";
-    } );
-    var hasManyRelationships = relationships.filter( function(relationship) {
+    });
+    var hasManyRelationships = relationships.filter(function(relationship) {
       return relationship.kind == "has-many";
-    } );
+    });
 
     // Return
 
@@ -148,12 +148,12 @@ module.exports = {
   },
 
   fileMapTokens: function(options) {
-			return {
-					__plural_name__: function(options) {
-							return options.locals.entitiesName
-					}
-			}
-	},
+    return {
+      __plural_name__: function(options) {
+        return options.locals.entitiesName
+      }
+    }
+  },
 
 
   // https://github.com/ember-cli/ember-cli/issues/7287
@@ -165,61 +165,64 @@ module.exports = {
 
   files() {
     // TODO update file list
-    if (this.options && this.options.readonly){
-    return [ 'app/',
-      'app/components/',
-      'app/components/display-__name__-attributes-details.js',
-      'app/components/display-__name__-attributes-header.js',
-      'app/components/display-__name__-attributes-row.js',
-      'app/models/',
-      'app/models/__name__.js',
-      'app/routes/',
-      'app/routes/__plural_name__/',
-      // 'app/routes/__plural_name__/edit.js',
-      'app/routes/__plural_name__/index.js',
-      // 'app/routes/__plural_name__/new.js',
-      'app/routes/__plural_name__/show.js',
-      'app/serializers/',
-      'app/serializers/application.js',
-      'app/styles/',
-      'app/styles/app.scss',
-      'app/templates/',
-      'app/templates/__plural_name__/',
-      // 'app/templates/__plural_name__/edit.hbs',
-      'app/templates/__plural_name__/index.hbs',
-      // 'app/templates/__plural_name__/new.hbs',
-      'app/templates/__plural_name__/show.hbs',
-      'app/templates/components/',
-      'app/templates/components/display-__name__-attributes-details.hbs',
-      'app/templates/components/display-__name__-attributes-header.hbs',
-      'app/templates/components/display-__name__-attributes-row.hbs' ];    } else {
-    return [ 'app/',
-      'app/components/',
-      'app/components/display-__name__-attributes-details.js',
-      'app/components/display-__name__-attributes-header.js',
-      'app/components/display-__name__-attributes-row.js',
-      'app/models/',
-      'app/models/__name__.js',
-      'app/routes/',
-      'app/routes/__plural_name__/',
-      'app/routes/__plural_name__/edit.js',
-      'app/routes/__plural_name__/index.js',
-      'app/routes/__plural_name__/new.js',
-      'app/routes/__plural_name__/show.js',
-      'app/serializers/',
-      'app/serializers/application.js',
-      'app/styles/',
-      'app/styles/app.scss',
-      'app/templates/',
-      'app/templates/__plural_name__/',
-      'app/templates/__plural_name__/edit.hbs',
-      'app/templates/__plural_name__/index.hbs',
-      'app/templates/__plural_name__/new.hbs',
-      'app/templates/__plural_name__/show.hbs',
-      'app/templates/components/',
-      'app/templates/components/display-__name__-attributes-details.hbs',
-      'app/templates/components/display-__name__-attributes-header.hbs',
-      'app/templates/components/display-__name__-attributes-row.hbs' ];
+    if (this.options && this.options.readonly) {
+      return ['app/',
+        'app/components/',
+        'app/components/handle-attribute.js',
+        'app/components/display-lang-attribute.js',
+        'app/components/display-attribute-string-set.js',
+        'app/models/',
+        'app/models/__name__.js',
+        'app/routes/',
+        'app/routes/__plural_name__/',
+        // 'app/routes/__plural_name__/edit.js',
+        'app/routes/__plural_name__/index.js',
+        // 'app/routes/__plural_name__/new.js',
+        'app/routes/__plural_name__/show.js',
+        'app/serializers/',
+        'app/serializers/application.js',
+        'app/styles/',
+        'app/styles/app.scss',
+        'app/templates/',
+        'app/templates/__plural_name__/',
+        // 'app/templates/__plural_name__/edit.hbs',
+        'app/templates/__plural_name__/index.hbs',
+        // 'app/templates/__plural_name__/new.hbs',
+        'app/templates/__plural_name__/show.hbs',
+        'app/templates/components/',
+        'app/templates/components/handle-attribute.hbs',
+        'app/templates/components/display-lang-attribute.hbs',
+        'app/templates/components/display-attribute-string-set.hbs'
+      ];
+    } else {
+      return ['app/',
+        'app/components/',
+        'app/components/handle-attribute.js',
+        'app/components/display-lang-attribute.js',
+        'app/components/display-attribute-string-set.js',
+        'app/models/',
+        'app/models/__name__.js',
+        'app/routes/',
+        'app/routes/__plural_name__/',
+        'app/routes/__plural_name__/edit.js',
+        'app/routes/__plural_name__/index.js',
+        'app/routes/__plural_name__/new.js',
+        'app/routes/__plural_name__/show.js',
+        'app/serializers/',
+        'app/serializers/application.js',
+        'app/styles/',
+        'app/styles/app.scss',
+        'app/templates/',
+        'app/templates/__plural_name__/',
+        'app/templates/__plural_name__/edit.hbs',
+        'app/templates/__plural_name__/index.hbs',
+        'app/templates/__plural_name__/new.hbs',
+        'app/templates/__plural_name__/show.hbs',
+        'app/templates/components/',
+        'app/templates/components/handle-attribute.hbs',
+        'app/templates/components/display-lang-attribute.hbs',
+        'app/templates/components/display-attribute-string-set.hbs'
+      ];
     }
   },
 
@@ -246,8 +249,8 @@ module.exports = {
     return updateRouter.call(this, 'add', options);
     // TODO install conditionally? npm will run even if packages are already there
     // TODO are these the right packages?
-		// this.addPackageToProject('ember-i18n', '^4.3.2');
-		// this.addPackageToProject('ember-promise-helpers', '^1.0.3');
+    // this.addPackageToProject('ember-i18n', '^4.3.2');
+    // this.addPackageToProject('ember-promise-helpers', '^1.0.3');
     // return this.addPackageToProject('ember-data-table', '^0.6.0');
     // Ember CLI expects to resolve a promise from these hooks when running the blueprint
     // So return!
@@ -263,20 +266,20 @@ module.exports = {
 
 // TODO inline this function. the caller already does the type matching...
 function dsAttr(name, type, inverse) {
-  if(inverse) { // is either empty or needs some more syntax
-    inverse = ", {inverse: '"+inverse+"'}"
+  if (inverse) { // is either empty or needs some more syntax
+    inverse = ", {inverse: '" + inverse + "'}"
   }
   switch (type) {
-  case 'belongs-to':
-    return 'belongsTo(\'' + name + '\''+inverse+')';
-  case 'has-many':
-    return 'hasMany(\'' + name + '\''+inverse+')';
-  case '':
-    //"If you don't specify the type of the attribute, it will be whatever was provided by the server"
-    //http://emberjs.com/guides/models/defining-models/
-    return 'attr()';
-  default:
-    return 'attr(\'' + type + '\')';
+    case 'belongs-to':
+      return 'belongsTo(\'' + name + '\'' + inverse + ')';
+    case 'has-many':
+      return 'hasMany(\'' + name + '\'' + inverse + ')';
+    case '':
+      //"If you don't specify the type of the attribute, it will be whatever was provided by the server"
+      //http://emberjs.com/guides/models/defining-models/
+      return 'attr()';
+    default:
+      return 'attr(\'' + type + '\')';
   }
 }
 
@@ -293,14 +296,28 @@ function updateRouter(action, options) {
   // TODO check consistency
   var entitiesName = inflection.pluralize(entity.name)
   // TODO update routes list
-  var routes = [
-    { name: entitiesName, options: {} },
-    { name: entitiesName + '/show', options: { path: ':id' } }
+  var routes = [{
+      name: entitiesName,
+      options: {}
+    },
+    {
+      name: entitiesName + '/show',
+      options: {
+        path: ':id'
+      }
+    }
   ];
   if (!options.readonly) {
-    routes = routes.concat([
-      { name: entitiesName + '/new', options: {} },
-      { name: entitiesName + '/edit', options: { path: ':id/edit' } }
+    routes = routes.concat([{
+        name: entitiesName + '/new',
+        options: {}
+      },
+      {
+        name: entitiesName + '/edit',
+        options: {
+          path: ':id/edit'
+        }
+      }
     ]);
   }
   var self = this;
@@ -344,11 +361,11 @@ var entityToVariable = function(entityName) {
 }
 
 var entityItemRoute = function(name) {
-		var pluralName = inflection.pluralize(name);
-		return pluralName + ".show";
+  var pluralName = inflection.pluralize(name);
+  return pluralName + ".show";
 }
 
 var entityItemListRoute = function(name) {
-		var pluralName = inflection.pluralize(name);
-		return pluralName + ".index";
+  var pluralName = inflection.pluralize(name);
+  return pluralName + ".index";
 }

@@ -18,6 +18,16 @@
           return "<tr><td>" + attribute.name + "</td><td align='middle'>{{input value=model." + attribute.itemVar +" placeholder=attribute.name}}</td></tr>";
         }).join("\n  ")
       %>
+
+      <%=
+       relationships.map( function(relationship) {
+         console.log(relationship);
+         return "<tr>" +
+   			  '  <td class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</td>' +
+   				"\n" + '  {{display-model-relationship model=model.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'id\'}}' + "\n" +
+           '</tr>';
+       } ).join("\n")
+       %>
     </tbody>
   </table>
 </div>

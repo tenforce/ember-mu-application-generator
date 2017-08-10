@@ -1,0 +1,7 @@
+{{#each (get model attribute) as |label|}}
+  {{#if lang}}
+    {{display-lang-attribute model=label tagName=innerTagName}}
+  {{else}}
+    {{handle-attribute attribute=label tagName=innerTagName}}
+  {{/if}}
+{{/each}}

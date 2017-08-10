@@ -9,10 +9,23 @@
   <table>
     <thead>
       <tr>
-        <th>Attribute</th>
-        <th>Data</th>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
       </tr>
     </thead>
-    {{display-book-attributes-details model=model}}
+    <tbody>
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+  <td>{{t 'title'}}</td>
+  <td>{{display-attribute-string-set model=model attribute='title' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>
+</tr>
+<tr>
+  <td>{{t 'isbn'}}</td>
+  {{handle-attribute model=model attribute='isbn' tagName='td' classes='properties__data'}}
+</tr>
+      </tbody>
   </table>
 </div>

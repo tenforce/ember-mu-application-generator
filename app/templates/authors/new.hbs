@@ -13,7 +13,10 @@
     </thead>
     <tbody>
       <tr><td>name</td><td align='middle'>{{input value=model.name placeholder=attribute.name}}</td></tr>
-  <tr><td>book</td><td align='middle'>{{input value=model.book placeholder=attribute.name}}</td></tr>
+
+      <tr>  <td class="properties__label">{{t 'book'}}</td>
+  {{display-model-relationship model=model.book kind='has-many' itemRoute='books.show' relationRoute='books.index' relationFilterKey='author' relationFilterValue=model.id configuredLabel='id'}}
+</tr>
     </tbody>
   </table>
 </div>

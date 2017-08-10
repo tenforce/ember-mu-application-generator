@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'tbody'
+  tagName: "div",
+  classNameBindings: ['classes'],
+  classes: ""
 });
