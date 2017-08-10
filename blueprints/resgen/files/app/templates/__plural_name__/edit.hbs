@@ -13,33 +13,27 @@
       </tr>
     </thead>
     <tbody>
-      <%=
-        // this currently only understands regular inputs
-        attributes.map( function(attribute) {
-          return "<tr><td>" + attribute.name + "</td><td align='middle'>{{input value=model." + attribute.itemVar +" placeholder=attribute.name}}</td></tr>";
-        }).join("\n  ")
-      %>
+      <%= attributes.map( function(property) {
+          if(property.kind == "lang-string-set") {
+            return "<tr>\n" +
+              "  <td>{{t '" + property.name + "'}}</td>\n" +
+              "  <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' lang=true tagName='ul' classes='string-set'}}</td>\n" +
+              "</tr>";
+          }
+          else if(property.kind == "string-set") {
+            return "<tr>\n" +
+              "  <td>{{t '" + property.name + "'}}</td>\n" +
+              "  <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' tagName='ul' classes='string-set'}}</td>\n" +
+              "</tr>";
+          }
+          else {
+            return "<tr><td>" + property.name + "</td><td align='middle'>{{handle-attribute model=model attribute='" + property.name + "' editable=true}}</td></tr>";
+          }
+        }).join("\n") %>
+
     </tbody>
   </table>
 </div>
 
 
-
-
-
-{{!-- TODO: relationships and lang-string-set!!! --}}
-    <%=
-    attributes.map( function(attribute) {
-      if(attribute.kind == "language-string-set") {
-        return "<div class=\"row\"><div class=\"col s4\">" + attribute.name + "</div>"
-    + "<div class=\"col s8\">"
-    + "{{#each model." + attribute.itemVar + " as |label index|}}"
-    + "<div class=\"row\">"
-    + "<div class=\"col s8 field--location\">{{input type=\"text\" value=label.content}}</div>"
-    + "<div class=\"col s4 field--language\">{{input type=\"text\" value=label.language}}</div>"
-    + "</div>"
-    + "{{/each}}</div></div>";
-    }
-    }).join("\n  ")
-
-    %>
+{{!-- TODO: relationships!!! --}}

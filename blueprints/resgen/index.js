@@ -171,6 +171,7 @@ module.exports = {
         'app/components/handle-attribute.js',
         'app/components/display-lang-attribute.js',
         'app/components/display-attribute-string-set.js',
+        'app/components/edit-attribute-string-set.js',
         'app/models/',
         'app/models/__name__.js',
         'app/routes/',
@@ -192,7 +193,8 @@ module.exports = {
         'app/templates/components/',
         'app/templates/components/handle-attribute.hbs',
         'app/templates/components/display-lang-attribute.hbs',
-        'app/templates/components/display-attribute-string-set.hbs'
+        'app/templates/components/display-attribute-string-set.hbs',
+        'app/templates/components/edit-attribute-string-set.hbs'
       ];
     } else {
       return ['app/',
@@ -200,6 +202,7 @@ module.exports = {
         'app/components/handle-attribute.js',
         'app/components/display-lang-attribute.js',
         'app/components/display-attribute-string-set.js',
+        'app/components/edit-attribute-string-set.js',
         'app/models/',
         'app/models/__name__.js',
         'app/routes/',
@@ -221,7 +224,8 @@ module.exports = {
         'app/templates/components/',
         'app/templates/components/handle-attribute.hbs',
         'app/templates/components/display-lang-attribute.hbs',
-        'app/templates/components/display-attribute-string-set.hbs'
+        'app/templates/components/display-attribute-string-set.hbs',
+        'app/templates/components/edit-attribute-string-set.hbs'
       ];
     }
   },

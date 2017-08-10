@@ -15,7 +15,20 @@
     tbody {
       tr {
         input {
+          text-align: left;
           width: 95%;
+
+          &.content {
+            width: 65%;
+            margin: 1% 2% 1% 0;
+          }
+
+          &.lang {
+            width: 18%;
+          }
+          &.with-delete {
+            width: 88%;
+          }
         }
       }
     }

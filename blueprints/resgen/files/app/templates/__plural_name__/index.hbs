@@ -11,11 +11,10 @@
         <tr>
           <th class="properties__label">id</th>
           <%= attributes.map( function(property) {
-                return '  <th class="properties__label">{{t \'' + property.itemVar + '\'}}</th>';
+              return '  <th class="properties__label">{{t \'' + property.itemVar + '\'}}</th>';
             }).join("\n") %>
             <%= relationships.map( function(relationship) {
-              return "" +
-            	  '  <th class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</th>';
+              return '  <th class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</th>';
             } ).join("\n")
             %>
         </tr>
