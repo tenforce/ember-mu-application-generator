@@ -168,6 +168,7 @@ module.exports = {
     if (this.options && this.options.readonly) {
       return ['app/',
         'app/components/',
+        'app/components/navigation-menu.js',
         'app/components/handle-attribute.js',
         'app/components/display-lang-attribute.js',
         'app/components/display-attribute-string-set.js',
@@ -191,6 +192,7 @@ module.exports = {
         // 'app/templates/__plural_name__/new.hbs',
         'app/templates/__plural_name__/show.hbs',
         'app/templates/components/',
+        'app/templates/components/navigation-menu.hbs',
         'app/templates/components/handle-attribute.hbs',
         'app/templates/components/display-lang-attribute.hbs',
         'app/templates/components/display-attribute-string-set.hbs',
@@ -199,6 +201,7 @@ module.exports = {
     } else {
       return ['app/',
         'app/components/',
+        'app/components/navigation-menu.js',
         'app/components/handle-attribute.js',
         'app/components/display-lang-attribute.js',
         'app/components/display-attribute-string-set.js',
@@ -222,6 +225,7 @@ module.exports = {
         'app/templates/__plural_name__/new.hbs',
         'app/templates/__plural_name__/show.hbs',
         'app/templates/components/',
+        'app/templates/components/navigation-menu.hbs',
         'app/templates/components/handle-attribute.hbs',
         'app/templates/components/display-lang-attribute.hbs',
         'app/templates/components/display-attribute-string-set.hbs',
