@@ -4,5 +4,5 @@ import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   name: attr('string'),
-  books: hasMany('book')
+  books: hasMany('book', {inverse: 'author'})
 });
