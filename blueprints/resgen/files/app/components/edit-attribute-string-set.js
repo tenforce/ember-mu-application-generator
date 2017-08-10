@@ -13,7 +13,6 @@ export default Ember.Component.extend({
     deleteLabel(index) {
       var strings = this.get("model." + this.get('attribute'));
       strings.removeAt(index);
-      debugger;
     },
     createLabel() {
       var strings = this.get("model." + this.get('attribute'));

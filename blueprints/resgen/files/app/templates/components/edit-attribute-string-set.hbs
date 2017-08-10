@@ -4,9 +4,10 @@
     {{input value=label.language placeholder="Lang" class="lang"}}
     <button type="button" name="button" class="btn delete" title="Delete this item" {{action "deleteLabel" index}}>delete</button>
   {{else}}
-    {{input value=label placeholder="Enter content" key-up=(action "changeStringSetElement" index) class="with-delete"}}
+    {{input value=label placeholder="Content" key-up=(action "changeStringSetElement" index) class="with-delete"}}
     <button type="button" name="button" class="btn delete" title="Delete this item" {{action "deleteLabel" index}}>delete</button>
   {{/if}}
 {{/each}}
-
- <button type="button" name="button" class="btn new" title="Create new item" {{action "createLabel"}}>create</button>
+<div class="create">
+  <button type="button" name="button" class="btn new" title="Create new item" {{action "createLabel"}}>create</button>
+</div>
