@@ -13,7 +13,7 @@
           <%= attributes.map( function(property) {
                 return '  <th class="properties__label">{{t \'' + property.itemVar + '\'}}</th>';
             }).join("\n") %>
-            <%= relationships.map( function(relationship) {
+            <%= belongsToRelationships.map( function(relationship) {
               return "" +
             	  '  <th class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</th>';
             } ).join("\n")
@@ -34,6 +34,9 @@
                 else {
                   return "{{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
                 }
+              }).join("\n") %>
+            <%= belongsToRelationships.map( function(relationship) {
+                  return "{{handle-attribute model=item attribute='" + relationship.name + ".stringRep' tagName='td' classes='properties__data'}}";
               }).join("\n") %>
           {{/link-to}}
         {{/each}}

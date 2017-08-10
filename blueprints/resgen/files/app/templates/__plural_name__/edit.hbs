@@ -19,6 +19,11 @@
           return "<tr><td>" + attribute.name + "</td><td align='middle'>{{input value=model." + attribute.itemVar +" placeholder=\""+attribute.name+"\"}}</td></tr>";
         }).join("\n      ")
       %>
+      <%=
+        belongsToRelationships.map( function(relationship) {
+          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.itemVar+"\"}}</td></tr>";
+        }).join("\n      ")
+      %>
     </tbody>
   </table>
 </div>

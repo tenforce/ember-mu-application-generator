@@ -39,6 +39,12 @@
             return ;
           }
         }).join("\n") %>
+      <%= belongsToRelationships.map( function(relationship) {
+            return "<tr>\n" +
+              "  <td>{{t '" + relationship.name + "'}}</td>\n" +
+              "  {{handle-attribute model=model attribute='" + relationship.name + ".stringRep' tagName='td' classes='properties__data'}}\n" +
+              "</tr>";
+        }).join("\n") %>
       </tbody>
   </table>
 </div>
