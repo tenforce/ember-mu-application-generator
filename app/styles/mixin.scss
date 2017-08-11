@@ -1,3 +1,4 @@
+// Some mixins that are used in the design
 @mixin css3-prefix($property, $value) {
     -webkit-#{$property}: #{$value};
     -moz-#{$property}: #{$value};
