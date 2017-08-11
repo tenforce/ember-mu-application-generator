@@ -3,7 +3,14 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'ul',
   /*
+    This component created a menu for your routes.
     This component assumes, that the routes were only created by this addon.
+
+    The function, that generates the menu list gets all the route names with a lookup,
+    then filters the keys with ".index", as that is always part of the resource, this blueprint generates,
+    and takes the strings in front of the ".index".
+
+    The list of indeces are always unique.
   */
   menus: Ember.computed(function(){
     let router = Ember.getOwner(this).lookup('router:main');

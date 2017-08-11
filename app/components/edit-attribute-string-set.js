@@ -1,21 +1,38 @@
 import Ember from 'ember';
 
+/*
+  This component edit string-sets.
+  The tagname is configurable, the default is a div, because otherwise we cannot use classNameBindings.
+  The classes are configurable, the default is "".
+*/
 export default Ember.Component.extend({
   tagName: "div",
   classNameBindings: ['classes'],
   classes: "",
 
   actions: {
+    /*
+      This function edits a certain indexed element in the string-set,
+      as those are not objects, and cannot be edited inside the model otherwise.
+    */
     changeStringSetElement(index, value) {
       var strings = this.get("model." + this.get('attribute'));
       strings[index] = value;
     },
+    /*
+      This function deletes a certain indexed element in the string-set,
+      as those are not objects, and cannot be deleted inside the model otherwise.
+    */
     deleteLabel(index) {
       var strings = this.get("model." + this.get('attribute'));
       strings.removeAt(index);
     },
-    createLabel() {
 
+    /*
+      This function creates a new element in the string-set.
+      If it doesn't exists yet, it creates an empty array and puts a new element in it.
+    */
+    createLabel() {
       if ((this.get("model." + this.get('attribute'))) == null) {
         this.set("model." + this.get('attribute'), []);
       }

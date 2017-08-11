@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
+/*
+  This component displays string-sets.
+  The tagname is configurable, the default is a div, because otherwise we cannot use classNameBindings.
+  The classes are configurable, the default is "".
+  The innerTagName is used for the tagName for the inner elements (the strings itselfs).
+*/
 export default Ember.Component.extend({
   tagName: "div",
   innerTagName: "div",
