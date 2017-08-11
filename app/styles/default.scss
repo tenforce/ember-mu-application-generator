@@ -1,8 +1,7 @@
 @import 'mixin';
 
 table {
-  margin: 0 auto;
-  margin-left: 27%;
+  margin: 0 auto 0 27%;
   min-width: 60%;
   text-align: left;
   border: 1px solid #e8e8e8;
@@ -70,6 +69,25 @@ a {
   }
 }
 
+.checkbox {
+  input {
+    @include css3-prefix(appearance, none);
+    border: none;
+
+    &:before {
+      content: '\F096';
+      font-family: "FontAwesome";
+      font-size: 24px;
+    }
+
+    &:checked {
+      &:before {
+        content: '\F046';
+      }
+    }
+  }
+}
+
 .btn {
   border: none;
   background: none;
@@ -77,7 +95,7 @@ a {
   cursor: pointer;
   padding: 1%;
   @include transition(all 0.35s ease);
-  font-size: 0px;
+  font-size: 0;
 
   &:after {
     font-family: "FontAwesome";
