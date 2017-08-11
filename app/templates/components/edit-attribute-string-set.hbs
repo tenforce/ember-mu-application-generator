@@ -1,3 +1,14 @@
+{{!--
+  Edit view for a string-set from a model depending if it has language or not.
+  Also has option to delete and create elements in the string-set.
+
+  Configuration:
+    model: the model to take the string-set from
+    attribute: attribute name of the string-set
+    tagName: tagName for the component
+    classes: css classes for the component
+    lang: true, if it is a lang-string-set
+ --}}
 {{#each (get model attribute) as |label index|}}
   {{#if lang}}
     {{input value=label.content placeholder="Content" class="content"}}

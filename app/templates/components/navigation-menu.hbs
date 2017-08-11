@@ -1,3 +1,13 @@
+{{!--
+  Let's you edit a boolean attribute from a model.
+
+  Configuration:
+    model: the model to take the string-set from
+    attribute: attribute name of the string-set
+    tagName: tagName for the component
+    classes: css classes for the component
+ --}}
+
 {{#each menus as |value|}}
   {{#link-to value tagName="li" }}
     <h3>{{value}}</h3>

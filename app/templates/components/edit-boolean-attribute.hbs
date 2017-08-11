@@ -1,1 +1,10 @@
-{{input type="checkbox" name="isAdmin" checked=(mut (get model attribute)) }}
+{{!--
+  Let's you edit a boolean attribute from a model.
+
+  Configuration:
+    model: the model to take the string-set from
+    attribute: attribute name of the string-set
+    tagName: tagName for the component
+    classes: css classes for the component
+ --}}
+{{input type="checkbox" checked=(mut (get model attribute)) }}
