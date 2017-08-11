@@ -1,3 +1,5 @@
+// For resource/index.hbs
+
 .content {
   text-align: center;
 
@@ -29,8 +31,13 @@
   }
 
   .empty {
+    padding-left: 10%;
     a {
       font-weight: 400;
     }
   }
+}
+// For index.hbs default route
+.index {
+  text-align: center;
 }
