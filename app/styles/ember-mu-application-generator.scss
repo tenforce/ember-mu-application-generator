@@ -17,22 +17,29 @@
   color: white;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
   font-size: 80%;
+}
 
-  h1 {
-    display: inline-block;
-  }
+.navigation-menu {
+  float: left;
+  width: 15%;
 
   ul {
-    float: right;
-    padding-top: 5px;
+    padding: 10%;
+    color: black;
+    list-style: none;
 
     li {
-      display: inline-block;
       text-transform: capitalize;
+      word-wrap: break-word;
       cursor: pointer;
+      @include transition(all 0.35s ease);
 
-      &:not(:last-child) {
-        margin-right: 10px;
+      &:hover {
+        color: crimson;
+      }
+
+      &:not(:first-child) {
+        margin-top: 4%;
       }
     }
   }
