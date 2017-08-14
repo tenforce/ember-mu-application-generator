@@ -11,7 +11,7 @@
         <tr>
           <th class="properties__label">id</th>
           <%= attributes.map( function(property) {
-                return '  <th class="properties__label">{{t \'' + property.itemVar + '\'}}</th>';
+              return '  <th class="properties__label">{{t \'' + property.itemVar + '\'}}</th>';
             }).join("\n") %>
             <%= belongsToRelationships.map( function(relationship) {
               return "" +

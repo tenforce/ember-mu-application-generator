@@ -220,6 +220,7 @@ module.exports = {
   //   }
   // },
 
+
   shouldEntityTouchRouter: function(name) {
     var isIndex = name === 'index';
     var isBasic = name === 'basic';
