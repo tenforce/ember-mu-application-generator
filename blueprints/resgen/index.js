@@ -15,7 +15,8 @@ module.exports = {
 
   anonymousOptions: [
     'name',
-    'attr:type'
+    'attr:type',
+    'rel:kind:type~inverse'
   ],
 
   locals: function(options) {
@@ -50,20 +51,19 @@ module.exports = {
       var dasherizedType = stringUtils.dasherize(type);
       var dasherizedForeignModel = stringUtils.dasherize(foreignModel);
       // TODO name is given, inflect anyways? should be correct in domain.lisp, right?
+      var dasherizedForeignModelPlural = inflection.pluralize(dasherizedForeignModel);
       var dasherizedForeignModelSingular = inflection.singularize(dasherizedForeignModel);
-      // TODO pluralize?? condionally? but then what with 1-to-1 rels?
-      // bestFriend: DS.belongsTo('user', { inverse: 'bestFriend' }),
-      // Let the user figure it out in domain.lisp?
-      var dasherizedInverseName = stringUtils.dasherize(inverseName);
+
+      var camelizedInverseName = stringUtils.camelize(inverseName);
 
       var attr;
       if (/has-many/.test(dasherizedType)) {
         var camelizedNamePlural = inflection.pluralize(camelizedName);
-        attr = dsAttr(dasherizedForeignModelSingular, dasherizedType, dasherizedInverseName);
+        attr = dsAttr(dasherizedForeignModelSingular, dasherizedType, camelizedInverseName);
         attrs.push(camelizedNamePlural + ': ' + attr);
         shouldImportHasMany = true;
       } else if (/belongs-to/.test(dasherizedType)) {
-        attr = dsAttr(dasherizedForeignModel, dasherizedType, dasherizedInverseName);
+        attr = dsAttr(dasherizedForeignModel, dasherizedType, camelizedInverseName);
         attrs.push(camelizedName + ': ' + attr);
         shouldImportBelongsTo = true;
       } else {
@@ -78,12 +78,10 @@ module.exports = {
 
 
       properties.push({
-        name: name,
+        name: camelizedName,
         kind: type,
-        itemVar: entityToVariable(name),
-        itemVarSingle: inflection.singularize(entityToVariable(name)),
-        itemRoute: entityItemRoute(name),
-        itemListRoute: entityItemListRoute(name)
+        relType: dasherizedForeignModelSingular,
+        relRoute: dasherizedForeignModelPlural,
         // TODO some can be moved to template for clarity
       });
     }
@@ -290,7 +288,7 @@ function updateRouter(action, options) {
 
   // TODO check consistency
   var entitiesName = inflection.pluralize(entity.name)
-  // TODO update routes list
+
   var routes = [{
       name: entitiesName,
       options: {}
@@ -353,14 +351,4 @@ var entityToVariable = function(entityName) {
       return word[0].toUpperCase() + word.substring(1);
     })
   ).join("");
-}
-
-var entityItemRoute = function(name) {
-  var pluralName = inflection.pluralize(name);
-  return pluralName + ".show";
-}
-
-var entityItemListRoute = function(name) {
-  var pluralName = inflection.pluralize(name);
-  return pluralName + ".index";
 }

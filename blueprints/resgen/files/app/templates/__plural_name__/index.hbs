@@ -10,49 +10,48 @@
       <thead>
         <tr>
           <th class="properties__label">id</th>
-          <%= attributes.map( function(property) {
-              return '  <th class="properties__label">{{t \'' + property.itemVar + '\'}}</th>';
-            }).join("\n") %>
-            <%= belongsToRelationships.map( function(relationship) {
-              return "" +
-            	  '  <th class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</th>';
-            } ).join("\n")
-            %>
-            <%= hasManyRelationships.map( function(relationship) {
-              return "" +
-            	  '  <th class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</th>';
-            } ).join("\n")
-            %>
+<%= attributes.map( function(property) {
+            return '          <th class="properties__label">{{t \'' + property.name + '\'}}</th>';
+          }).join("\n") %>
+<%= belongsToRelationships.map( function(relationship) {
+            return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
+          }).join("\n") %>
+<%= hasManyRelationships.map( function(relationship) {
+            return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
+          }).join("\n") %>
         </tr>
       </thead>
       <tbody>
         {{#each model as |item|}}
-          {{#link-to "<%= entitiesName %>.show" item tagName='tr' }}
-            {{handle-attribute model=item attribute='id' tagName='td' classes='properties__data'}}
+          <tr>
+            {{#link-to "<%= entitiesName %>.show" item tagName='td' }}
+              {{handle-attribute model=item attribute='id' classes='properties__data'}}
+            {{/link-to}}
 <%= attributes.map( function(property) {
                 if(property.kind == "lang-string-set") {
-                  return "            <td>{{display-attribute-string-set model=item attribute='" + property.itemVar + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
+                  return "            <td>{{display-attribute-string-set model=item attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
                 }
                 if(property.kind == "string-set") {
-                  return "            <td>{{display-attribute-string-set model=item attribute='" + property.itemVar + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>";
+                  return "            <td>{{display-attribute-string-set model=item attribute='" + property.name + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>";
                 }
                 else {
                   return "            {{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
                 }
               }).join("\n") %>
 <%= belongsToRelationships.map( function(relationship) {
-                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
+                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
 <%= hasManyRelationships.map( function(relationship) {
-                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
+                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
-          {{/link-to}}
+          </tr>
         {{/each}}
       </tbody>
     </table>
   {{else}}
     <div class="empty">
       No {{t '<%= entitiesName %>'}} in the database.
+      {{!-- TODO move to blueprint? or should readonly be in template? --}}
       {{#unless <%= readonly %>}} Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t '<%= entityName %>'}}.
       {{/unless}}
     </div>

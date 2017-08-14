@@ -34,7 +34,7 @@
           else {
             return "      <tr>\n" +
               "        <td class=\"properties__label\">{{t '" + property.name + "'}}</td>\n" +
-              "        <td>{{handle-attribute model=model attribute='" + property.name + "' tagName='td' classes='properties__data'}}</td>\n" +
+              "        {{handle-attribute model=model attribute='" + property.name + "' tagName='td' classes='properties__data'}}\n" +
               "      </tr>";
           }
         }).join("\n")
@@ -43,7 +43,7 @@
         console.log(relationship);
         return "      <tr>\n" +
  		 	  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
-        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
+        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
         '      </tr>';
         } ).join("\n")
       %>
@@ -51,7 +51,7 @@
         console.log(relationship);
         return "      <tr>\n" +
    		  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
-        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
+        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
         '      </tr>';
        } ).join("\n")
       %>

@@ -15,17 +15,17 @@
       <%=
         // TODO this currently only understands regular inputs
         attributes.map( function(attribute) {
-          return "<tr><td>" + attribute.name + "</td><td align='middle'>{{input value=model." + attribute.itemVar +" placeholder=attribute.name}}</td></tr>";
+          return "<tr><td>" + attribute.name + "</td><td align='middle'>{{input value=model." + attribute.name +" placeholder=attribute.name}}</td></tr>";
         }).join("\n      ")
       %>
       <%=
         belongsToRelationships.map( function(relationship) {
-          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.itemVarSingle+"\"}}</td></tr>";
+          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.relType+"\"}}</td></tr>";
         }).join("\n      ")
       %>
       <%=
         hasManyRelationships.map( function(relationship) {
-          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-has-many relName=model."+relationship.name+" relType=\""+relationship.itemVarSingle+"\"}}</td></tr>";
+          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-has-many relName=model."+relationship.name+" relType=\""+relationship.relType+"\"}}</td></tr>";
         }).join("\n      ")
       %>
     </tbody>

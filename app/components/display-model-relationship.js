@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   tagName: 'dd',
   classNames: ['properties__data'],
   isBelongsTo: Ember.computed('kind', function () {
-    return this.get('kind') === 'belongsTo';
+    return this.get('kind') === 'belongs-to';
   }),
   relationFilter: Ember.computed('relationFilterKey','relationFilterValue', function() {
     var obj = Ember.Object.create();
