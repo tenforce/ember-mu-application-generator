@@ -29,22 +29,22 @@
         {{#each model as |item|}}
           {{#link-to "<%= entitiesName %>.show" item tagName='tr' }}
             {{handle-attribute model=item attribute='id' tagName='td' classes='properties__data'}}
-            <%= attributes.map( function(property) {
+<%= attributes.map( function(property) {
                 if(property.kind == "lang-string-set") {
-                  return "<td>{{display-attribute-string-set model=item attribute='" + property.itemVar + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
+                  return "            <td>{{display-attribute-string-set model=item attribute='" + property.itemVar + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
                 }
                 if(property.kind == "string-set") {
-                  return "<td>{{display-attribute-string-set model=item attribute='" + property.itemVar + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>";
+                  return "            <td>{{display-attribute-string-set model=item attribute='" + property.itemVar + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>";
                 }
                 else {
-                  return "{{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
+                  return "            {{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
                 }
               }).join("\n") %>
-            <%= belongsToRelationships.map( function(relationship) {
-                  return '{{display-model-relationship model=item.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
+<%= belongsToRelationships.map( function(relationship) {
+                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
-            <%= hasManyRelationships.map( function(relationship) {
-                  return '{{display-model-relationship model=item.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
+<%= hasManyRelationships.map( function(relationship) {
+                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
           {{/link-to}}
         {{/each}}

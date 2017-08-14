@@ -19,9 +19,14 @@
         {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
       </tr>
       <tr>
-  <td>{{t 'name'}}</td>
-  {{handle-attribute model=model attribute='name' tagName='td' classes='properties__data'}}
-</tr>
-      </tbody>
+        <td class="properties__label">{{t 'name'}}</td>
+        <td>{{handle-attribute model=model attribute='name' tagName='td' classes='properties__data'}}</td>
+      </tr>
+
+      <tr>
+        <td class="properties__label">{{t 'books'}}</td>
+        <td>{{display-model-relationship model=model.books kind='has-many' itemRoute='books.show' relationRoute='books.index' relationFilterKey='author' relationFilterValue=model.id configuredLabel='stringRep'}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

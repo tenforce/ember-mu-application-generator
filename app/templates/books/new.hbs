@@ -13,9 +13,9 @@
     </thead>
     <tbody>
       <tr><td>title</td><td align='middle'>{{input value=model.title placeholder=attribute.name}}</td></tr>
-  <tr><td>isbn</td><td align='middle'>{{input value=model.isbn placeholder=attribute.name}}</td></tr>
-
+      <tr><td>isbn</td><td align='middle'>{{input value=model.isbn placeholder=attribute.name}}</td></tr>
       
+      <tr><td>authors</td><td align='middle'>{{edit-has-many relName=model.authors relType="author"}}</td></tr>
     </tbody>
   </table>
 </div>

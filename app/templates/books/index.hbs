@@ -13,14 +13,17 @@
             <th class="properties__label">{{t 'title'}}</th>
   <th class="properties__label">{{t 'isbn'}}</th>
             
+              <th class="properties__label">{{t 'authors'}}</th>
         </tr>
       </thead>
       <tbody>
         {{#each model as |item|}}
           {{#link-to "books.show" item tagName='tr' }}
             {{handle-attribute model=item attribute='id' tagName='td' classes='properties__data'}}
-            <td>{{display-attribute-string-set model=item attribute='title' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>
-{{handle-attribute model=item attribute='isbn' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='title' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='isbn' tagName='td' classes='properties__data'}}
+
+            {{display-model-relationship model=item.authors tagName='td' kind='has-many' itemRoute='authors.show' relationRoute='authors.index' relationFilterKey='book' relationFilterValue=model.id configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}
       </tbody>

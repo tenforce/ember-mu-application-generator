@@ -19,13 +19,18 @@
         {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
       </tr>
       <tr>
-  <td>{{t 'title'}}</td>
-  <td>{{display-attribute-string-set model=model attribute='title' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>
-</tr>
-<tr>
-  <td>{{t 'isbn'}}</td>
-  {{handle-attribute model=model attribute='isbn' tagName='td' classes='properties__data'}}
-</tr>
-      </tbody>
+        <td class="properties__label">{{t 'title'}}</td>
+        <td>{{handle-attribute model=model attribute='title' tagName='td' classes='properties__data'}}</td>
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'isbn'}}</td>
+        <td>{{handle-attribute model=model attribute='isbn' tagName='td' classes='properties__data'}}</td>
+      </tr>
+
+      <tr>
+        <td class="properties__label">{{t 'authors'}}</td>
+        <td>{{display-model-relationship model=model.authors kind='has-many' itemRoute='authors.show' relationRoute='authors.index' relationFilterKey='book' relationFilterValue=model.id configuredLabel='stringRep'}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

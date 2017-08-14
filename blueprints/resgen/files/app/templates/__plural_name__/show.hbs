@@ -18,43 +18,43 @@
         <td class="properties__label">{{t "id"}}</td>
         {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
       </tr>
-      <%= attributes.map( function(property) {
+<%= attributes.map( function(property) {
           if(property.kind == "lang-string-set") {
-            return "<tr>\n" +
-              "  <td>{{t '" + property.name + "'}}</td>\n" +
-              "  <td>{{display-attribute-string-set model=model attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>\n" +
-              "</tr>";
+            return "      <tr>\n" +
+              "        <td class=\"properties__label\">{{t '" + property.name + "'}}</td>\n" +
+              "        <td>{{display-attribute-string-set model=model attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>\n" +
+              "      </tr>";
           }
           else if(property.kind == "string-set") {
-            return "<tr>\n" +
-              "  <td>{{t '" + property.name + "'}}</td>\n" +
-              "  <td>{{display-attribute-string-set model=model attribute='" + property.name + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>\n" +
-              "</tr>";
+            return "      <tr>\n" +
+              "        <td class=\"properties__label\">{{t '" + property.name + "'}}</td>\n" +
+              "        <td>{{display-attribute-string-set model=model attribute='" + property.name + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>\n" +
+              "      </tr>";
           }
           else {
-            return "<tr>\n" +
-              "  <td>{{t '" + property.name + "'}}</td>\n" +
-              "  {{handle-attribute model=model attribute='" + property.name + "' tagName='td' classes='properties__data'}}\n" +
-              "</tr>";
+            return "      <tr>\n" +
+              "        <td class=\"properties__label\">{{t '" + property.name + "'}}</td>\n" +
+              "        <td>{{handle-attribute model=model attribute='" + property.name + "' tagName='td' classes='properties__data'}}</td>\n" +
+              "      </tr>";
           }
         }).join("\n")
       %>
-      <%= belongsToRelationships.map( function(relationship) {
+<%= belongsToRelationships.map( function(relationship) {
         console.log(relationship);
-        return "<tr>" +
- 		 	  '  <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>' +
- 		 		"\n" + '  {{display-model-relationship model=model.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}' + "\n" +
-        '</tr>';
+        return "      <tr>\n" +
+ 		 	  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
+        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
+        '      </tr>';
         } ).join("\n")
       %>
-      <%= hasManyRelationships.map( function(relationship) {
+<%= hasManyRelationships.map( function(relationship) {
         console.log(relationship);
-        return "<tr>" +
-   		  '  <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>' +
-   			"\n" + '  {{display-model-relationship model=model.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}' + "\n" +
-        '</tr>';
+        return "      <tr>\n" +
+   		  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
+        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
+        '      </tr>';
        } ).join("\n")
       %>
-      </tbody>
+    </tbody>
   </table>
 </div>

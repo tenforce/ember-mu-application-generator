@@ -8,19 +8,18 @@
   <table>
     <thead>
       <tr>
-        <th>Attribute</th>
+        <th>Property</th>
         <th>Data</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>name</td><td align='middle'>{{input value=model.name placeholder=attribute.name}}</td></tr>
+      <tr><td>name</td><td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td></tr>
+        
+        <tr><td>books</td><td align='middle'>{{edit-has-many relName=model.books relType="book"}}</td></tr>
+
     </tbody>
   </table>
 </div>
 
 
-
-
-
-{{!-- TODO: relationships and lang-string-set!!! --}}
-    
+{{!-- TODO: relationships!!! --}}
