@@ -21,7 +21,12 @@
       %>
       <%=
         belongsToRelationships.map( function(relationship) {
-          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.itemVar+"\"}}</td></tr>";
+          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.itemVarSingle+"\"}}</td></tr>";
+        }).join("\n      ")
+      %>
+      <%=
+        hasManyRelationships.map( function(relationship) {
+          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-has-many relName=model."+relationship.name+" relType=\""+relationship.itemVarSingle+"\"}}</td></tr>";
         }).join("\n      ")
       %>
     </tbody>

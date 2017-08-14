@@ -18,6 +18,11 @@
             	  '  <th class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</th>';
             } ).join("\n")
             %>
+            <%= hasManyRelationships.map( function(relationship) {
+              return "" +
+            	  '  <th class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</th>';
+            } ).join("\n")
+            %>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +41,10 @@
                 }
               }).join("\n") %>
             <%= belongsToRelationships.map( function(relationship) {
-                  return "{{handle-attribute model=item attribute='" + relationship.name + ".stringRep' tagName='td' classes='properties__data'}}";
+                  return '{{display-model-relationship model=item.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
+              }).join("\n") %>
+            <%= hasManyRelationships.map( function(relationship) {
+                  return '{{display-model-relationship model=item.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
           {{/link-to}}
         {{/each}}

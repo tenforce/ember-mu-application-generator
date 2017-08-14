@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+// TODO abstract with the other edit
 export default Ember.Component.extend({
   tagName: "div",
 
@@ -14,7 +15,7 @@ export default Ember.Component.extend({
       return new Ember.RSVP.Promise((resolve, reject) => {
         Ember.run.debounce(this, this._performSearch, type, term, resolve, reject, 600);
       });
-    }
+    },
   },
 
   _performSearch(type, term, resolve, reject) {

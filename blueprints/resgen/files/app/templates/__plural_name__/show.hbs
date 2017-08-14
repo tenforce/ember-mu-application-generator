@@ -38,13 +38,24 @@
               "</tr>";
             return ;
           }
-        }).join("\n") %>
+        }).join("\n")
+      %>
       <%= belongsToRelationships.map( function(relationship) {
-            return "<tr>\n" +
-              "  <td>{{t '" + relationship.name + "'}}</td>\n" +
-              "  {{handle-attribute model=model attribute='" + relationship.name + ".stringRep' tagName='td' classes='properties__data'}}\n" +
-              "</tr>";
-        }).join("\n") %>
+        console.log(relationship);
+        return "<tr>" +
+ 		 	  '  <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>' +
+ 		 		"\n" + '  {{display-model-relationship model=model.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}' + "\n" +
+        '</tr>';
+        } ).join("\n")
+      %>
+      <%= hasManyRelationships.map( function(relationship) {
+        console.log(relationship);
+        return "<tr>" +
+   		  '  <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>' +
+   			"\n" + '  {{display-model-relationship model=model.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}' + "\n" +
+        '</tr>';
+       } ).join("\n")
+      %>
       </tbody>
   </table>
 </div>

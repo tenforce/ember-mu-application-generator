@@ -13,21 +13,21 @@
     </thead>
     <tbody>
       <%=
-        // this currently only understands regular inputs
+        // TODO this currently only understands regular inputs
         attributes.map( function(attribute) {
           return "<tr><td>" + attribute.name + "</td><td align='middle'>{{input value=model." + attribute.itemVar +" placeholder=attribute.name}}</td></tr>";
-        }).join("\n  ")
+        }).join("\n      ")
       %>
-
       <%=
-       relationships.map( function(relationship) {
-         console.log(relationship);
-         return "<tr>" +
-   			  '  <td class="properties__label">{{t \'' +  relationship.itemVar + '\'}}</td>' +
-   				"\n" + '  {{display-model-relationship model=model.' + relationship.itemVar + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.itemRoute  + '\' relationRoute=\'' + relationship.itemListRoute + '\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'id\'}}' + "\n" +
-           '</tr>';
-       } ).join("\n")
-       %>
+        belongsToRelationships.map( function(relationship) {
+          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.itemVarSingle+"\"}}</td></tr>";
+        }).join("\n      ")
+      %>
+      <%=
+        hasManyRelationships.map( function(relationship) {
+          return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-has-many relName=model."+relationship.name+" relType=\""+relationship.itemVarSingle+"\"}}</td></tr>";
+        }).join("\n      ")
+      %>
     </tbody>
   </table>
 </div>
