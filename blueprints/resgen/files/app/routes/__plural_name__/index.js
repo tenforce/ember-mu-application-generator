@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  defaultSize: 5,
-  defaultPage: 0,
+  size: 5,
+  page: 0,
   queryParams: {
     page: {
       refreshModel: true
@@ -16,10 +16,10 @@ export default Ember.Route.extend({
     let page = params.page;
     let size = params.size;
     if(size == null) {
-      size = this.get('defaultSize');
+      size = this.get('size');
     }
     if(page == null) {
-      page = this.get('defaultPage');
+      page = this.get('page');
     }
 
     const options = {

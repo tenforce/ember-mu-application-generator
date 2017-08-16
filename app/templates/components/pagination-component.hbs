@@ -1,0 +1,11 @@
+{{#if hasMultiplePages}}
+  <button type="button" disabled= {{isFirstPage}} {{action "changePage" links.first}}>first page</button>
+  <button type="button" disabled= {{isFirstPage}} {{action "changePage" links.prev}}>previous page</button>
+  {{#power-select options=pageOptions searchEnabled=false selected=currentPage onchange=(action (mut currentPage)) as |page|}}
+    {{page}}
+  {{/power-select}}
+
+  <button type="button" disabled= {{isLastPage}} {{action "changePage" links.next}}>next page</button>
+  <button type="button" disabled= {{isLastPage}} {{action "changePage" links.last}}>last page</button>
+
+{{/if}}
