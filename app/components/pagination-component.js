@@ -1,13 +1,19 @@
 import Ember from 'ember';
 
 /**
-  This code is based on the ember-data-table's number pagonation component
+  This component displays a pagination actions, if there are more than 20 results.
+  If in the json-api call the number of results is added, then it will also display the number of displayed items: x-y (z)
+  The tagname is configurable, the default is a div, because otherwise we cannot use classNameBindings.
+  The classes are configurable, the default is "pagination".
+
+  This code is based on the ember-data-table's number pagination component
   https://github.com/mu-semtech/ember-data-table/blob/master/addon/components/number-pagination.js
 */
 export default Ember.Component.extend({
   tagName: 'div',
   classNameBindings: ['classes'],
   classes: "pagination",
+
   currentPage: Ember.computed('page', {
     get() {
       return this.get('page') ? parseInt(this.get('page')) + 1 : 1;

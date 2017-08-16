@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 /**
+  This mixin is for serializing pagination meta information out of the json api response.
+  
   This code is from ember-data-table's pagination-serializer:
   https://github.com/mu-semtech/ember-data-table/blob/master/addon/mixins/serializer.js
 */
