@@ -89,6 +89,10 @@ a {
   }
 }
 
+.ember-power-select-trigger {
+  outline: none;
+}
+
 .btn {
   border: none;
   background: none;
@@ -128,6 +132,32 @@ a {
   &.save {
     &:after {
       content: "\F00C";
+    }
+  }
+
+  &.first {
+    &:after {
+      content: "\F100";
+    }
+  }
+
+  &.last {
+    &:after {
+      content: "\F101";
+    }
+  }
+
+  &.left,
+  &.previous {
+    &:after {
+      content: "\F104";
+    }
+  }
+
+  &.next,
+  &.right {
+    &:after {
+      content: "\F105";
     }
   }
 }

@@ -5,6 +5,9 @@ import Ember from 'ember';
   https://github.com/mu-semtech/ember-data-table/blob/master/addon/components/number-pagination.js
 */
 export default Ember.Component.extend({
+  tagName: 'div',
+  classNameBindings: ['classes'],
+  classes: "pagination",
   currentPage: Ember.computed('page', {
     get() {
       return this.get('page') ? parseInt(this.get('page')) + 1 : 1;
@@ -14,6 +17,7 @@ export default Ember.Component.extend({
       return value;
     }
   }),
+
   firstPage: Ember.computed('links', function() {
     return this.get('links')['first']['number'] || 1;
   }),
@@ -21,6 +25,7 @@ export default Ember.Component.extend({
     const max = this.get('links')['last']['number'];
     return max ? max + 1 : max;
   }),
+
   isFirstPage: Ember.computed('firstPage', 'currentPage', function() {
     return this.get('firstPage') == this.get('currentPage');
   }),
@@ -30,8 +35,16 @@ export default Ember.Component.extend({
   hasMultiplePages: Ember.computed('lastPage', function() {
     return this.get('lastPage') !== undefined;
   }),
-  numberOfPages: Ember.computed('firstPage', 'lastPage', function(){
-    return this.get('lastPage') - this.get('firstPage') + 1;
+  numberOfPages: Ember.computed('hasMultiplePages', 'firstPage', 'lastPage', function() {
+    let numberOfPages = 1;
+    if (this.get('hasMultiplePages')) {
+      numberOfPages += this.get('lastPage') - this.get('firstPage');
+    }
+    return numberOfPages;
+  }),
+
+  size: Ember.computed('links', function(){
+    return this.get('links')['first']['size'] || null;
   }),
   startItem: Ember.computed('size', 'currentPage', function() {
     return this.get('size') * (this.get('currentPage') - 1) + 1;
@@ -40,7 +53,7 @@ export default Ember.Component.extend({
     return this.get('startItem') + this.get('numberOfItems') - 1;
   }),
   pageOptions: Ember.computed('firstPage', 'numberOfPages', function() {
-    return Array.from(new Array(this.get('numberOfPages')), (val, index) => this.get('firstPage') + index);
+    return Array.from(new Array(this.get('numberOfPages')), (val, index) =>     this.get('firstPage') + index);
   }),
   actions: {
     changePage(link) {
