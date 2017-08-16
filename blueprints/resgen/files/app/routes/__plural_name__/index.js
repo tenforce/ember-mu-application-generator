@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  size: 5,
+  size: 20,
   page: 0,
   queryParams: {
     page: {
