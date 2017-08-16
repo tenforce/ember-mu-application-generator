@@ -1,9 +1,17 @@
+{{!-- Page to create a new book --}}
 <div class="new">
   <h2 class="title">{{t 'New book'}}</h2>
+
+  {{!--
+    Actions to save new book
+    or delete new book.
+  --}}
   <div class="actions">
     <button type="button" class="btn save" title="Save new book" {{action 'save' model}}>Save</button>
     <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
   </div>
+
+  {{!-- Table to show details of book. --}}
   <table>
     <thead>
       <tr>
@@ -12,10 +20,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>title</td><td align='middle'>{{input value=model.title placeholder=attribute.name}}</td></tr>
-      <tr><td>isbn</td><td align='middle'>{{input value=model.isbn placeholder=attribute.name}}</td></tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+      <tr>
+        <td>{{t 'title'}}</td>
+        <td align='middle'>{{edit-attribute-string-set model=model attribute='title' lang=true tagName='ul' classes='string-set'}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'isbn'}}</td>
+        <td align='middle'>{{edit-attribute-string-set model=model attribute='isbn' tagName='ul' classes='string-set'}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'published'}}</td>
+        <td>{{edit-boolean-attribute model=model attribute='published' classes='checkbox'}}</td>
+      </tr>
       
-      <tr><td>authors</td><td align='middle'>{{edit-has-many relName=model.authors relType="author"}}</td></tr>
+      
     </tbody>
   </table>
 </div>

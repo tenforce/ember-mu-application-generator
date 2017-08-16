@@ -1,11 +1,19 @@
+{{!-- Page to show details of books --}}
 <div class="details">
   <h2 class="title">{{t 'book details'}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit book
+    if it's an editable application.
+  --}}
   <div class="actions">
     {{#link-to "books" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
     {{#unless }}
       {{#link-to "books.edit" model class="btn edit" title="Edit this item" tagName='button'}}Edit{{/link-to}}
     {{/unless}}
   </div>
+
+  {{!-- Table to show details of book. --}}
   <table>
     <thead>
       <tr>
@@ -14,23 +22,26 @@
       </tr>
     </thead>
     <tbody>
+      {{!-- Creating row for id --}}
       <tr>
         <td class="properties__label">{{t "id"}}</td>
         {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
       </tr>
-      <tr>
-        <td class="properties__label">{{t 'title'}}</td>
-        <td>{{handle-attribute model=model attribute='title' tagName='td' classes='properties__data'}}</td>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'title'}}</td>
+        <td>{{display-attribute-string-set model=model attribute='title' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>
       </tr>
       <tr>
-        <td class="properties__label">{{t 'isbn'}}</td>
-        <td>{{handle-attribute model=model attribute='isbn' tagName='td' classes='properties__data'}}</td>
+        <td>{{t 'isbn'}}</td>
+        <td>{{display-attribute-string-set model=model attribute='isbn' tagName='ul' innerTagName='li' classes='string-set'}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'published'}}</td>
+        {{handle-attribute model=model attribute='published' tagName='td' classes='properties__data'}}
       </tr>
 
-      <tr>
-        <td class="properties__label">{{t 'authors'}}</td>
-        <td>{{display-model-relationship model=model.authors kind='has-many' itemRoute='authors.show' relationRoute='authors.index' relationFilterKey='book' relationFilterValue=model.id configuredLabel='stringRep'}}</td>
-      </tr>
+
     </tbody>
   </table>
 </div>

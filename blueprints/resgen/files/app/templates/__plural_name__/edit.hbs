@@ -1,10 +1,18 @@
+{{!-- Page to edit <%= entityName %> --}}
 <div class="edit">
   <h2 class="title">{{t 'Edit <%= entityName %>'}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete <%= entityName %>.
+  --}}
   <div class="actions">
     <button type="button" class="btn save" title="Save new <%= entityName %>" {{action 'save' model}}>Save</button>
     <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
     <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}>Delete</button>
   </div>
+
+  {{!-- Table to show details of <%= entityName %>. --}}
   <table>
     <thead>
       <tr>
@@ -13,27 +21,31 @@
       </tr>
     </thead>
     <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
       <%= attributes.map( function(property) {
           if(property.kind == "lang-string-set") {
             return "<tr>\n" +
-              "  <td>{{t '" + property.name + "'}}</td>\n" +
-              "  <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' lang=true tagName='ul' classes='string-set'}}</td>\n" +
-              "</tr>";
+              "        <td>{{t '" + property.name + "'}}</td>\n" +
+              "        <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' lang=true tagName='ul' classes='string-set'}}</td>\n" +
+              "      </tr>";
           }
           else if(property.kind == "string-set") {
-            return "<tr>\n" +
-              "  <td>{{t '" + property.name + "'}}</td>\n" +
-              "  <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' tagName='ul' classes='string-set'}}</td>\n" +
-              "</tr>";
+            return "      <tr>\n" +
+              "        <td>{{t '" + property.name + "'}}</td>\n" +
+              "        <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' tagName='ul' classes='string-set'}}</td>\n" +
+              "      </tr>";
           }
           else if(property.kind == "boolean") {
-            return "<tr>\n" +
-              "  <td>{{t '" + property.name + "'}}</td>\n" +
-              "  <td>{{edit-boolean-attribute model=model attribute='" + property.name + "' classes='checkbox'}}</td>\n" +
-              "</tr>";
+            return "      <tr>\n" +
+              "        <td>{{t '" + property.name + "'}}</td>\n" +
+              "        <td>{{edit-boolean-attribute model=model attribute='" + property.name + "' classes='checkbox'}}</td>\n" +
+              "      </tr>";
           }
           else {
-            return "<tr><td>" + property.name + "</td><td align='middle'>{{handle-attribute model=model attribute='" + property.name + "' editable=true}}</td></tr>";
+            return "      <tr>\n" +
+              "      <td>" + property.name + "</td>\n" +
+              "      <td align='middle'>{{handle-attribute model=model attribute='" + property.name + "' editable=true}}</td>\n" +
+              "</tr>";
           }
         }).join("\n") %>
         <%=
@@ -50,6 +62,3 @@
     </tbody>
   </table>
 </div>
-
-
-{{!-- TODO: relationships!!! --}}

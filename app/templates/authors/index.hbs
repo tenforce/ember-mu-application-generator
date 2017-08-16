@@ -1,3 +1,4 @@
+{{!-- Page to list authors --}}
 <div class="content">
   <h2 class="title">{{t 'authors'}}</h2>
   {{#unless }}
@@ -10,25 +11,28 @@
       <thead>
         <tr>
           <th class="properties__label">id</th>
-            <th class="properties__label">{{t 'name'}}</th>
-            
-              <th class="properties__label">{{t 'books'}}</th>
+          <th class="properties__label">{{t 'name'}}</th>
+
+          <th class="properties__label">{{t 'book'}}</th>
         </tr>
       </thead>
       <tbody>
         {{#each model as |item|}}
-          {{#link-to "authors.show" item tagName='tr' }}
-            {{handle-attribute model=item attribute='id' tagName='td' classes='properties__data'}}
+          <tr>
+            {{#link-to "authors.show" item tagName='td' }}
+              {{handle-attribute model=item attribute='id' classes='properties__data'}}
+            {{/link-to}}
             {{handle-attribute model=item attribute='name' tagName='td' classes='properties__data'}}
 
-            {{display-model-relationship model=item.books tagName='td' kind='has-many' itemRoute='books.show' relationRoute='books.index' relationFilterKey='author' relationFilterValue=model.id configuredLabel='stringRep'}}
-          {{/link-to}}
+            {{display-model-relationship model=item.book tagName='td' kind='has-many' itemRoute='books.show' relationRoute='books.index' relationFilterKey='author' relationFilterValue=model.id configuredLabel='stringRep'}}
+          </tr>
         {{/each}}
       </tbody>
     </table>
   {{else}}
     <div class="empty">
       No {{t 'authors'}} in the database.
+      {{!-- TODO move to blueprint? or should readonly be in template? --}}
       {{#unless }} Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t 'author'}}.
       {{/unless}}
     </div>
