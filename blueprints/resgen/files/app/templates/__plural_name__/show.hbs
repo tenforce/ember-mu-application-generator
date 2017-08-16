@@ -8,9 +8,7 @@
   --}}
   <div class="actions">
     {{#link-to "<%= entitiesName %>" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
-    {{#unless <%= readonly %>}}
-      {{#link-to "<%= entitiesName %>.edit" model class="btn edit" title="Edit this item" tagName='button'}}Edit{{/link-to}}
-    {{/unless}}
+    <%= ((!readonly)?'{{#link-to "'+entitiesName+'.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}':'')%>
   </div>
 
   {{!-- Table to show details of <%= entityName %>. --}}

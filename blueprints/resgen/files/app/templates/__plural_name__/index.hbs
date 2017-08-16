@@ -1,11 +1,7 @@
 {{!-- Page to list <%= entitiesName %> --}}
 <div class="content">
   <h2 class="title">{{t '<%= entitiesName %>'}}</h2>
-  {{#unless <%= readonly %>}}
-    <div class="actions">
-      {{#link-to "<%= entitiesName %>.new" class="btn new" title="Create new item" tagName='button' }}Create{{/link-to}}
-    </div>
-  {{/unless}}
+  <%= ((!readonly)?'<div class="actions">{{#link-to "'+entitiesName+'.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>':'')%>
   {{#if model}}
     <table>
       <thead>
@@ -57,9 +53,7 @@
   {{else}}
     <div class="empty">
       No {{t '<%= entitiesName %>'}} in the database.
-      {{!-- TODO move to blueprint? or should readonly be in template? --}}
-      {{#unless <%= readonly %>}} Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t '<%= entityName %>'}}.
-      {{/unless}}
+      <%= ((!readonly)?'Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t "'+entityName+'"}}.':'')%>
     </div>
   {{/if}}
 </div>
