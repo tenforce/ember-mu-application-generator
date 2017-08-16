@@ -1,10 +1,18 @@
+{{!-- Page to edit author --}}
 <div class="edit">
   <h2 class="title">{{t 'Edit author'}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete author.
+  --}}
   <div class="actions">
     <button type="button" class="btn save" title="Save new author" {{action 'save' model}}>Save</button>
     <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
     <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}>Delete</button>
   </div>
+
+  {{!-- Table to show details of author. --}}
   <table>
     <thead>
       <tr>
@@ -13,13 +21,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>name</td><td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td></tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>name</td>
+      <td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td>
+</tr>
         
-        <tr><td>books</td><td align='middle'>{{edit-has-many relName=model.books relType="book"}}</td></tr>
+        <tr><td>book</td><td align='middle'>{{edit-has-many relName=model.book relType="book"}}</td></tr>
 
     </tbody>
   </table>
 </div>
-
-
-{{!-- TODO: relationships!!! --}}

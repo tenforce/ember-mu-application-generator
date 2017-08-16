@@ -1,3 +1,5 @@
+// For resource/index.hbs
+
 .content {
   text-align: center;
 
@@ -29,8 +31,44 @@
   }
 
   .empty {
+    padding-left: 10%;
+
     a {
       font-weight: 400;
     }
   }
+
+  .pagination {
+    margin-top: 1%;
+    padding-left: 15%;
+
+    .item-calculator {
+      color: #666;
+      font-style: italic;
+    }
+
+    .btn {
+      &:after {
+        font-size: 45px;
+      }
+    }
+
+    .pagination-controls {
+      .btn {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .ember-power-select-trigger {
+        min-width: 5%;
+        max-width: 10%;
+        display: inline-block;
+      }
+    }
+  }
+}
+// For index.hbs default route
+
+.index {
+  text-align: center;
 }

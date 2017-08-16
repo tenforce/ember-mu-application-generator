@@ -1,3 +1,4 @@
+{{!-- Page to list <%= entitiesName %> --}}
 <div class="content">
   <h2 class="title">{{t '<%= entitiesName %>'}}</h2>
   {{#unless <%= readonly %>}}
@@ -10,13 +11,14 @@
       <thead>
         <tr>
           <th class="properties__label">id</th>
-<%= attributes.map( function(property) {
+          <%= attributes.map( function(property) {
             return '          <th class="properties__label">{{t \'' + property.name + '\'}}</th>';
           }).join("\n") %>
-<%= belongsToRelationships.map( function(relationship) {
+
+          <%= belongsToRelationships.map( function(relationship) {
             return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
           }).join("\n") %>
-<%= hasManyRelationships.map( function(relationship) {
+          <%= hasManyRelationships.map( function(relationship) {
             return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
           }).join("\n") %>
         </tr>
@@ -48,6 +50,10 @@
         {{/each}}
       </tbody>
     </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
   {{else}}
     <div class="empty">
       No {{t '<%= entitiesName %>'}} in the database.

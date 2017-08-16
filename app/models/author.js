@@ -10,5 +10,5 @@ export default Model.extend({
   stringRep: Ember.computed.collect.apply(this,['name','id']),
 
   name: attr('string'),
-  books: hasMany('book', {inverse: 'authors'})
+  books: hasMany('book')
 });

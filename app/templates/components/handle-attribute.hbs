@@ -1,3 +1,18 @@
+{{!--
+  Let's you display and edit a basic attributes from a model.
+
+  Do not use this component for: lang-string-set, string-set or boolean.
+
+  If no model is passed, it can display a single attribute.
+  This is only available in non-edit mode.
+
+  Configuration:
+    model: the model to take the string-set from
+    attribute: attribute name of the string-set
+    tagName: tagName for the component
+    classes: css classes for the component
+    editable: choose between an editable mode or a normal display mode.
+ --}}
 {{#if model}}
   {{#if editable}}
     {{input value=(get model attribute) placeholder=attribute}}

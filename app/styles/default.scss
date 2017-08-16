@@ -1,8 +1,9 @@
+//  default settings for the design
 @import 'mixin';
 
 table {
-  margin: 0 auto;
-  width: 50%;
+  margin: 0 auto 0 27%;
+  min-width: 60%;
   text-align: left;
   border: 1px solid #e8e8e8;
   border-collapse: collapse;
@@ -62,12 +63,39 @@ i {
 a {
   text-decoration: none;
   color: inherit;
-  -webkit-transition: all 0.35s ease;
-  -moz-osx-transition: all 0.35s ease;
-  transition: all 0.35s ease;
+  @include transition(all 0.35s ease);
 
   &:hover {
     color: crimson;
+  }
+}
+
+.checkbox {
+  input {
+    @include css3-prefix(appearance, none);
+    border: none;
+
+    &:before {
+      content: '\F096';
+      font-family: "FontAwesome";
+      font-size: 24px;
+    }
+
+    &:checked {
+      &:before {
+        content: '\F046';
+      }
+    }
+  }
+}
+
+.ember-power-select-trigger {
+  outline: none;
+
+  input {
+    &:hover, &:focus, &:active {
+      border: none;
+    }
   }
 }
 
@@ -77,10 +105,8 @@ a {
   outline: none;
   cursor: pointer;
   padding: 1%;
-  -webkit-transition: all 0.35s ease;
-  -moz-osx-transition: all 0.35s ease;
-  transition: all 0.35s ease;
-  font-size: 0px;
+  @include transition(all 0.35s ease);
+  font-size: 0;
 
   &:after {
     font-family: "FontAwesome";
@@ -114,6 +140,32 @@ a {
       content: "\F00C";
     }
   }
+
+  &.first {
+    &:after {
+      content: "\F100";
+    }
+  }
+
+  &.last {
+    &:after {
+      content: "\F101";
+    }
+  }
+
+  &.left,
+  &.previous {
+    &:after {
+      content: "\F104";
+    }
+  }
+
+  &.next,
+  &.right {
+    &:after {
+      content: "\F105";
+    }
+  }
 }
 
 * {
@@ -123,6 +175,7 @@ a {
 
 html {
   font-size: 90%;
+  overflow-y: scroll;
 }
 
 body {

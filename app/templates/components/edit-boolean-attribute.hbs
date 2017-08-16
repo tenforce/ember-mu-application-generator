@@ -7,9 +7,4 @@
     tagName: tagName for the component
     classes: css classes for the component
  --}}
-
-{{#each menus as |value|}}
-  {{#link-to value tagName="li" }}
-    <h3>{{value}}</h3>
-  {{/link-to}}
-{{/each}}
+{{input type="checkbox" checked=(mut (get model attribute)) }}
