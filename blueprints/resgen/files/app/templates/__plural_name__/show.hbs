@@ -43,7 +43,7 @@
         console.log(relationship);
         return "      <tr>\n" +
  		 	  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
-        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
+        '        <td>{{display-model-belongsto-relationship model=model.' + relationship.name + ' itemRoute=\'' + relationship.relRoute  + '.show\' configuredLabel=\'stringRep\'}}</td>\n' +
         '      </tr>';
         } ).join("\n")
       %>
@@ -51,7 +51,7 @@
         console.log(relationship);
         return "      <tr>\n" +
    		  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
-        '        <td>{{display-model-relationship model=model.' + relationship.name + ' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}</td>\n' +
+        '        <td>{{display-model-hasmany-relationship   model=model.' + relationship.name + ' itemRoute=\'' + relationship.relRoute  + '.show\' configuredLabel=\'stringRep\'}}</td>\n' +
         '      </tr>';
        } ).join("\n")
       %>

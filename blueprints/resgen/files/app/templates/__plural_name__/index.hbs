@@ -39,10 +39,10 @@
                 }
               }).join("\n") %>
 <%= belongsToRelationships.map( function(relationship) {
-                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
+                  return '            {{display-model-belongsto-relationship model=item.' + relationship.name + ' tagName=\'td\' itemRoute=\'' + relationship.relRoute  + '.show\' configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
 <%= hasManyRelationships.map( function(relationship) {
-                  return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
+                  return '            {{display-model-hasmany-relationship   model=item.' + relationship.name + ' tagName=\'td\' itemRoute=\'' + relationship.relRoute  + '.show\' configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
           </tr>
         {{/each}}
