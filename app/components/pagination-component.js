@@ -55,8 +55,12 @@ export default Ember.Component.extend({
   startItem: Ember.computed('size', 'currentPage', function() {
     return this.get('size') * (this.get('currentPage') - 1) + 1;
   }),
-  endItem: Ember.computed('startItem', 'numberOfItems', function() {
-    return this.get('startItem') + this.get('numberOfItems') - 1;
+  endItem: Ember.computed('startItem', 'size', 'total', function() {
+    let endItem = this.get('startItem') + this.get('size') - 1;
+    if (endItem > this.get('total')) {
+      return this.get('total');
+    }
+    return endItem;
   }),
   pageOptions: Ember.computed('firstPage', 'numberOfPages', function() {
     return Array.from(new Array(this.get('numberOfPages')), (val, index) =>     this.get('firstPage') + index);
