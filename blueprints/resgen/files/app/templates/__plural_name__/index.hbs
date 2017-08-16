@@ -11,13 +11,14 @@
       <thead>
         <tr>
           <th class="properties__label">id</th>
-<%= attributes.map( function(property) {
+          <%= attributes.map( function(property) {
             return '          <th class="properties__label">{{t \'' + property.name + '\'}}</th>';
           }).join("\n") %>
-<%= belongsToRelationships.map( function(relationship) {
+
+          <%= belongsToRelationships.map( function(relationship) {
             return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
           }).join("\n") %>
-<%= hasManyRelationships.map( function(relationship) {
+          <%= hasManyRelationships.map( function(relationship) {
             return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
           }).join("\n") %>
         </tr>
@@ -28,7 +29,7 @@
             {{#link-to "<%= entitiesName %>.show" item tagName='td' }}
               {{handle-attribute model=item attribute='id' classes='properties__data'}}
             {{/link-to}}
-<%= attributes.map( function(property) {
+            <%= attributes.map( function(property) {
                 if(property.kind == "lang-string-set") {
                   return "            <td>{{display-attribute-string-set model=item attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
                 }
@@ -39,16 +40,21 @@
                   return "            {{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
                 }
               }).join("\n") %>
-<%= belongsToRelationships.map( function(relationship) {
+
+              <%= belongsToRelationships.map( function(relationship) {
                   return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
-<%= hasManyRelationships.map( function(relationship) {
+              <%= hasManyRelationships.map( function(relationship) {
                   return '            {{display-model-relationship model=item.' + relationship.name + ' tagName=\'td\' kind=\''+ relationship.kind + '\' itemRoute=\'' + relationship.relRoute  + '.show\' relationRoute=\'' + relationship.relRoute + '.index\' relationFilterKey=\'' + entityName + '\' relationFilterValue=model.id configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
           </tr>
         {{/each}}
       </tbody>
     </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
   {{else}}
     <div class="empty">
       No {{t '<%= entitiesName %>'}} in the database.

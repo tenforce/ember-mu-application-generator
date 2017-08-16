@@ -48,16 +48,13 @@
               "</tr>";
           }
         }).join("\n") %>
-        <%=
-          belongsToRelationships.map( function(relationship) {
+        
+        <%= belongsToRelationships.map( function(relationship) {
             return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.relType+"\"}}</td></tr>";
-          }).join("\n      ")
-        %>
-        <%=
-          hasManyRelationships.map( function(relationship) {
+          }).join("\n      ") %>
+        <%= hasManyRelationships.map( function(relationship) {
             return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-has-many relName=model."+relationship.name+" relType=\""+relationship.relType+"\"}}</td></tr>";
-          }).join("\n      ")
-        %>
+          }).join("\n      ") %>
 
     </tbody>
   </table>
