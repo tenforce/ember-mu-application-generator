@@ -91,6 +91,12 @@ a {
 
 .ember-power-select-trigger {
   outline: none;
+
+  input {
+    &:hover, &:focus, &:active {
+      border: none;
+    }
+  }
 }
 
 .btn {
