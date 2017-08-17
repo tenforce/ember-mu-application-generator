@@ -6,16 +6,16 @@
     <table>
       <thead>
         <tr>
-          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="id" currentSort=sort}}
           <%= attributes.map( function(property) {
-            return '          <th class="properties__label">{{t \'' + property.name + '\'}}</th>';
+            return '{{sortable-table-header attribute="' + property.name + '" currentSort=sort}}';
           }).join("\n") %>
 
           <%= belongsToRelationships.map( function(relationship) {
-            return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
+            return '{{sortable-table-header attribute="' + relationship.name + '" currentSort=sort}}';
           }).join("\n") %>
           <%= hasManyRelationships.map( function(relationship) {
-            return '          <th class="properties__label">{{t \'' +  relationship.name + '\'}}</th>';
+            return '{{sortable-table-header attribute="' + relationship.name + '" currentSort=sort}}';
           }).join("\n") %>
         </tr>
       </thead>

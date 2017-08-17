@@ -10,6 +10,9 @@ export default Ember.Route.extend({
     size: {
       refreshModel: true
     },
+    sort: {
+      refreshModel: true
+    }
   },
   store: Ember.inject.service(),
   model(params) {
@@ -22,12 +25,16 @@ export default Ember.Route.extend({
       page = this.get('page');
     }
 
-    const options = {
+    let options = {
       page: {
         number: page,
         size: size
       }
     };
+
+    if(params.sort != null) {
+      options['sort'] = params.sort;
+    }
 
     return this.get('store').query('<%= entityName %>', options);
   }
