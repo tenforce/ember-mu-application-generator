@@ -1,21 +1,23 @@
 {{!-- Page to list books --}}
 <div class="content">
   <h2 class="title">{{t 'books'}}</h2>
-  {{#unless }}
-    <div class="actions">
-      {{#link-to "books.new" class="btn new" title="Create new item" tagName='button' }}Create{{/link-to}}
-    </div>
-  {{/unless}}
+  <div class="actions">{{#link-to "books.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
   {{#if model}}
     <table>
       <thead>
         <tr>
-          <th class="properties__label">id</th>
-          <th class="properties__label">{{t 'title'}}</th>
+          {{sortable-table-header attribute="id" currentSort=sort}}
+          {{sortable-table-header attribute="title" currentSort=sort}}
+          {{sortable-table-header attribute="isbn" currentSort=sort}}
+          {{sortable-table-header attribute="published" currentSort=sort}}
+          {{sortable-table-header attribute="authors" currentSort=sort}}
+          {{!-- <th class="properties__label">id</th>
+                    <th class="properties__label">{{t 'title'}}</th>
           <th class="properties__label">{{t 'isbn'}}</th>
           <th class="properties__label">{{t 'published'}}</th>
 
 
+                    <th class="properties__label">{{t 'authors'}}</th> --}}
         </tr>
       </thead>
       <tbody>
@@ -28,17 +30,19 @@
             <td>{{display-attribute-string-set model=item attribute='isbn' tagName='ul' innerTagName='li' classes='string-set'}}</td>
             {{handle-attribute model=item attribute='published' tagName='td' classes='properties__data'}}
 
-
+            {{display-model-hasmany-relationship   model=item.authors tagName='td' itemRoute='authors.show' configuredLabel='stringRep'}}
           </tr>
         {{/each}}
       </tbody>
     </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
   {{else}}
     <div class="empty">
       No {{t 'books'}} in the database.
-      {{!-- TODO move to blueprint? or should readonly be in template? --}}
-      {{#unless }} Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t 'book'}}.
-      {{/unless}}
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t "book"}}.
     </div>
   {{/if}}
 </div>

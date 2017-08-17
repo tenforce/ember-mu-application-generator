@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
+import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
@@ -10,5 +11,6 @@ export default Model.extend({
 
   title: attr('lang-string-set'),
   isbn: attr('string-set'),
-  published: attr('boolean')
+  published: attr('boolean'),
+  authors: hasMany('author')
 });
