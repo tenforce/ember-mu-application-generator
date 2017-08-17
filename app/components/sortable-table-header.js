@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'th',
-  classNameBindings: ['classes', 'sortedClass:isSorted'],
+  classNameBindings: ['classes', 'sortableClass', 'order', 'isSorted:sorted'],
   classes: "properties__label",
-  sortedClass: "sorted",
+  sortableClass: "sortable",
   currentSort: "",
 
   dasherizerized: Ember.computed('attribute', function() {
@@ -20,14 +20,11 @@ export default Ember.Component.extend({
   order: Ember.computed('currentSort', function() {
     var currentSort = this.get('currentSort');
     if (currentSort === this.get('dasherizerized')) {
-      console.log('asc');
       return "asc";
     }
     if (currentSort === this.get('inverseDasherizerized')) {
-      console.log('desc');
       return "desc";
     }
-    console.log('notsorted')
     return "";
   }),
   actions: {

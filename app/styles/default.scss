@@ -24,6 +24,33 @@ table {
       th {
         padding: 2%;
       }
+
+      .sortable {
+        span {
+          cursor: pointer;
+        }
+
+        &.sorted {
+          color: crimson;
+
+          &:after {
+            font-family: "FontAwesome";
+            font-size: 15px;
+          }
+
+          &.asc {
+            &:after {
+              content: "\F160";
+            }
+          }
+
+          &.desc {
+            &:after {
+              content: "\F161";
+            }
+          }
+        }
+      }
     }
   }
 
@@ -93,7 +120,9 @@ a {
   outline: none;
 
   input {
-    &:hover, &:focus, &:active {
+    &:active,
+    &:focus,
+    &:hover {
       border: none;
     }
   }
