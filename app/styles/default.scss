@@ -2,7 +2,7 @@
 @import 'mixin';
 
 table {
-  margin: 0 auto 0 27%;
+  margin: 0 auto 0 15%;
   min-width: 60%;
   text-align: left;
   border: 1px solid #e8e8e8;
@@ -23,6 +23,7 @@ table {
       td,
       th {
         padding: 2%;
+        width: 5%;
       }
 
       .sortable {
