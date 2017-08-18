@@ -6,7 +6,7 @@
     <table>
       <thead>
         <tr>
-          {{sortable-table-header attribute="id" currentSort=sort}}
+          <th class="properties__label">id</th>
           <%= attributes.map( function(property) {
             return '{{sortable-table-header attribute="' + property.name + '" currentSort=sort}}';
           }).join("\n") %>
