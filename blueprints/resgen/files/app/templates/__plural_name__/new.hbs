@@ -37,7 +37,7 @@
           else if(property.kind == "boolean") {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +
-              "        <td>{{edit-boolean-attribute model=model attribute='" + property.name + "' classes='checkbox'}}</td>\n" +
+              "        <td>{{handle-boolean-attribute model=model attribute='" + property.name + "' classes='checkbox' editable=true}}</td>\n" +
               "      </tr>";
           }
           else {

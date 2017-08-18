@@ -39,6 +39,12 @@
               "        <td>{{display-attribute-string-set model=model attribute='" + property.name + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>\n" +
               "      </tr>";
           }
+          else if(property.kind == "boolean") {
+            return "      <tr>\n" +
+              "        <td>{{t '" + property.name + "'}}</td>\n" +
+              "        <td>{{handle-boolean-attribute model=model attribute='" + property.name + "' classes='checkbox'}}</td>\n" +
+              "      </tr>";
+          }
           else {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +

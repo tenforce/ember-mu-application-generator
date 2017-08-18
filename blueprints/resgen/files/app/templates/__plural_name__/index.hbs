@@ -29,8 +29,11 @@
                 if(property.kind == "lang-string-set") {
                   return "            <td>{{display-attribute-string-set model=item attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
                 }
-                if(property.kind == "string-set") {
+                else if(property.kind == "string-set") {
                   return "            <td>{{display-attribute-string-set model=item attribute='" + property.name + "' tagName='ul' innerTagName='li' classes='string-set'}}</td>";
+                }
+                else if(property.kind == "boolean") {
+                  return "        <td>{{handle-boolean-attribute model=item attribute='" + property.name + "' classes='checkbox'}}</td>";
                 }
                 else {
                   return "            {{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
