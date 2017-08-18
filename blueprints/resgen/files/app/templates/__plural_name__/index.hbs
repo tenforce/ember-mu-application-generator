@@ -21,10 +21,8 @@
       </thead>
       <tbody>
         {{#each model as |item|}}
-          <tr>
-            {{#link-to "<%= entitiesName %>.show" item tagName='td' }}
-              {{handle-attribute model=item attribute='id' classes='properties__data'}}
-            {{/link-to}}
+          {{#link-to "<%= entitiesName %>.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
 <%= attributes.map( function(property) {
                 if(property.kind == "lang-string-set") {
                   return "            <td>{{display-attribute-string-set model=item attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
@@ -45,7 +43,7 @@
 <%= hasManyRelationships.map( function(relationship) {
                   return '            {{display-model-hasmany-relationship   model=item.' + relationship.name + ' tagName=\'td\' itemRoute=\'' + relationship.relRoute  + '.show\' configuredLabel=\'stringRep\'}}';
               }).join("\n") %>
-          </tr>
+          {{/link-to}}
         {{/each}}
       </tbody>
     </table>
