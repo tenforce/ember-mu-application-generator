@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 /*
-  This component displays and edits attributes (except string-set, lang-string-set and boolean).
+  This component displays and edits attributes (except string-set, lang-string-set).
   The tagname is configurable, the default is a div, because otherwise we cannot use classNameBindings.
   The classes are configurable, the default is "".
 */

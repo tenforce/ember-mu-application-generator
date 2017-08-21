@@ -38,7 +38,7 @@
           else if(property.kind == "boolean") {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +
-              "        <td>{{handle-boolean-attribute model=model attribute='" + property.name + "' classes='checkbox' editable=true}}</td>\n" +
+              "        <td>{{handle-attribute model=model attribute='" + property.name + "' classes='checkbox' editable=true boolean=true}}</td>\n" +
               "      </tr>";
           }
           else {
@@ -48,7 +48,7 @@
               "</tr>";
           }
         }).join("\n") %>
-        
+
         <%= belongsToRelationships.map( function(relationship) {
             return "<tr><td>" + relationship.name + "</td><td align='middle'>{{edit-belongs-to relName=model."+relationship.name+" relType=\""+relationship.relType+"\"}}</td></tr>";
           }).join("\n      ") %>
