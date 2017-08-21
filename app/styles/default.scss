@@ -118,7 +118,20 @@ a {
 }
 
 .ember-power-select-trigger {
+  font-family: 'Source Sans Pro', sans-serif;
   outline: none;
+  border: 1px solid #d4d4d4;
+  font-size: 17px;
+  font-weight: 300;
+  padding: 1%;
+  @include transition(all .5s ease);
+  @include border-radius(4px);
+
+  &:active,
+  &:focus,
+  &:hover {
+    border: 1px solid crimson;
+  }
 
   input {
     &:active,
