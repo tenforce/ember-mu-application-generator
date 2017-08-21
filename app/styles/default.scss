@@ -126,6 +126,7 @@ a {
   padding: 1%;
   @include transition(all .5s ease);
   @include border-radius(4px);
+  text-align: left;
 
   &:active,
   &:focus,
@@ -140,6 +141,15 @@ a {
       border: none;
     }
   }
+
+  .ember-power-select-multiple-option  {
+    background-color: #eee;
+    .ember-power-select-multiple-remove-btn {
+      color: red;
+      font-weight: 800;
+    }
+  }
+
 }
 
 .btn {

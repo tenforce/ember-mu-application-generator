@@ -12,7 +12,15 @@
       ul {
         list-style: square inside;
 
+        &.link-list {
+          li {
+            white-space: pre-line;
+            padding-top: 2%;
+          }
+        }
+
         li {
+
           .content-string {
             display: inline-block;
           }
