@@ -6,19 +6,19 @@ export default Ember.Route.extend({
     return this.store.find('author', params.id );
   },
   actions: {
-    cancel(model) {
-      model.rollbackAttributes();
+    cancel(changeset, model) {
+      changeset.rollback();
       this.transitionTo("authors.show", model);
     },
-    save(model) {
+    save(changeset, model) {
       var self = this;
-      model.save().then( function() {
+      changeset.save().then( function() {
         self.transitionTo("authors.show", model);
       }).catch( function() {
         alert("Could not save author");
       });
     },
-    delete(model) {
+    delete(changeset, model) {
       var self = this;
       model.deleteRecord();
       return model.save().then( function() {

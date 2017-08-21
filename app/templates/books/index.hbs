@@ -6,32 +6,23 @@
     <table>
       <thead>
         <tr>
-          {{sortable-table-header attribute="id" currentSort=sort}}
+          <th class="properties__label">id</th>
           {{sortable-table-header attribute="title" currentSort=sort}}
-          {{sortable-table-header attribute="isbn" currentSort=sort}}
-          {{sortable-table-header attribute="published" currentSort=sort}}
+{{sortable-table-header attribute="isbn" currentSort=sort}}
+
+          {{sortable-table-header attribute="mainAuthor" currentSort=sort}}
           {{sortable-table-header attribute="authors" currentSort=sort}}
-          {{!-- <th class="properties__label">id</th>
-                    <th class="properties__label">{{t 'title'}}</th>
-          <th class="properties__label">{{t 'isbn'}}</th>
-          <th class="properties__label">{{t 'published'}}</th>
-
-
-                    <th class="properties__label">{{t 'authors'}}</th> --}}
         </tr>
       </thead>
       <tbody>
         {{#each model as |item|}}
-          <tr>
-            {{#link-to "books.show" item tagName='td' }}
-              {{handle-attribute model=item attribute='id' classes='properties__data'}}
-            {{/link-to}}
-            <td>{{display-attribute-string-set model=item attribute='title' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>
-            <td>{{display-attribute-string-set model=item attribute='isbn' tagName='ul' innerTagName='li' classes='string-set'}}</td>
-            {{handle-attribute model=item attribute='published' tagName='td' classes='properties__data'}}
-
+          {{#link-to "books.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='title' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='isbn' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.mainAuthor tagName='td' itemRoute='authors.show' configuredLabel='stringRep'}}
             {{display-model-hasmany-relationship   model=item.authors tagName='td' itemRoute='authors.show' configuredLabel='stringRep'}}
-          </tr>
+          {{/link-to}}
         {{/each}}
       </tbody>
     </table>

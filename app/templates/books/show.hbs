@@ -28,17 +28,16 @@
       {{!-- Creating rows for attributes depending on the type of property --}}
             <tr>
         <td>{{t 'title'}}</td>
-        <td>{{display-attribute-string-set model=model attribute='title' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>
+        {{handle-attribute model=model attribute='title' tagName='td' classes='properties__data'}}
       </tr>
       <tr>
         <td>{{t 'isbn'}}</td>
-        <td>{{display-attribute-string-set model=model attribute='isbn' tagName='ul' innerTagName='li' classes='string-set'}}</td>
+        {{handle-attribute model=model attribute='isbn' tagName='td' classes='properties__data'}}
       </tr>
       <tr>
-        <td>{{t 'published'}}</td>
-        {{handle-attribute model=model attribute='published' tagName='td' classes='properties__data'}}
+        <td class="properties__label">{{t 'mainAuthor'}}</td>
+        <td>{{display-model-belongsto-relationship model=model.mainAuthor itemRoute='authors.show' configuredLabel='stringRep'}}</td>
       </tr>
-
       <tr>
         <td class="properties__label">{{t 'authors'}}</td>
         <td>{{display-model-hasmany-relationship   model=model.authors itemRoute='authors.show' configuredLabel='stringRep'}}</td>

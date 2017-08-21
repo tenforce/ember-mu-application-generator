@@ -8,9 +8,7 @@
   --}}
   <div class="actions">
     {{#link-to "authors" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
-    {{#unless }}
-      {{#link-to "authors.edit" model class="btn edit" title="Edit this item" tagName='button'}}Edit{{/link-to}}
-    {{/unless}}
+    {{#link-to "authors.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
   </div>
 
   {{!-- Table to show details of author. --}}
@@ -34,8 +32,12 @@
       </tr>
 
       <tr>
-        <td class="properties__label">{{t 'book'}}</td>
-        <td>{{display-model-relationship model=model.book kind='has-many' itemRoute='books.show' relationRoute='books.index' relationFilterKey='author' relationFilterValue=model.id configuredLabel='stringRep'}}</td>
+        <td class="properties__label">{{t 'books'}}</td>
+        <td>{{display-model-hasmany-relationship   model=model.books itemRoute='books.show' configuredLabel='stringRep'}}</td>
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'mainBooks'}}</td>
+        <td>{{display-model-hasmany-relationship   model=model.mainBooks itemRoute='books.show' configuredLabel='stringRep'}}</td>
       </tr>
     </tbody>
   </table>

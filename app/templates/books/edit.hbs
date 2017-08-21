@@ -1,4 +1,5 @@
 {{!-- Page to edit book --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
 <div class="edit">
   <h2 class="title">{{t 'Edit book'}}</h2>
 
@@ -7,9 +8,9 @@
     or delete book.
   --}}
   <div class="actions">
-    <button type="button" class="btn save" title="Save new book" {{action 'save' model}}>Save</button>
-    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
-    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}>Delete</button>
+    <button type="button" class="btn save" title="Save new book" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
   </div>
 
   {{!-- Table to show details of book. --}}
@@ -22,22 +23,19 @@
     </thead>
     <tbody>
       {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>title</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='title' editable=true}}</td>
+</tr>
       <tr>
-        <td>{{t 'title'}}</td>
-        <td align='middle'>{{edit-attribute-string-set model=model attribute='title' lang=true tagName='ul' classes='string-set'}}</td>
-      </tr>
-      <tr>
-        <td>{{t 'isbn'}}</td>
-        <td align='middle'>{{edit-attribute-string-set model=model attribute='isbn' tagName='ul' classes='string-set'}}</td>
-      </tr>
-      <tr>
-        <td>{{t 'published'}}</td>
-        <td>{{edit-boolean-attribute model=model attribute='published' classes='checkbox'}}</td>
-      </tr>
-        
-        
-        <tr><td>authors</td><td align='middle'>{{edit-has-many relName=model.authors relType="author"}}</td></tr>
+      <td>isbn</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='isbn' editable=true}}</td>
+</tr>
+
+        <tr><td>mainAuthor</td><td align='middle'>{{edit-belongs-to relName=changeset.mainAuthor relType="author"}}</td></tr>
+        <tr><td>authors</td><td align='middle'>{{edit-has-many relName=changeset.authors relType="author"}}</td></tr>
 
     </tbody>
   </table>
 </div>
+{{/with}}

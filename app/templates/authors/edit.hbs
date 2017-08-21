@@ -1,4 +1,5 @@
 {{!-- Page to edit author --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
 <div class="edit">
   <h2 class="title">{{t 'Edit author'}}</h2>
 
@@ -7,9 +8,9 @@
     or delete author.
   --}}
   <div class="actions">
-    <button type="button" class="btn save" title="Save new author" {{action 'save' model}}>Save</button>
-    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
-    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' model}}>Delete</button>
+    <button type="button" class="btn save" title="Save new author" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
   </div>
 
   {{!-- Table to show details of author. --}}
@@ -24,11 +25,14 @@
       {{!-- Creating rows for attributes depending on the type of property --}}
             <tr>
       <td>name</td>
-      <td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='name' editable=true}}</td>
 </tr>
+
         
-        <tr><td>book</td><td align='middle'>{{edit-has-many relName=model.book relType="book"}}</td></tr>
+        <tr><td>books</td><td align='middle'>{{edit-has-many relName=changeset.books relType="book"}}</td></tr>
+      <tr><td>mainBooks</td><td align='middle'>{{edit-has-many relName=changeset.mainBooks relType="book"}}</td></tr>
 
     </tbody>
   </table>
 </div>
+{{/with}}
