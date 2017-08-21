@@ -14,6 +14,7 @@ export default Ember.Route.extend({
       refreshModel: true
     }
   },
+
   store: Ember.inject.service(),
   model(params) {
     let page = params.page;
@@ -25,7 +26,7 @@ export default Ember.Route.extend({
       page = this.get('page');
     }
 
-    const options = {
+    let options = {
       page: {
         number: page,
         size: size
@@ -37,5 +38,13 @@ export default Ember.Route.extend({
     }
 
     return this.get('store').query('book', options);
+  },
+
+  // unsticking query parameters
+  resetController(controller, isExiting, transition) {
+    if (isExiting) {
+      // isExiting would be false if only the route's model was changing
+      controller.set('page', this.get('page'));
+    }
   }
 });

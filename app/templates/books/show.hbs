@@ -36,12 +36,12 @@
       </tr>
       <tr>
         <td>{{t 'published'}}</td>
-        {{handle-attribute model=model attribute='published' tagName='td' classes='properties__data'}}
+        <td>{{handle-attribute model=model attribute='published' classes='checkbox' boolean=true}}</td>
       </tr>
 
       <tr>
         <td class="properties__label">{{t 'authors'}}</td>
-        <td>{{display-model-hasmany-relationship   model=model.authors itemRoute='authors.show' configuredLabel='stringRep'}}</td>
+       {{display-model-hasmany-relationship   model=model.authors itemRoute='authors.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
     </tbody>
   </table>

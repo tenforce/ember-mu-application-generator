@@ -32,9 +32,9 @@
       </tr>
       <tr>
         <td>{{t 'published'}}</td>
-        <td>{{edit-boolean-attribute model=model attribute='published' classes='checkbox'}}</td>
+        <td>{{handle-attribute model=model attribute='published' classes='checkbox' editable=true boolean=true}}</td>
       </tr>
-        
+
         
         <tr><td>authors</td><td align='middle'>{{edit-has-many relName=model.authors relType="author"}}</td></tr>
 
