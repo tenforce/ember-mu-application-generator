@@ -1,12 +1,15 @@
 // For resource/new.hbs
+
 .new {
   text-align: center;
 
   table {
-    width: 40%;
-
     tbody {
       tr {
+        .ember-power-select-trigger {
+          width: 95%;
+        }
+
         input {
           text-align: left;
           width: 95%;
