@@ -1,12 +1,15 @@
 // For resource/edit.hbs
+
 .edit {
   text-align: center;
 
   table {
-    width: 40%;
-
     tbody {
       tr {
+        .ember-power-select-trigger {
+          width: 95%;
+        }
+
         input {
           text-align: left;
           width: 95%;
@@ -19,6 +22,7 @@
           &.lang {
             width: 18%;
           }
+
           &.with-delete {
             width: 88%;
           }
@@ -26,6 +30,7 @@
 
         .checkbox {
           margin-left: 2%;
+
           input {
             width: auto;
           }
