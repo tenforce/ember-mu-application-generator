@@ -8,5 +8,14 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: "div",
   classNameBindings: ['classes'],
-  classes: ""
+  classes: "",
+
+  isImage: Ember.computed('model', 'attribute', function() {
+    let attribute = this.get('attribute');
+    let regExp = /(\.png)|(\.svg)|(\.jpg)|(\.gif)|(\.tif)|(\.bmp)$/;
+    if (this.get('model') != null) {
+      attribute = this.get("model." + attribute);
+    }
+    return regExp.test(attribute);
+  })
 });

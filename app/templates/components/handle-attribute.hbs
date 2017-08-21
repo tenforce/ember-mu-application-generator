@@ -17,8 +17,16 @@
   {{#if editable}}
     {{input value=(get model attribute) placeholder=attribute}}
   {{else}}
-    {{t (get model attribute)}}
+    {{#if isImage}}
+      <img src= {{get model attribute}}>
+    {{else}}
+      {{t (get model attribute)}}
+    {{/if}}
   {{/if}}
 {{else}}
-  {{t attribute}}
+  {{#if isImage}}
+    <img src={{attribute}}>
+  {{else}}
+    {{t attribute}}
+  {{/if}}
 {{/if}}

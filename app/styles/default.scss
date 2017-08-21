@@ -60,6 +60,12 @@ table {
       &:nth-child(even) {
         background: #eee;
       }
+
+      td {
+        img {
+          max-width: 60%;
+        }
+      }
     }
   }
 }
@@ -142,14 +148,14 @@ a {
     }
   }
 
-  .ember-power-select-multiple-option  {
+  .ember-power-select-multiple-option {
     background-color: #eee;
+
     .ember-power-select-multiple-remove-btn {
       color: red;
       font-weight: 800;
     }
   }
-
 }
 
 .btn {
