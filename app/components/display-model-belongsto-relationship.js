@@ -1,9 +1,1 @@
-import Ember from 'ember';
-import layout from '../templates/components/display-model-belongsto-relationship';
-
-export default Ember.Component.extend({
-  layout: layout,
-  tagName: 'div',
-  classNameBindings: ['classes'],
-  classes: ""
-});
+export { default } from 'ember-mu-application-generator/components/display-model-belongsto-relationship';
