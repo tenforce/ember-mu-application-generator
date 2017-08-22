@@ -1,26 +1,27 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 import Ember from 'ember';
 import Transform from 'ember-data/transform';
 
+const LangString = function(content,lang){
+  this.content = content;
+  this.language = lang;
+  this.toString = function(){return this['content'] + " (" + this['language'] + ")";}
+};
+
 const LangStringSet = Transform.extend({
-  // TODO : fix this when mu-cl-resources (or virtuoso?) has been patched
   deserialize(serialized) {
-    if (serialized && (Ember.typeOf(serialized) === 'array')) {
-      const arr = serialized.map(o => Ember.Object.create(o));
-      // the \n we're being send back by mu-cl-resources is not interpreted as a line feed so we have to force it
-      arr.forEach(item => item['content'] = item['content'].split('\\n').join('\n'));
-      return arr;
-    } else {
-      return console.log("lang string set should be an array");
-    }
+    Ember.assert(`expected array got ${Ember.typeOf(serialized)}`, (!serialized) || (Ember.typeOf(serialized) === "array"));
+
+    // the \n we're being send back by mu-cl-resources is not interpreted as a line feed so we have to force it
+    serialized = serialized.map(function(item, index, enumerable) {
+      return new LangString(item['content'].split('\\n').join('\n'), item['language']);
+    });
+
+    return serialized;
   },
   serialize(deserialized) {
+    Ember.assert(`expected array got ${Ember.typeOf(deserialized)}`, (!deserialized) || (Ember.typeOf(deserialized) === "array"));
     return deserialized;
   }
 });
 
-export default LangStringSet;
+export {LangStringSet as default, LangString};

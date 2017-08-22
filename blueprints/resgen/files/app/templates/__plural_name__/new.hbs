@@ -25,13 +25,13 @@
           if(property.kind == "lang-string-set") {
             return "<tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +
-              "        <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' lang=true tagName='ul' classes='string-set'}}</td>\n" +
+              "        <td align='middle'>{{edit-string-set data=model." + property.name + " tagName='ul' classes='string-set'}}</td>\n" +
               "      </tr>";
           }
           else if(property.kind == "string-set") {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +
-              "        <td align='middle'>{{edit-attribute-string-set model=model attribute='" + property.name + "' tagName='ul' classes='string-set'}}</td>\n" +
+              "        <td align='middle'>{{edit-language-string-set data=model." + property.name + " tagName='ul' classes='string-set'}}</td>\n" +
               "      </tr>";
           }
           else if(property.kind == "boolean") {

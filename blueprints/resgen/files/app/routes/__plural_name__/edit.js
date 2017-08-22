@@ -12,6 +12,7 @@ export default Ember.Route.extend({
     },
     save(changeset, model) {
       var self = this;
+      // TODO changeset gets applied even when server gives 500
       changeset.save().then( function() {
         self.transitionTo("<%= entitiesName %>.show", model);
       }).catch( function() {
@@ -24,7 +25,6 @@ export default Ember.Route.extend({
       return model.save().then( function() {
         self.transitionTo( "<%= entitiesName %>");
       }).catch( function() {
-        model.rollbackAttributes();
         alert("Deletion of <%= entityName %> failed");
       });
     }
