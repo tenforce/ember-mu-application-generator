@@ -9,7 +9,7 @@ import layout from '../templates/components/navigation-menu';
   then filters the keys with ".index", as that is always part of the resource, this blueprint generates,
   and takes the strings in front of the ".index".
 
-  The list of indeces are always unique.
+  The list of indeces are always unique and sorted.
 */
 export default Ember.Component.extend({
   layout: layout,
@@ -26,6 +26,6 @@ export default Ember.Component.extend({
     filteredKeys = filteredKeys.map(function(item){
       return item.split('.index')[0];
     });
-    return filteredKeys.uniq();
+    return filteredKeys.uniq().sort();
   })
 });
