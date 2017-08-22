@@ -20,6 +20,25 @@ ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-gen
 ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git#addon
 ```
 
+### Design installation:
+
+To install design, you will need `ember-cli-sass`.
+
+```
+ember install ember-cli-sass
+```
+
+After installing sass, you can either install the design via blueprint:
+```
+ember generate mu-application-design
+```
+
+Or include the necessary files in your app.scss:
+```
+@import "ember-mu-application-generator";
+@import "ember-power-select";
+```
+
 
 ## Usage:
 
