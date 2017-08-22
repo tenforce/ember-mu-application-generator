@@ -34,7 +34,7 @@ export default Ember.Component.extend({
   actions: {
     goToPage: function(item) {
       this.set('currentRoute', item);
-      this.get("routing").transitionTo(item, { queryParams: { page: 0 }});
+      this.get("routing").transitionTo(item);
     }
   }
 });

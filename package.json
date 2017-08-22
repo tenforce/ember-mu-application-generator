@@ -21,6 +21,7 @@
     "ember-cli-babel": "^6.3.0",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-sass": "^7.0.0",
+    "ember-cli-string-helpers": "^1.4.0",
     "ember-data": "v2.14.10",
     "ember-i18n": "^5.0.2",
     "ember-power-select": "^1.9.3",
