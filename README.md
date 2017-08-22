@@ -20,7 +20,7 @@ In this example `misc` will create an untyped attribute: `misc: attr()`
 
 Besides the built-in Ember attribute types (string, number, boolean, date) we have transforms for the followings:
 
-  - lang-string-set
+  - language-string-set
     - In this Ember object we have two attributes: `content` is the content of the string and `language` is the language of the string. 
     - The `toString` method is also overwritten to return `content (language)`.
   - string-set

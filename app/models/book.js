@@ -9,7 +9,7 @@ export default Model.extend({
   // TODO what if there are no attributes?
   stringRep: Ember.computed.collect.apply(this,['id','title', 'isbn', 'published']),
 
-  title: attr('lang-string-set'),
+  title: attr('language-string-set'),
   isbn: attr('string-set'),
   published: attr('boolean'),
   authors: hasMany('author', {inverse: 'books'})

@@ -27,7 +27,7 @@
       </tr>
       {{!-- Creating rows for attributes depending on the type of property --}}
       <%= attributes.map( function(property) {
-          if(property.kind == "lang-string-set") {
+          if(property.kind == "language-string-set") {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +
               "        <td>{{display-attribute-string-set model=model attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>\n" +

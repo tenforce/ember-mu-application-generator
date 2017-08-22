@@ -24,7 +24,7 @@
           {{#link-to "<%= entitiesName %>.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
 <%= attributes.map( function(property) {
-                if(property.kind == "lang-string-set") {
+                if(property.kind == "language-string-set") {
                   return "            <td>{{display-attribute-string-set model=item attribute='" + property.name + "' lang=true tagName='ul' innerTagName='li' classes='string-set'}}</td>";
                 }
                 else if(property.kind == "string-set") {
