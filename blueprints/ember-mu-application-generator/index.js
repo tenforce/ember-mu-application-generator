@@ -1,15 +1,18 @@
 /* eslint-env node */
+/*jshint node:true*/
 module.exports = {
-  description: ''
+  description: '',
 
-  // locals(options) {
+  normalizeEntityName: function() {},
+
+  // locals: function(options) {
   //   // Return custom template variables here.
   //   return {
   //     foo: options.entity.options.foo
   //   };
   // }
 
-  // afterInstall(options) {
-  //   // Perform extra work here.
-  // }
+  afterInstall: function(options) {
+
+  }
 };
