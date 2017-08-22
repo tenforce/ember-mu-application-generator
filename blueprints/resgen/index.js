@@ -140,8 +140,6 @@ module.exports = {
       readonly: options.readonly,
     };
 
-    // console.log(result);
-
     return result;
   },
 
@@ -152,72 +150,6 @@ module.exports = {
       }
     }
   },
-
-
-  // https://github.com/ember-cli/ember-cli/issues/7287
-  // files() {
-  //   // TODO update file list
-  //   if (this.options && this.options.readonly) {
-  //     return ['app/',
-  //       'app/components/',
-  //       'app/components/handle-attribute.js',
-  //       'app/components/display-lang-attribute.js',
-  //       'app/components/display-attribute-string-set.js',
-  //       'app/models/',
-  //       'app/models/__name__.js',
-  //       'app/routes/',
-  //       'app/routes/__plural_name__/',
-  //       // 'app/routes/__plural_name__/edit.js',
-  //       'app/routes/__plural_name__/index.js',
-  //       // 'app/routes/__plural_name__/new.js',
-  //       'app/routes/__plural_name__/show.js',
-  //       'app/serializers/',
-  //       'app/serializers/application.js',
-  //       'app/styles/',
-  //       'app/styles/app.scss',
-  //       'app/templates/',
-  //       'app/templates/__plural_name__/',
-  //       // 'app/templates/__plural_name__/edit.hbs',
-  //       'app/templates/__plural_name__/index.hbs',
-  //       // 'app/templates/__plural_name__/new.hbs',
-  //       'app/templates/__plural_name__/show.hbs',
-  //       'app/templates/components/',
-  //       'app/templates/components/handle-attribute.hbs',
-  //       'app/templates/components/display-lang-attribute.hbs',
-  //       'app/templates/components/display-attribute-string-set.hbs'
-  //     ];
-  //   } else {
-  //     return ['app/',
-  //       'app/components/',
-  //       'app/components/handle-attribute.js',
-  //       'app/components/display-lang-attribute.js',
-  //       'app/components/display-attribute-string-set.js',
-  //       'app/models/',
-  //       'app/models/__name__.js',
-  //       'app/routes/',
-  //       'app/routes/__plural_name__/',
-  //       'app/routes/__plural_name__/edit.js',
-  //       'app/routes/__plural_name__/index.js',
-  //       'app/routes/__plural_name__/new.js',
-  //       'app/routes/__plural_name__/show.js',
-  //       'app/serializers/',
-  //       'app/serializers/application.js',
-  //       'app/styles/',
-  //       'app/styles/app.scss',
-  //       'app/templates/',
-  //       'app/templates/__plural_name__/',
-  //       'app/templates/__plural_name__/edit.hbs',
-  //       'app/templates/__plural_name__/index.hbs',
-  //       'app/templates/__plural_name__/new.hbs',
-  //       'app/templates/__plural_name__/show.hbs',
-  //       'app/templates/components/',
-  //       'app/templates/components/handle-attribute.hbs',
-  //       'app/templates/components/display-lang-attribute.hbs',
-  //       'app/templates/components/display-attribute-string-set.hbs'
-  //     ];
-  //   }
-  // },
-
 
   shouldEntityTouchRouter: function(name) {
     var isIndex = name === 'index';
@@ -237,8 +169,6 @@ module.exports = {
   },
 
   afterInstall: function(options) {
-    // console.log(this.files()) // TODO update file list
-
     return updateRouter.call(this, 'add', options);
     // TODO install conditionally? npm will run even if packages are already there
     // TODO are these the right packages?
