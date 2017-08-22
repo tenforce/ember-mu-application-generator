@@ -20,31 +20,12 @@
 
   .title {
     cursor: pointer;
+    display: inline-block;
   }
-}
 
-.navigation-menu {
-  float: left;
-  width: 15%;
-
-  ul {
-    padding: 10%;
-    color: black;
-    list-style: none;
-
-    li {
-      text-transform: capitalize;
-      word-wrap: break-word;
-      cursor: pointer;
-      @include transition(all 0.35s ease);
-
-      &:hover {
-        color: crimson;
-      }
-
-      &:not(:first-child) {
-        margin-top: 4%;
-      }
-    }
+  .navigation-menu {
+    float: right;
+    width: 20%;
+    display: inline-block;
   }
 }

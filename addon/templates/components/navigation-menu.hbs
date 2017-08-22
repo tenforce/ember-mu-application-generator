@@ -8,8 +8,6 @@
     classes: css classes for the component
  --}}
 
-{{#each menus as |value|}}
-  {{#link-to value tagName="li" }}
-    <h3>{{value}}</h3>
-  {{/link-to}}
-{{/each}}
+{{#power-select options=menus onchange=(action 'goToPage') as |menu|}}
+  {{menu}}
+{{/power-select}}

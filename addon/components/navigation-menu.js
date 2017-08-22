@@ -13,19 +13,25 @@ import layout from '../templates/components/navigation-menu';
 */
 export default Ember.Component.extend({
   layout: layout,
-  tagName: 'ul',
+  tagName: 'div',
 
-  menus: Ember.computed(function(){
+  menus: Ember.computed(function() {
     let router = Ember.getOwner(this).lookup('router:main');
     let allRoutesList = router.get('router.recognizer.names');
     let routeKeys = Object.keys(allRoutesList);
-    let filteredKeys = routeKeys.filter(function(item){
+    let filteredKeys = routeKeys.filter(function(item) {
       return item.indexOf('.index') >= 0;
     });
 
-    filteredKeys = filteredKeys.map(function(item){
+    filteredKeys = filteredKeys.map(function(item) {
       return item.split('.index')[0];
     });
     return filteredKeys.uniq().sort();
-  })
+  }),
+
+  actions: {
+    goToPage: function(item) {
+      this.transition(item);
+    }
+  }
 });
