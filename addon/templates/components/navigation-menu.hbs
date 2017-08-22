@@ -8,6 +8,6 @@
     classes: css classes for the component
  --}}
 
-{{#power-select options=menus onchange=(action 'goToPage') as |menu|}}
+{{#power-select options=menus selected=currentRoute onchange=(action 'goToPage') as |menu|}}
   {{menu}}
 {{/power-select}}

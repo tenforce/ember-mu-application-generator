@@ -14,6 +14,7 @@ import layout from '../templates/components/navigation-menu';
 export default Ember.Component.extend({
   layout: layout,
   tagName: 'div',
+  currentRoute: '',
 
   menus: Ember.computed(function() {
     let router = Ember.getOwner(this).lookup('router:main');
@@ -31,7 +32,7 @@ export default Ember.Component.extend({
 
   actions: {
     goToPage: function(item) {
-      this.transition(item);
+      this.transitionTo(item);
     }
   }
 });

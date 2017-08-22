@@ -14,11 +14,11 @@
 .navbar {
   padding: 1%;
   background: crimson;
-  color: white;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
   font-size: 80%;
 
   .title {
+    color: white;
     cursor: pointer;
     display: inline-block;
   }
