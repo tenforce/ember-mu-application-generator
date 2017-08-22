@@ -6,13 +6,13 @@ The generator commands can be generated based on a domain.lisp file with the [em
 
 ## Usage:
 
-```ember generate resgen [resource name] ([attribute name](:[type]))* ([relationship name]:(belongs-to|has-many):[type](~[inverse relationship name]))*```
+```ember generate mu-resource [resource name] ([attribute name](:[type]))* ([relationship name]:(belongs-to|has-many):[type](~[inverse relationship name]))*```
 
 The blueprint takes a flag `--readonly` which generates the same Ember code but without pages to edit an existing or create a new record of these resources.
 
 ## Example:
 
-```ember generate resgen taco filling:belongs-to:protein~fills toppings:has-many:toppings name:string price:number misc --readonly```
+```ember generate mu-resource taco filling:belongs-to:protein~fills toppings:has-many:toppings name:string price:number misc --readonly```
 
 In this example `misc` will create an untyped attribute: `misc: attr()`
 
