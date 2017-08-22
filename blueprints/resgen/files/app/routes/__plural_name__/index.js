@@ -41,7 +41,7 @@ export default Ember.Route.extend({
   },
 
   // unsticking query parameters
-  resetController(controller, isExiting, transition) {
+  resetController(controller, isExiting) {
     if (isExiting) {
       // isExiting would be false if only the route's model was changing
       controller.set('page', this.get('page'));
