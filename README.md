@@ -4,6 +4,23 @@ Generator for a full browseable CRUD front-end for a mu-cl-resources back-end.
 
 The generator commands can be generated based on a domain.lisp file with the [ember-mu-application-generator-generator](https://git.tenforce.com/mu-semtech/ember-mu-application-generator-generator). This script also generates dispatcher rules to route calls from Ember to mu-cl-resources.
 
+## Installation:
+
+To install the application via git+ssh:
+```
+ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git
+ember generate ember-mu-application-generator
+```
+
+The ember generate is needed, because on install the application should install some necessary files (transforms, utils, etc.). If ember installation is done with a git url, ember install cannot find the package name and install the default blueprint (where packagename == blueprintname).
+
+If it's needed, you can modify the url with a tag or a branch:
+```
+ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git#v0.2.0
+ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git#addon
+```
+
+
 ## Usage:
 
 ```ember generate mu-resource [resource name] ([attribute name](:[type]))* ([relationship name]:(belongs-to|has-many):[type](~[inverse relationship name]))*```
@@ -21,7 +38,7 @@ In this example `misc` will create an untyped attribute: `misc: attr()`
 Besides the built-in Ember attribute types (string, number, boolean, date) we have transforms for the followings:
 
   - lang-string-set
-    - In this Ember object we have two attributes: `content` is the content of the string and `language` is the language of the string. 
+    - In this Ember object we have two attributes: `content` is the content of the string and `language` is the language of the string.
     - The `toString` method is also overwritten to return `content (language)`.
   - string-set
     - Array of strings.
