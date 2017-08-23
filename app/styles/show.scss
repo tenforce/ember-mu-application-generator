@@ -1,9 +1,9 @@
 // For resource/details.hbs
+
 .details {
   text-align: center;
 
   .actions {
-
     .back {
       &:after {
         content: "\F060";
@@ -19,20 +19,24 @@
 
   table {
     tbody {
-      ul {
-        list-style: square inside;
+      td {
 
-        li {
-          .content-string {
-            display: inline-block;
-          }
+        word-break: keep-all;
+        ul {
+          list-style: square inside;
 
-          span {
-            font-style: italic;
-            color: #666;
-
-            .language-string {
+          li {
+            .content-string {
               display: inline-block;
+            }
+
+            span {
+              font-style: italic;
+              color: #666;
+
+              .language-string {
+                display: inline-block;
+              }
             }
           }
         }
