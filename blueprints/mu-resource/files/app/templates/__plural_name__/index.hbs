@@ -1,6 +1,6 @@
 {{!-- Page to list <%= entitiesName %> --}}
 <div class="content">
-  <h2 class="title">{{t '<%= entitiesName %>'}}</h2>
+  <h2 class="title">{{t (humanize '<%= entitiesName %>')}}</h2>
   <%= ((!readonly)?'<div class="actions">{{#link-to "'+entitiesName+'.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>':'')%>
   {{#if model}}
     <table>
