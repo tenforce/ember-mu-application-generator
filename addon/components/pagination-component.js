@@ -51,7 +51,7 @@ export default Ember.Component.extend({
     return numberOfPages;
   }),
 
-  size: Ember.computed('links', function(){
+  size: Ember.computed('links', function() {
     return this.get('links')['first']['size'] || null;
   }),
   startItem: Ember.computed('size', 'currentPage', function() {
@@ -64,12 +64,20 @@ export default Ember.Component.extend({
     }
     return endItem;
   }),
-  pageOptions: Ember.computed('firstPage', 'numberOfPages', function() {
-    return Array.from(new Array(this.get('numberOfPages')), (val, index) =>     this.get('firstPage') + index);
+
+  isValidPageNumber: Ember.computed('goToPage', 'numberOfPages', function(){
+    return (this.get('goToPage') > 0) && (this.get('goToPage') < (this.get('numberOfPages') + 1))
   }),
   actions: {
     changePage(link) {
-      this.set('page', link['number'] || 0);
+      if (link['number'] != null) {
+        this.set('page', link['number'] || 0);
+      } else {
+        if (link > 0) {
+          link -= 1;
+        }
+        this.set('page', link || 0);
+      }
     }
   }
 });

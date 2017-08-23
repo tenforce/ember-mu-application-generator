@@ -10,12 +10,16 @@
   <div class="pagination-controls">
     <button type="button" class="btn first" disabled= {{isFirstPage}} {{action "changePage" links.first}} title="first page">first page</button>
     <button type="button" class="btn previous" disabled= {{isFirstPage}} {{action "changePage" links.prev}} title="previous page">previous page</button>
-    {{#power-select options=pageOptions searchEnabled=false selected=currentPage onchange=(action (mut currentPage)) as |page|}}
-      {{page}}
-    {{/power-select}}
+    {{input  value=goToPage placeholder=currentPage  }}
+    <button type="button" class="btn goto" disabled= {{not isValidPageNumber}} {{action "changePage" goToPage}} title="go to page">go to page</button>
     <button type="button" class="btn next" disabled= {{isLastPage}} {{action "changePage" links.next}} title="next page">next page</button>
     <button type="button" class="btn last" disabled= {{isLastPage}} {{action "changePage" links.last}} title="last page">last page</button>
   </div>
+{{/if}}
+{{#if hasMultiplePages}}
+    <div class="item-calculator">
+      Page {{currentPage}} ({{numberOfPages}})
+    </div>
 {{/if}}
 {{#if total}}
   {{#if size}}

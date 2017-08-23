@@ -20,7 +20,6 @@
         }
 
         li {
-
           .content-string {
             display: inline-block;
           }
@@ -39,7 +38,6 @@
   }
 
   .empty {
-
     a {
       font-weight: 400;
     }
@@ -49,26 +47,30 @@
     margin-top: 1%;
 
     .item-calculator {
-      color: #666;
+      margin-top: 1%;
+      color: #999;
       font-style: italic;
-    }
-
-    .btn {
-      &:after {
-        font-size: 45px;
-      }
     }
 
     .pagination-controls {
       .btn {
         padding-top: 0;
         padding-bottom: 0;
+
+        &:after {
+          font-size: 55px;
+        }
       }
 
-      .ember-power-select-trigger {
-        min-width: 5%;
-        max-width: 10%;
-        display: inline-block;
+      input {
+        width: 80px;
+        padding: 12px;
+      }
+
+      .goto {
+        &:after {
+          font-size: 40px;
+        }
       }
     }
   }
