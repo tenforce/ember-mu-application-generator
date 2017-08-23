@@ -220,6 +220,9 @@ function dsAttr(name, type, inverse) {
   if (inverse) { // is either empty or needs some more syntax
     inverse = ", {inverse: '" + inverse + "'}"
   }
+  else {
+    inverse = ", {inverse: null }"
+  }
   switch (type) {
     case 'belongs-to':
       return 'belongsTo(\'' + name + '\'' + inverse + ')';
