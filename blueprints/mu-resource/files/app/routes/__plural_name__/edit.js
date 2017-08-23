@@ -6,25 +6,25 @@ export default Ember.Route.extend({
     return this.store.find('<%= entityName %>', params.id );
   },
   actions: {
-    cancel(model) {
-      model.rollbackAttributes();
+    cancel(changeset, model) {
+      changeset.rollback();
       this.transitionTo("<%= entitiesName %>.show", model);
     },
-    save(model) {
+    save(changeset, model) {
       var self = this;
-      model.save().then( function() {
+      // TODO changeset gets applied even when server gives 500
+      changeset.save().then( function() {
         self.transitionTo("<%= entitiesName %>.show", model);
       }).catch( function() {
         alert("Could not save <%= entityName %>");
       });
     },
-    delete(model) {
+    delete(changeset, model) {
       var self = this;
       model.deleteRecord();
       return model.save().then( function() {
         self.transitionTo( "<%= entitiesName %>");
       }).catch( function() {
-        model.rollbackAttributes();
         alert("Deletion of <%= entityName %> failed");
       });
     }
