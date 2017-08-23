@@ -27,7 +27,7 @@ module.exports = {
     var needs = [];
     var properties = [];
     var entityOptions = options.entity.options;
-    var importStatements = ['import Ember from \'ember\';','import Model from \'ember-data/model\';'];
+    var importStatements = ['import Ember from \'ember\';', 'import Model from \'ember-data/model\';'];
     var shouldImportAttr = false;
     var shouldImportBelongsTo = false;
     var shouldImportHasMany = false;
@@ -149,6 +149,34 @@ module.exports = {
         return options.locals.entitiesName
       }
     }
+  },
+
+  // https: //github.com/ember-cli/ember-cli/issues/7287
+  files() {
+
+    var fileList = ['app/',
+      'app/models/',
+      'app/models/__name__.js',
+      'app/routes/',
+      'app/routes/__plural_name__/',
+      'app/routes/__plural_name__/index.js',
+      'app/routes/__plural_name__/show.js',
+      'app/templates/',
+      'app/templates/__plural_name__/',
+      'app/templates/__plural_name__/index.hbs',
+      'app/templates/__plural_name__/show.hbs'
+    ];
+
+    if ((this.options == null) || (!this.options.readonly)) {
+      return fileList.concat([
+        'app/routes/__plural_name__/new.js',
+        'app/routes/__plural_name__/edit.js',
+        'app/templates/__plural_name__/edit.hbs',
+        'app/templates/__plural_name__/new.hbs'
+      ]);
+    }
+
+    return fileList;
   },
 
   shouldEntityTouchRouter: function(name) {
