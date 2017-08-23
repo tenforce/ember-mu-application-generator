@@ -35,9 +35,15 @@ ember generate mu-application-design
 
 Or include the necessary files in your app.scss:
 ```
+$mainColor: crimson;
 @import "ember-mu-application-generator";
-@import "ember-power-select";
 ```
+
+The `$mainColor` has to be defined! It defines the background of the navbar and all the on hover and focused colors for buttons and input fields.
+
+The default fonts are included in the design files and will be imported in the scss file:
+- Source Sans Pro
+- Font Awesome
 
 
 ## Usage:

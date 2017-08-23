@@ -1,6 +1,16 @@
 //  default settings for the design
 @import 'mixin';
 
+
+
+.loading {
+  text-align: center;
+  p {
+    display: none;
+  }
+}
+
+
 table {
   margin: 0 auto;
   min-width: 60%;
@@ -32,7 +42,7 @@ table {
         }
 
         &.sorted {
-          color: crimson;
+          color: $mainColor;
 
           &:after {
             font-family: "FontAwesome";
@@ -82,7 +92,7 @@ input {
 
   &:focus,
   &:hover {
-    border: 1px solid crimson;
+    border: 1px solid $mainColor;
   }
 }
 
@@ -100,7 +110,7 @@ a {
   @include transition(all 0.35s ease);
 
   &:hover {
-    color: crimson;
+    color: $mainColor;
   }
 }
 
@@ -137,7 +147,7 @@ a {
   &:active,
   &:focus,
   &:hover {
-    border: 1px solid crimson;
+    border: 1px solid $mainColor;
   }
 
   input {
@@ -173,7 +183,7 @@ a {
   }
 
   &:hover {
-    color: crimson;
+    color: $mainColor;
   }
 
   &.delete {
