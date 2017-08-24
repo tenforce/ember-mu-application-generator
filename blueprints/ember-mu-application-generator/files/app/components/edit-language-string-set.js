@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {LangString} from '../transforms/lang-string-set';
+import {LangString} from '../transforms/language-string-set';
 /*
   This component edit string-sets.
   The tagname is configurable, the default is a div, because otherwise we cannot use classNameBindings.
