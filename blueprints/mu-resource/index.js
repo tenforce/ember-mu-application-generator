@@ -19,6 +19,14 @@ module.exports = {
     'rel:kind:type~inverse'
   ],
 
+  availableOptions: [
+    {
+      name: 'readonly',
+      type: Boolean,
+      default: false
+    }
+  ],
+
   locals: function(options) {
 
     // Model
@@ -83,6 +91,7 @@ module.exports = {
         relType: dasherizedForeignModelSingular,
         relRoute: dasherizedForeignModelPlural,
       });
+
     }
 
     var needsDeduplicated = needs.filter(function(need, i) {
@@ -197,8 +206,7 @@ module.exports = {
 
   afterInstall: function(options) {
     return updateRouter.call(this, 'add', options);
-    // TODO install conditionally? npm will run even if packages are already there
-    // TODO are these the right packages?
+    // TODO hey nora use this for install in the other blueprints
     // this.addPackageToProject('ember-i18n', '^4.3.2');
     // this.addPackageToProject('ember-promise-helpers', '^1.0.3');
     // return this.addPackageToProject('ember-data-table', '^0.6.0');
