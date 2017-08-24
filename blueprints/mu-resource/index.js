@@ -82,7 +82,6 @@ module.exports = {
         kind: type,
         relType: dasherizedForeignModelSingular,
         relRoute: dasherizedForeignModelPlural,
-        // TODO some can be moved to template for clarity
       });
     }
 
@@ -247,7 +246,6 @@ function updateRouter(action, options) {
   };
   var color = actionColorMap[action] || 'gray';
 
-  // TODO check consistency
   var entitiesName = inflection.pluralize(entity.name)
 
   var routes = [{
