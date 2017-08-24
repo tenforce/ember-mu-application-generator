@@ -17,7 +17,7 @@ For each resource an index page is generated. It will give you a list of that re
 
 Available actions:
 - Clicking on one row will bring you to the detailed view of that specific resources. See [show page](#show-page) for more information!
-- The + button above the table gives you an option to create a new resource for this type. On ready-only applications, this button doesn't appear.
+- Create (+) a new resource for this type. On ready-only applications, this button doesn't appear.
 
 ![Authors](images/index1.png)
 
@@ -62,3 +62,36 @@ Available actions:
 ![Book details](images/details.png)
 
 ## Edit Page
+
+This page is not available in read-only applications. This page gives you a table with all the fields to edit. Sets give you an option to add (+) or delete (trashcan) elements in the array. For language-string the language field has to be filled.
+
+Available actions:
+- Save all the changes (checkmark).
+- Cancel all the changes (x).
+- Delete this resource (trashcan). This action cannot be undone!
+
+![Edit page](images/edit-page.png)
+
+### Editing Relationships
+
+Relationships are editable via a dropdown menu.
+
+#### Belongs to (has one)
+
+Basic one-select dropdown menu. You can select an item from the available list or search for a new one. A small X indicates to delete the current relation. After selection it will override the current one.
+
+![Belongs to](images/belongs-to.png)
+
+A search field is available after opening the dropdown. It uses the mu-cl-resources filter search.
+
+![Belongs to search](images/belongs-to-search.png)
+
+#### Has many
+
+Multi-select dropdown menu. You can select an item from the available list or search for a new one. A small X indicates to delete the current relation. After selection it will add it to the current list.
+
+![Has many](images/has-many.png)
+
+A search field is available, it uses the mu-cl-resources filter search.
+
+![Has many search](images/has-many-search.png)
