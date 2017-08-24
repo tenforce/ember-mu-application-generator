@@ -95,3 +95,11 @@ Multi-select dropdown menu. You can select an item from the available list or se
 A search field is available, it uses the mu-cl-resources filter search.
 
 ![Has many search](images/has-many-search.png)
+
+## Create Page
+
+Almost the same as the [edit page](#edit-page), just the actions are a bit different:
+- Create new resource (checkmark).
+- Cancel creation of new resource (x).
+
+![New page](images/new.png)
