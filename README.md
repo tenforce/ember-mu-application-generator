@@ -9,6 +9,7 @@ The generator commands can be generated based on a domain.lisp file with the [em
 To install the application via git+ssh:
 ```
 ember install ember-power-select
+ember install ember-changeset
 ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git
 ember generate ember-mu-application-generator
 ```
