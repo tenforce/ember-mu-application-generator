@@ -53,11 +53,15 @@ The default fonts are included in the design files and will be imported in the s
 
 The blueprint takes a flag `--readonly` which generates the same Ember code but without pages to edit an existing or create a new record of these resources.
 
-## Example:
+### Example:
 
 ```ember generate mu-resource taco filling:belongs-to:protein~fills toppings:has-many:toppings name:string price:number misc --readonly```
 
 In this example `misc` will create an untyped attribute: `misc: attr()`
+
+## User documentation
+
+User documentation can be found in the docs folder!
 
 ## Supported attribute types
 
@@ -68,6 +72,14 @@ Besides the built-in Ember attribute types (string, number, boolean, date) we ha
     - The `toString` method is also overwritten to return `content (language)`.
   - string-set
     - Array of strings.
+  - datetime
+    - Uses the format YYYY. MM. DD. HH:mm:ss
+  - g-year
+    - converting it to a string
+  - gemoetry
+    - converting it to a string
+  - uri
+    - converting it to a string
 
 ### Changed attribute types
   - string
@@ -76,3 +88,5 @@ Besides the built-in Ember attribute types (string, number, boolean, date) we ha
     - Mu-cl-resources seems to have issues with booleans for now (basically it complains when you try to send a boolean value). This transform was made to get around this, as it will translate a front-end boolean into a string for the DB.
     - Therefore, this transform expects the "boolean" value to be specified as a string in the domain.lisp.
     - Once that issue has been fixed, setting the property to "boolean" in domain.lisp and deleting this transform should be enough.
+  - date
+    - Uses the format YYYY. MM. DD.
