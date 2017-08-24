@@ -54,7 +54,6 @@
         }).join("\n")
       %>
 <%= belongsToRelationships.map( function(relationship) {
-        console.log(relationship);
         return "      <tr>\n" +
  		 	  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
         '       {{display-model-belongsto-relationship model=model.' + relationship.name + ' itemRoute=\'' + relationship.relRoute  + '.show\' configuredLabel=\'stringRep\' tagName="td" classes="properties__data"}}\n' +
@@ -62,7 +61,6 @@
         } ).join("\n")
       %>
 <%= hasManyRelationships.map( function(relationship) {
-        console.log(relationship);
         return "      <tr>\n" +
    		  '        <td class="properties__label">{{t \'' +  relationship.name + '\'}}</td>\n' +
         '       {{display-model-hasmany-relationship   model=model.' + relationship.name + ' itemRoute=\'' + relationship.relRoute  + '.show\' configuredLabel=\'stringRep\' tagName="td" classes="properties__data"}}\n' +
