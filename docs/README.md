@@ -51,6 +51,12 @@ Possible actions:
 
   ![Default sorting](images/no-sort.png)
 
+### No results
+
+If there are no results no table will be shown. Instead of it, there will be a text indicating that there are no errors and hinting to create a new one. The hint won't be shown in a read-only application.
+
+![Empty page](images/empty.png)
+
 ## Show Page
 
 This page just shows all the attributes and relations of a single resource. The set items (like language-string-set, string-set, etc.) are indicated as a list, string, number or date is just a single label and booleans are checkboxes. Relations are links to that certain object.
