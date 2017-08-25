@@ -12,7 +12,7 @@ const LangStringSet = Transform.extend({
     Ember.assert(`expected array got ${Ember.typeOf(serialized)}`, (!serialized) || (Ember.typeOf(serialized) === "array"));
 
     // the \n we're being send back by mu-cl-resources is not interpreted as a line feed so we have to force it
-    serialized = serialized.map(function(item, index, enumerable) {
+    serialized = serialized.map(function(item, index) {
       return new LangString(item['content'].split('\\n').join('\n'), item['language']);
     });
 
