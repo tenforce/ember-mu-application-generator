@@ -53,8 +53,8 @@
     {{/if}}
   {{else}}
     <div class="empty">
-      No {{t '<%= entitiesName %>'}} in the database.
-      <%= ((!readonly)?'Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t "'+entityName+'"}}.':'')%>
+      No {{t (humanize '<%= entitiesName %>')}} in the database.
+      <%= ((!readonly)?'Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "'+entityName+'")}}.':'')%>
     </div>
   {{/if}}
 </div>
