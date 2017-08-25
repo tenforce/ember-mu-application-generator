@@ -1,17 +1,33 @@
 //  default settings for the design
 @import 'mixin';
 
+.loading {
+  text-align: center;
+
+  p {
+    display: none;
+  }
+}
+
 table {
-  margin: 0 auto 0 15%;
-  min-width: 60%;
+  margin: 30px auto 0;
+  // width: 60%;
   text-align: left;
   border: 1px solid #e8e8e8;
   border-collapse: collapse;
 
-  td,
   th {
-    padding: 1% 2%;
+    padding: 25px;
     vertical-align: middle;
+    border: 1px solid #e8e8e8;
+  }
+
+  td {
+    padding: 25px;
+    vertical-align: middle;
+    text-align: left;
+    width: 300px;
+    word-break: break-word;
     border: 1px solid #e8e8e8;
   }
 
@@ -20,19 +36,13 @@ table {
       background: #eee;
       text-transform: uppercase;
 
-      td,
-      th {
-        padding: 2%;
-        width: 5%;
-      }
-
       .sortable {
         span {
           cursor: pointer;
         }
 
         &.sorted {
-          color: crimson;
+          color: $mainColor;
 
           &:after {
             font-family: "FontAwesome";
@@ -82,7 +92,7 @@ input {
 
   &:focus,
   &:hover {
-    border: 1px solid crimson;
+    border: 1px solid $mainColor;
   }
 }
 
@@ -100,7 +110,7 @@ a {
   @include transition(all 0.35s ease);
 
   &:hover {
-    color: crimson;
+    color: $mainColor;
   }
 }
 
@@ -129,7 +139,6 @@ a {
   border: 1px solid #d4d4d4;
   font-size: 17px;
   font-weight: 300;
-  padding: 1%;
   @include transition(all .5s ease);
   @include border-radius(4px);
   text-align: left;
@@ -137,7 +146,7 @@ a {
   &:active,
   &:focus,
   &:hover {
-    border: 1px solid crimson;
+    border: 1px solid $mainColor;
   }
 
   input {
@@ -151,7 +160,7 @@ a {
   .ember-power-select-multiple-option {
     background-color: #eee;
 
-    .ember-power-select-multiple-remove-btn {
+    .ember-power-select-multiple-remove-btn, .ember-power-select-clear-btn {
       color: red;
       font-weight: 800;
     }
@@ -162,7 +171,6 @@ a {
   border: none;
   background: none;
   outline: none;
-  cursor: pointer;
   padding: 1%;
   @include transition(all 0.35s ease);
   font-size: 0;
@@ -172,8 +180,11 @@ a {
     font-size: 24px;
   }
 
-  &:hover {
-    color: crimson;
+  &:not(:disabled) {
+    &:hover {
+      color: $mainColor;
+      cursor: pointer;
+    }
   }
 
   &.delete {
@@ -209,6 +220,12 @@ a {
   &.last {
     &:after {
       content: "\F101";
+    }
+  }
+
+  &.goto {
+    &:after {
+      content: "\F138";
     }
   }
 

@@ -1,7 +1,0 @@
-<span>
-{{#if (is-pending model)}}
-  loading...
-{{else}}
-  {{#link-to itemRoute model.id}}{{get (await model) configuredLabel}}{{/link-to}}
-{{/if}}
-</span>
