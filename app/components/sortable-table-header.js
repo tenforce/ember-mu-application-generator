@@ -1,1 +1,0 @@
-export { default } from 'ember-mu-application-generator/components/sortable-table-header';
