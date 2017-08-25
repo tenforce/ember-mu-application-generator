@@ -8,13 +8,11 @@ The generator commands can be generated based on a domain.lisp file with the [em
 
 To install the application via git+ssh:
 ```
-ember install ember-power-select
-ember install ember-changeset
 ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git
 ember generate ember-mu-application-generator
 ```
 
-The ember generate is needed, because on install the application should install some necessary files (transforms, utils, etc.). If ember installation is done with a git url, ember install cannot find the package name and install the default blueprint (where packagename == blueprintname).
+The ember generate is needed, because on install the application should install some necessary files (transforms, utils, etc.) and addons (ember-power-select, ember-changeset). If ember installation is done with a git url, ember install cannot find the package name and install the default blueprint (where packagename == blueprintname).
 
 If it's needed, you can modify the url with a tag or a branch:
 ```
