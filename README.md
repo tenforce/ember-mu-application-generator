@@ -22,7 +22,7 @@ ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-gen
 
 ### Design installation:
 
-To use the design, you will need `ember-cli-sass`.This design blueprint will install it  for you and generate necessary files:
+To use the design, you will need `ember-cli-sass`. You'll have to remove your app.css file to use the app.scss file. This design blueprint will install it  for you and generate necessary files:
 ```
 ember generate mu-application-design
 ```
