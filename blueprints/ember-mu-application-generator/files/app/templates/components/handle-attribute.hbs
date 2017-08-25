@@ -1,6 +1,6 @@
 {{!--
   Let's you display and edit a basic attributes from a model.
-  It also supports booleans and images
+  It also supports booleans.
 
   Do not use this component for: language-string-set, string-set.
 
@@ -26,16 +26,10 @@
   {{else}}
     {{#if boolean}}
       {{input type="checkbox" disabled=(not editable) checked=(mut (get model attribute)) }}
-    {{else if  isImage}}
-      <img src= {{get model attribute}}>
     {{else}}
       {{t (get model attribute)}}
     {{/if}}
   {{/if}}
 {{else}}
-  {{#if isImage}}
-    <img src= {{attribute}}>
-  {{else}}
-    {{t attribute}}
-  {{/if}}
+  {{t attribute}}
 {{/if}}
