@@ -11,6 +11,9 @@ module.exports = {
   //     foo: options.entity.options.foo
   //   };
   // }
+  beforeInstall: function() {
+    return this.addAddonToProject("ember-cli-sass");
+  },
 
   afterInstall: function(options) {
 
