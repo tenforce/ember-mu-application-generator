@@ -4,7 +4,7 @@ Generator for a full browseable CRUD front-end for a mu-cl-resources back-end.
 
 The generator commands can be generated based on a domain.lisp file with the [ember-mu-application-generator-generator](https://github.com/tenforce/ember-mu-application-generator-generator). This script also generates dispatcher rules to route calls from Ember to mu-cl-resources.
 
-## Installation:
+## Installation
 
 To install the application via git+ssh:
 ```
@@ -20,7 +20,17 @@ ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.g
 ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.git#addon
 ```
 
-### Design installation:
+### Dependencies
+
+This addon requires [ember-power-select](https://github.com/cibernox/ember-power-select) and [ember-changeset](https://github.com/DockYard/ember-changeset). If they are not installed with the `ember generate ember-mu-application-generator`, then please install them manually.
+
+```
+ember install ember-power-select
+ember install ember-changeset
+```
+
+
+### Design installation
 
 To use the design, you will need `ember-cli-sass`. You'll have to remove your app.css file to use the app.scss file. This design blueprint will install it  for you and generate necessary files:
 ```
@@ -37,6 +47,7 @@ To just include the necessary files in your app.scss:
 ```
 $mainColor: crimson;
 @import "ember-mu-application-generator";
+@import "ember-power-select";
 ```
 
 The `$mainColor` has to be defined! It defines the background of the navbar and all the on hover and focused colors for buttons and input fields.
@@ -46,13 +57,13 @@ The default fonts are included in the design files and will be imported in the s
 - Font Awesome
 
 
-## Usage:
+## Usage
 
 ```ember generate mu-resource [resource name] ([attribute name](:[type]))* ([relationship name]:(belongs-to|has-many):[type](~[inverse relationship name]))*```
 
 The blueprint takes a flag `--readonly` which generates the same Ember code but without pages to edit an existing or create a new record of these resources.
 
-### Example:
+### Example
 
 ```ember generate mu-resource taco filling:belongs-to:protein~fills toppings:has-many:toppings name:string price:number misc --readonly```
 
@@ -87,3 +98,7 @@ Besides the built-in Ember attribute types (string, number, boolean, date) we ha
     - Mu-cl-resources seems to have issues with booleans for now (basically it complains when you try to send a boolean value). This transform was made to get around this, as it will translate a front-end boolean into a string for the DB.
     - Therefore, this transform expects the "boolean" value to be specified as a string in the domain.lisp.
     - Once that issue has been fixed, setting the property to "boolean" in domain.lisp and deleting this transform should be enough.
+    
+## Known issues
+
+Sometimes ember-power-select doesn't find the wormhole. This can be fixed with either importing the ember-power-select in SASS or installing ember-wormhole.
