@@ -98,6 +98,7 @@ Besides the built-in Ember attribute types (string, number, boolean, date) we ha
     - Mu-cl-resources seems to have issues with booleans for now (basically it complains when you try to send a boolean value). This transform was made to get around this, as it will translate a front-end boolean into a string for the DB.
     - Therefore, this transform expects the "boolean" value to be specified as a string in the domain.lisp.
     - Once that issue has been fixed, setting the property to "boolean" in domain.lisp and deleting this transform should be enough.
+    - **If your backend doesn't send back a string, but a boolean value, then this file can be deleted**
     
 ## Known issues
 
