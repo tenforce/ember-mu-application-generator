@@ -2,13 +2,13 @@
 
 Generator for a full browseable CRUD front-end for a mu-cl-resources back-end.
 
-The generator commands can be generated based on a domain.lisp file with the [ember-mu-application-generator-generator](https://git.tenforce.com/mu-semtech/ember-mu-application-generator-generator). This script also generates dispatcher rules to route calls from Ember to mu-cl-resources.
+The generator commands can be generated based on a domain.lisp file with the [ember-mu-application-generator-generator](https://github.com/tenforce/ember-mu-application-generator-generator). This script also generates dispatcher rules to route calls from Ember to mu-cl-resources.
 
 ## Installation:
 
 To install the application via git+ssh:
 ```
-ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git
+ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.git
 ember generate ember-mu-application-generator
 ```
 
@@ -16,8 +16,8 @@ The ember generate is needed, because on install the application should install 
 
 If it's needed, you can modify the url with a tag or a branch:
 ```
-ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git#v0.2.0
-ember install git+ssh://git@git.tenforce.com:mu-semtech/ember-mu-application-generator.git#addon
+ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.git#v0.2.0
+ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.git#addon
 ```
 
 ### Design installation:
