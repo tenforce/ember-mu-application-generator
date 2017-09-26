@@ -22,11 +22,17 @@ ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.g
 
 ### Dependencies
 
-This addon requires [ember-power-select](https://github.com/cibernox/ember-power-select) and [ember-changeset](https://github.com/DockYard/ember-changeset). If they are not installed with the `ember generate ember-mu-application-generator`, then please install them manually.
+This addon requires the following addons:
+- [ember-power-select](https://github.com/cibernox/ember-power-select) 
+- [ember-changeset](https://github.com/DockYard/ember-changeset)
+- [ember-datetimepicker](https://github.com/kellyselden/ember-datetimepicker)
+
+If they are not installed with the `ember generate ember-mu-application-generator`, then please install them manually.
 
 ```
 ember install ember-power-select
 ember install ember-changeset
+ember install ember-datetimepicker
 ```
 
 
