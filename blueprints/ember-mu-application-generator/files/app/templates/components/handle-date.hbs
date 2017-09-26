@@ -11,11 +11,14 @@
 {{#if editable}}
   {{date-time-picker
   (get model attribute)
+  class="display-inline"
+  options=(hash
+    className="display-inline"
+    inline=true
+    timepicker=timePicker
+  )
   action=(action (mut (get model attribute)))
   }}
-  <span class="text">
-    {{datetime}}
-  </span>
 {{else}}
   {{t (get model attribute)}}
 {{/if}}
