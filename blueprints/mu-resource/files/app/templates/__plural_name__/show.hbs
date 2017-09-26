@@ -51,6 +51,12 @@
               "        {{handle-date model=model attribute='" + property.name + "' tagName='td' classes='properties__data'}}\n" +
               "      </tr>";
           }
+          else if(property.kind == "datetime") {
+            return "      <tr>\n" +
+              "        <td>{{t '" + property.name + "'}}</td>\n" +
+              "        {{handle-date model=model attribute='" + property.name + "' tagName='td' classes='properties__data' timePicker=true}}\n" +
+              "      </tr>";
+          }
           else {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +

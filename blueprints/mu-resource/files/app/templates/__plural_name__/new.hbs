@@ -46,6 +46,12 @@
               "<td align='middle'>{{handle-date model=model attribute='" + property.name + "' editable=true}}</td>\n" +
               "      </tr>";
           }
+          else if(property.kind == "date") {
+            return "      <tr>\n" +
+              "        <td>" + property.name + "</td>\n" +
+              "<td align='middle'>{{handle-date model=model attribute='" + property.name + "' editable=true timePicker=true}}</td>\n" +
+              "      </tr>";
+          }
           else {
             return "      <tr>\n" +
               "        <td>" + property.name + "</td>\n" +

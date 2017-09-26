@@ -36,6 +36,9 @@
                 else if(property.kind == "date") {
                   return "        {{handle-date model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
                 }
+                else if(property.kind == "datetime") {
+                  return "        {{handle-date model=item attribute='" + property.name + "' tagName='td' classes='properties__data' timePicker=true}}";
+                }
                 else {
                   return "            {{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
                 }

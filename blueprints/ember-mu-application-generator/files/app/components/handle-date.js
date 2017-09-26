@@ -7,11 +7,13 @@ import layout from '../templates/components/handle-attribute';
   The classes are configurable, the default is "".
 
   timePicker - show timepicker or not, the default is false
+  timeSteps - interval of minute stepts in the timePicker, default is 5
 */
 export default Ember.Component.extend({
   layout: layout,
   tagName: "div",
   classNameBindings: ['classes'],
   classes: "",
-  timePicker: false
+  timePicker: false,
+  timeSteps: 5
 });
