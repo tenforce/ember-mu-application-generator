@@ -1,0 +1,21 @@
+{{!--
+  Let's you display and edit dates and datetimes
+
+  Configuration:
+    model: the model to take the string-set from
+    attribute: attribute name of the string-set
+    tagName: tagName for the component
+    classes: css classes for the component
+    editable: choose between an editable mode or a normal display mode.
+ --}}
+{{#if editable}}
+  {{date-time-picker
+  (get model attribute)
+  action=(action (mut (get model attribute)))
+  }}
+  <span class="text">
+    {{datetime}}
+  </span>
+{{else}}
+  {{t (get model attribute)}}
+{{/if}}
