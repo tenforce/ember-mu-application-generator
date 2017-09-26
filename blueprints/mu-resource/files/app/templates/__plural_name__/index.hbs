@@ -33,6 +33,9 @@
                 else if(property.kind == "boolean") {
                   return "        <td>{{handle-attribute model=item attribute='" + property.name + "' classes='checkbox' boolean=true}}</td>";
                 }
+                else if(property.kind == "date") {
+                  return "        {{handle-date model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
+                }
                 else {
                   return "            {{handle-attribute model=item attribute='" + property.name + "' tagName='td' classes='properties__data'}}";
                 }

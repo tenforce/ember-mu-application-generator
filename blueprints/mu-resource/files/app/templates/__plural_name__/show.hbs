@@ -45,6 +45,12 @@
               "        <td>{{handle-attribute model=model attribute='" + property.name + "' classes='checkbox' boolean=true}}</td>\n" +
               "      </tr>";
           }
+          else if(property.kind == "date") {
+            return "      <tr>\n" +
+              "        <td>{{t '" + property.name + "'}}</td>\n" +
+              "        {{handle-date model=model attribute='" + property.name + "' tagName='td' classes='properties__data'}}\n" +
+              "      </tr>";
+          }
           else {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +
