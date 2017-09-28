@@ -23,7 +23,7 @@ ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.g
 ### Dependencies
 
 This addon requires the following addons:
-- [ember-power-select](https://github.com/cibernox/ember-power-select) 
+- [ember-power-select](https://github.com/cibernox/ember-power-select)
 - [ember-changeset](https://github.com/DockYard/ember-changeset)
 - [ember-datetimepicker](https://github.com/kellyselden/ember-datetimepicker)
 
@@ -34,6 +34,8 @@ ember install ember-power-select
 ember install ember-changeset
 ember install ember-datetimepicker
 ```
+
+The ember-datetimepicker addon needs jquery-datetimepicker to be able to run. Somehow the addon doesn't ember install it correctly, so make sure to use `ember install ember-datetimepicker` command!
 
 
 ### Design installation
@@ -89,7 +91,7 @@ Besides the built-in Ember attribute types (string, number, boolean, date) we ha
   - string-set
     - Array of strings.
   - datetime
-    - Uses the format YYYY. MM. DD. HH:mm:ss
+    - Uses the format YYYY. MM. DD. HH:mm
   - g-year
     - converting it to a string
   - gemoetry
@@ -105,7 +107,9 @@ Besides the built-in Ember attribute types (string, number, boolean, date) we ha
     - Therefore, this transform expects the "boolean" value to be specified as a string in the domain.lisp.
     - Once that issue has been fixed, setting the property to "boolean" in domain.lisp and deleting this transform should be enough.
     - **If your backend doesn't send back a string, but a boolean value, then this file can be deleted**
-    
+
 ## Known issues
 
-Sometimes ember-power-select doesn't find the wormhole. This can be fixed with either importing the ember-power-select in SASS or installing ember-wormhole.
+- Sometimes ember-power-select doesn't find the wormhole. This can be fixed with either importing the ember-power-select in SASS or installing ember-wormhole.
+- The ember-datetimepicker addon needs jquery-datetimepicker to be able to run. Somehow the addon doesn't ember install it correctly, so make sure to use `ember install ember-datetimepicker` command!
+- The extra used addon installation after the `ember generate ember-mu-application-generator` doesn't seem to work correctly. Some extra addons from the [dependencies](###dependencies) might need to be added.
