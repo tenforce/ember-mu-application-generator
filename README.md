@@ -112,4 +112,4 @@ Besides the built-in Ember attribute types (string, number, boolean, date) we ha
 
 - Sometimes ember-power-select doesn't find the wormhole. This can be fixed with either importing the ember-power-select in SASS or installing ember-wormhole.
 - The ember-datetimepicker addon needs jquery-datetimepicker to be able to run. Somehow the addon doesn't ember install it correctly, so make sure to use `ember install ember-datetimepicker` command!
-- The extra used addon installation after the `ember generate ember-mu-application-generator` doesn't seem to work correctly. Some extra addons from the [dependencies](###dependencies) might need to be added.
+- The extra used addon installation after the `ember generate ember-mu-application-generator` doesn't seem to work correctly. Some extra addons from the [dependencies](#dependencies) might need to be added.
