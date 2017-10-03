@@ -66,9 +66,8 @@ module.exports = {
 
       var attr;
       if (/has-many/.test(dasherizedType)) {
-        var camelizedNamePlural = inflection.pluralize(camelizedName);
         attr = dsAttr(dasherizedForeignModelSingular, dasherizedType, camelizedInverseName);
-        attrs.push(camelizedNamePlural + ': ' + attr);
+        attrs.push(camelizedName + ': ' + attr);
         shouldImportHasMany = true;
       } else if (/belongs-to/.test(dasherizedType)) {
         attr = dsAttr(dasherizedForeignModel, dasherizedType, camelizedInverseName);
