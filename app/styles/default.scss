@@ -1,6 +1,19 @@
 //  default settings for the design
 @import 'mixin';
 
+
+.xdsoft_datepicker.active {
+  width: 300px;
+}
+
+.xdsoft_label.xdsoft_year {
+  width:  75px;
+}
+
+.xdsoft_label.xdsoft_month {
+  width: 130px;
+}
+
 .loading {
   text-align: center;
 
@@ -26,7 +39,7 @@ table {
     padding: 25px;
     vertical-align: middle;
     text-align: left;
-    width: 300px;
+    width: 400px;
     word-break: break-word;
     border: 1px solid #e8e8e8;
   }

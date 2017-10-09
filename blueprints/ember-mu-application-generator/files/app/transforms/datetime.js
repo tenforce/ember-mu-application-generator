@@ -4,7 +4,7 @@ import moment from 'moment';
 const DatetimeTransform = Transform.extend({
   deserialize(serialized) {
     if (serialized != null) {
-      serialized = moment(serialized).format('YYYY. MM. DD. HH:mm:ss');
+      serialized = moment(serialized).toDate();
     }
     return serialized;
   },
