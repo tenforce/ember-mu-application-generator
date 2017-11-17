@@ -317,4 +317,4 @@ var entityToVariable = function(entityName) {
       return word[0].toUpperCase() + word.substring(1);
     })
   ).join("");
-}
+};
