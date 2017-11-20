@@ -168,18 +168,22 @@ module.exports = {
       'app/routes/__plural_name__/',
       'app/routes/__plural_name__/index.js',
       'app/routes/__plural_name__/show.js',
+      'app/routes/__plural_name__/show-error.js',
       'app/templates/',
       'app/templates/__plural_name__/',
       'app/templates/__plural_name__/index.hbs',
-      'app/templates/__plural_name__/show.hbs'
+      'app/templates/__plural_name__/show.hbs',
+      'app/templates/__plural_name__/show-error.hbs'
     ];
 
     if ((this.options == null) || (!this.options.readonly)) {
       return fileList.concat([
         'app/routes/__plural_name__/new.js',
         'app/routes/__plural_name__/edit.js',
+        'app/routes/__plural_name__/edit-error.js',
+        'app/templates/__plural_name__/new.hbs',
         'app/templates/__plural_name__/edit.hbs',
-        'app/templates/__plural_name__/new.hbs'
+        'app/templates/__plural_name__/edit-error.hbs'
       ]);
     }
 
