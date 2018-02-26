@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from '../templates/components/display-lang-attribute';
 
 /*
@@ -6,7 +6,7 @@ import layout from '../templates/components/display-lang-attribute';
   The tagname is configurable, the default is a div, because otherwise we cannot use classNameBindings.
   The classes are configurable, the default is "".
 */
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   tagName: "div",
   classNameBindings: ['classes'],

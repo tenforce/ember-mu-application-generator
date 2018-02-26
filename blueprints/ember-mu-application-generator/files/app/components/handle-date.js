@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from '../templates/components/handle-attribute';
 import moment from 'moment';
-
 
 /*
   This component displays and edits dates.
@@ -11,7 +10,7 @@ import moment from 'moment';
   timePicker - show timepicker or not, the default is false
   timeSteps - interval of minute stepts in the timePicker, default is 5
 */
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   tagName: "div",
   classNameBindings: ['classes'],

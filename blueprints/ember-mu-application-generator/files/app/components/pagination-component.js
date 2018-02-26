@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import layout from '../templates/components/pagination-component';
 
 /**
@@ -10,13 +11,13 @@ import layout from '../templates/components/pagination-component';
   This code is based on the ember-data-table's number pagination component
   https://github.com/mu-semtech/ember-data-table/blob/master/addon/components/number-pagination.js
 */
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   tagName: 'div',
   classNameBindings: ['classes'],
   classes: "pagination",
 
-  currentPage: Ember.computed('page', {
+  currentPage: computed('page', {
     get() {
       return this.get('page') ? parseInt(this.get('page')) + 1 : 1;
     },
@@ -26,24 +27,24 @@ export default Ember.Component.extend({
     }
   }),
 
-  firstPage: Ember.computed('links', function() {
+  firstPage: computed('links', function() {
     return this.get('links')['first']['number'] || 1;
   }),
-  lastPage: Ember.computed('links', function() {
+  lastPage: computed('links', function() {
     const max = this.get('links')['last']['number'];
     return max ? max + 1 : max;
   }),
 
-  isFirstPage: Ember.computed('firstPage', 'currentPage', function() {
+  isFirstPage: computed('firstPage', 'currentPage', function() {
     return this.get('firstPage') == this.get('currentPage');
   }),
-  isLastPage: Ember.computed('lastPage', 'currentPage', function() {
+  isLastPage: computed('lastPage', 'currentPage', function() {
     return this.get('lastPage') == this.get('currentPage');
   }),
-  hasMultiplePages: Ember.computed('lastPage', function() {
+  hasMultiplePages: computed('lastPage', function() {
     return this.get('lastPage') !== undefined;
   }),
-  numberOfPages: Ember.computed('hasMultiplePages', 'firstPage', 'lastPage', function() {
+  numberOfPages: computed('hasMultiplePages', 'firstPage', 'lastPage', function() {
     let numberOfPages = 1;
     if (this.get('hasMultiplePages')) {
       numberOfPages += this.get('lastPage') - this.get('firstPage');
@@ -51,13 +52,13 @@ export default Ember.Component.extend({
     return numberOfPages;
   }),
 
-  size: Ember.computed('links', function() {
+  size: computed('links', function() {
     return this.get('links')['first']['size'] || null;
   }),
-  startItem: Ember.computed('size', 'currentPage', function() {
+  startItem: computed('size', 'currentPage', function() {
     return this.get('size') * (this.get('currentPage') - 1) + 1;
   }),
-  endItem: Ember.computed('startItem', 'size', 'total', function() {
+  endItem: computed('startItem', 'size', 'total', function() {
     let endItem = this.get('startItem') + this.get('size') - 1;
     if (endItem > this.get('total')) {
       return this.get('total');
@@ -65,8 +66,8 @@ export default Ember.Component.extend({
     return endItem;
   }),
 
-  isValidPageNumber: Ember.computed('goToPage', 'numberOfPages', function(){
-    return (this.get('goToPage') > 0) && (this.get('goToPage') < (this.get('numberOfPages') + 1))
+  isValidPageNumber: computed('goToPage', 'numberOfPages', function(){
+    return (this.get('goToPage') > 0) && (this.get('goToPage') < (this.get('numberOfPages') + 1));
   }),
   actions: {
     changePage(link) {

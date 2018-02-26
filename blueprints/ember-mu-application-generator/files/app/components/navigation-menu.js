@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { inject } from '@ember/service';
+import Component from '@ember/component';
 import layout from '../templates/components/navigation-menu';
 
 /*
@@ -11,24 +13,16 @@ import layout from '../templates/components/navigation-menu';
 
   The list of indeces are always unique and sorted.
 */
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   tagName: 'div',
   currentRoute: '',
-  routing: Ember.inject.service('-routing'),
 
-  menus: Ember.computed(function() {
-    let router = Ember.getOwner(this).lookup('router:main');
-    let allRoutesList = router.get('router.recognizer.names');
-    let routeKeys = Object.keys(allRoutesList);
-    let filteredKeys = routeKeys.filter(function(item) {
-      return item.indexOf('.index') >= 0;
-    });
-
-    filteredKeys = filteredKeys.map(function(item) {
-      return item.split('.index')[0];
-    });
-    return filteredKeys.uniq().sort();
+  menus: computed(function() {
+    const routeKeys = [
+      /* Add routes for the menu here */
+    ];
+    return routeKeys.uniq().sort();
   }),
 
   actions: {

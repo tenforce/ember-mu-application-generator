@@ -1,3 +1,4 @@
+import { set } from '@ember/object';
 import Ember from 'ember';
 
 export default Ember.Route.extend({
@@ -5,7 +6,7 @@ export default Ember.Route.extend({
 
   actions: {
     toggleShowError(error) {
-      Ember.set(error, 'showError', !error.showError);
+      set(error, 'showError', !error.showError);
     }
   }
 });

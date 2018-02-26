@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import { dasherize } from '@ember/string';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import layout from '../templates/components/sortable-table-header';
 
 /**
@@ -14,7 +16,7 @@ import layout from '../templates/components/sortable-table-header';
 
   This component is based on the ember-data-table: https://github.com/mu-semtech/ember-data-table/blob/master/addon/components/th-sortable.js
 */
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   tagName: 'th',
   classNameBindings: ['classes', 'sortableClass', 'order', 'isSorted:sorted'],
@@ -22,17 +24,17 @@ export default Ember.Component.extend({
   sortableClass: "sortable",
   currentSort: "",
 
-  dasherizerized: Ember.computed('attribute', function() {
-    return Ember.String.dasherize(this.get('attribute'));
+  dasherizerized: computed('attribute', function() {
+    return String.dasherize(this.get('attribute'));
   }),
-  inverseDasherizerized: Ember.computed('dasherizerized', function() {
+  inverseDasherizerized: computed('dasherizerized', function() {
     return "-" + this.get('dasherizerized');
   }),
 
-  isSorted: Ember.computed('order', function() {
+  isSorted: computed('order', function() {
     return (this.get('order') !== null) && (this.get('order').length > 0);
   }),
-  order: Ember.computed('currentSort', function() {
+  order: computed('currentSort', function() {
     var currentSort = this.get('currentSort');
     if (currentSort === this.get('dasherizerized')) {
       return "asc";
