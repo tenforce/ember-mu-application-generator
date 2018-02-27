@@ -1,5 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from '../templates/components/navigation-menu';
+import { inject } from '@ember/service';
+import { computed } from '@ember/object';
+ import { getOwner } from '@ember/application';
 
 /*
   This component created a menu for your routes.
@@ -11,15 +14,15 @@ import layout from '../templates/components/navigation-menu';
 
   The list of indeces are always unique and sorted.
 */
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   tagName: 'div',
   currentRoute: '',
-  routing: Ember.inject.service('-routing'),
+  router: inject('router'),
 
-  menus: Ember.computed(function() {
-    let router = Ember.getOwner(this).lookup('router:main');
-    let allRoutesList = router.get('router.recognizer.names');
+  menus: computed(function() {
+    let router = getOwner(this).lookup('router:main');
+    let allRoutesList = router.get('currentState.routerJs.recognizer.names');
     let routeKeys = Object.keys(allRoutesList);
     let filteredKeys = routeKeys.filter(function(item) {
       return item.indexOf('.index') >= 0;
@@ -34,7 +37,7 @@ export default Ember.Component.extend({
   actions: {
     goToPage: function(item) {
       this.set('currentRoute', item);
-      this.get("routing").transitionTo(item);
+      this.get("router").transitionTo(item);
     }
   }
 });
