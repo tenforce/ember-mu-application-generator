@@ -6,9 +6,9 @@ The generator commands can be generated based on a domain.lisp file with the [em
 
 ## Installation
 
-To install the application via git+ssh:
+To install the application via git+https:
 ```
-ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.git
+ember install https://git@github.com:tenforce/ember-mu-application-generator.git
 ember generate ember-mu-application-generator
 ```
 
@@ -16,8 +16,16 @@ The ember generate is needed, because on install the application should install 
 
 If it's needed, you can modify the url with a tag or a branch:
 ```
-ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.git#v0.2.0
-ember install git+ssh://git@github.com:tenforce/ember-mu-application-generator.git#addon
+ember install https://git@github.com:tenforce/ember-mu-application-generator.git#tag
+ember install https://git@github.com:tenforce/ember-mu-application-generator.git#addon
+```
+
+### Ember 2.14
+
+To use the addon with Ember version >=2.14 and <3.0.0, make sure to use the good tag:
+
+```
+ember install https://git@github.com:tenforce/ember-mu-application-generator.git#ember-2.14
 ```
 
 ### Dependencies
