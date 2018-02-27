@@ -17,7 +17,7 @@ The ember generate is needed, because on install the application should install 
 If it's needed, you can modify the url with a tag or a branch:
 ```
 ember install https://git@github.com:tenforce/ember-mu-application-generator.git#tag
-ember install https://git@github.com:tenforce/ember-mu-application-generator.git#addon
+ember install https://git@github.com:tenforce/ember-mu-application-generator.git#branch
 ```
 
 ### Ember 2.14
