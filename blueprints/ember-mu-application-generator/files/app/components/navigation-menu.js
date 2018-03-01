@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
-=======
->>>>>>> a151a545bb576d9be1e0247208a7e4f4a1b7325b
 import Component from '@ember/component';
 import layout from '../templates/components/navigation-menu';
-import { inject } from '@ember/service';
-import { computed } from '@ember/object';
- import { getOwner } from '@ember/application';
+import { getOwner } from '@ember/application';
 
 /*
   This component created a menu for your routes.
