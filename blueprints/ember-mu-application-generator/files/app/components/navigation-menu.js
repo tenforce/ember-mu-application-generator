@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
+=======
+>>>>>>> a151a545bb576d9be1e0247208a7e4f4a1b7325b
 import Component from '@ember/component';
 import layout from '../templates/components/navigation-menu';
+import { inject } from '@ember/service';
+import { computed } from '@ember/object';
+ import { getOwner } from '@ember/application';
 
 /*
   This component created a menu for your routes.
@@ -17,18 +23,26 @@ export default Component.extend({
   layout: layout,
   tagName: 'div',
   currentRoute: '',
+  router: inject('router'),
 
   menus: computed(function() {
-    const routeKeys = [
-      /* Add routes for the menu here */
-    ];
-    return routeKeys.uniq().sort();
+    let router = getOwner(this).lookup('router:main');
+    let allRoutesList = router.get('currentState.routerJs.recognizer.names');
+    let routeKeys = Object.keys(allRoutesList);
+    let filteredKeys = routeKeys.filter(function(item) {
+      return item.indexOf('.index') >= 0;
+    });
+
+    filteredKeys = filteredKeys.map(function(item) {
+      return item.split('.index')[0];
+    });
+    return filteredKeys.uniq().sort();
   }),
 
   actions: {
     goToPage: function(item) {
       this.set('currentRoute', item);
-      this.get("routing").transitionTo(item);
+      this.get("router").transitionTo(item);
     }
   }
 });
