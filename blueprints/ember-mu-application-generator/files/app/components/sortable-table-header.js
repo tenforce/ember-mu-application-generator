@@ -25,7 +25,7 @@ export default Component.extend({
   currentSort: "",
 
   dasherizerized: computed('attribute', function() {
-    return String.dasherize(this.get('attribute'));
+    return dasherize(this.get('attribute'));
   }),
   inverseDasherizerized: computed('dasherizerized', function() {
     return "-" + this.get('dasherizerized');
