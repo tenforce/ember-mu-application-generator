@@ -35,7 +35,10 @@ module.exports = {
     var needs = [];
     var properties = [];
     var entityOptions = options.entity.options;
-    var importStatements = ['import Ember from \'ember\';', 'import Model from \'ember-data/model\';'];
+    var importStatements = [
+      'import Model from \'ember-data/model\';',
+      'import { collect } from \'@ember/object/computed\';'
+    ];
     var shouldImportAttr = false;
     var shouldImportBelongsTo = false;
     var shouldImportHasMany = false;
