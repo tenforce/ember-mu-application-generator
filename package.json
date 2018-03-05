@@ -27,7 +27,7 @@
     "ember-datetimepicker": "^2.1.0",
     "ember-i18n": "^5.0.2",
     "ember-moment": "^7.4.1",
-    "ember-mu-transform-helpers": "^1.0.0",
+    "ember-mu-transform-helpers": "^1.1.0",
     "ember-power-select": "^1.9.3",
     "ember-promise-helpers": "^1.0.3",
     "jquery-datetimepicker": "^2.5.4",
