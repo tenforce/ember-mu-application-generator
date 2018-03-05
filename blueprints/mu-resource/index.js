@@ -231,7 +231,7 @@ module.exports = {
 // TODO inline this function. the caller already does the type matching...
 function dsAttr(name, type, inverse) {
   if (inverse) { // is either empty or needs some more syntax
-    inverse = ", { inverse: '" + inverse + " '}";
+    inverse = ", { inverse: '" + inverse + "' }";
   }
   else {
     inverse = ", { inverse: null }";
