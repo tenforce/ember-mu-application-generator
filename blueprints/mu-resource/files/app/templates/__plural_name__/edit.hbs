@@ -36,6 +36,12 @@
               "        <td align='middle'>{{edit-string-set data=changeset." + property.name + " tagName='ul' classes='string-set'}}</td>\n" +
               "      </tr>";
           }
+          else if(property.kind == "language-string") {
+            return "      <tr>\n" +
+              "        <td>{{t '" + property.name + "'}}</td>\n" +
+              "        <td align='middle'>{{edit-language-typed-string data=model." + property.name + "}}</td>\n" +
+              "      </tr>";
+          }
           else if(property.kind == "boolean") {
             return "      <tr>\n" +
               "        <td>{{t '" + property.name + "'}}</td>\n" +
