@@ -1,7 +1,6 @@
 import { copy } from '@ember/object/internals';
 import { isNone } from '@ember/utils';
 import Component from '@ember/component';
-import { LangString } from 'ember-mu-transform-helpers/transforms/language-string';
 
 /*
   This component edit string-sets.
