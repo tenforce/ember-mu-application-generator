@@ -91,7 +91,7 @@ module.exports = {
         name: camelizedName,
         kind: type,
         relType: dasherizedForeignModelSingular,
-        relRoute: dasherizedForeignModelPlural,
+        relRoute: dasherizedForeignModelPlural
       });
 
     }
@@ -133,7 +133,7 @@ module.exports = {
 
     // Return
 
-    result = {
+    const result = {
       // Model
       importStatements: importStatements,
       attrs: attrs, // attrs and relationships, ready to be pasted in the model template
@@ -147,7 +147,7 @@ module.exports = {
       entityName: options.entity.name,
       entitiesName: inflection.pluralize(options.entity.name),
 
-      readonly: options.readonly,
+      readonly: options.readonly
     };
 
     return result;
@@ -156,9 +156,9 @@ module.exports = {
   fileMapTokens: function(options) {
     return {
       __plural_name__: function(options) {
-        return options.locals.entitiesName
+        return options.locals.entitiesName;
       }
-    }
+    };
   },
 
   // https: //github.com/ember-cli/ember-cli/issues/7287
@@ -231,22 +231,26 @@ module.exports = {
 // TODO inline this function. the caller already does the type matching...
 function dsAttr(name, type, inverse) {
   if (inverse) { // is either empty or needs some more syntax
-    inverse = ", {inverse: '" + inverse + "'}"
+    inverse = ", { inverse: '" + inverse + " '}";
   }
   else {
-    inverse = ", {inverse: null }"
+    inverse = ", { inverse: null }";
   }
+
   switch (type) {
-    case 'belongs-to':
-      return 'belongsTo(\'' + name + '\'' + inverse + ')';
-    case 'has-many':
-      return 'hasMany(\'' + name + '\'' + inverse + ')';
-    case '':
-      //"If you don't specify the type of the attribute, it will be whatever was provided by the server"
-      //http://emberjs.com/guides/models/defining-models/
-      return 'attr()';
-    default:
-      return 'attr(\'' + type + '\')';
+  case 'belongs-to':
+    return 'belongsTo(\'' + name + '\'' + inverse + ')';
+  case 'has-many':
+    return 'hasMany(\'' + name + '\'' + inverse + ')';
+  case 'date': // data types with a custom transform
+  case 'datetime':
+  case 'language-string':
+  case 'language-string-set':
+  case 'string-set':
+  case 'uri-set':
+    return 'attr(\'' + type + '\')';
+  default:
+    return 'attr()';
   }
 }
 
@@ -260,7 +264,7 @@ function updateRouter(action, options) {
   };
   var color = actionColorMap[action] || 'gray';
 
-  var entitiesName = inflection.pluralize(entity.name)
+  var entitiesName = inflection.pluralize(entity.name);
 
   var routes = [{
       name: entitiesName,
