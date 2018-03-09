@@ -12,10 +12,9 @@ module.exports = {
   //   };
   // }
   beforeInstall: function() {
-    return this.addAddonToProject("ember-cli-sass");
   },
 
   afterInstall: function(options) {
-
+    return this.addAddonToProject("ember-cli-sass");
   }
 };
