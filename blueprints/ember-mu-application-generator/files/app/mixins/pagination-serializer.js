@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
 
 /**
   This mixin is for serializing pagination meta information out of the json api response.
@@ -6,7 +6,7 @@ import Ember from 'ember';
   This code is from ember-data-table's pagination-serializer:
   https://github.com/mu-semtech/ember-data-table/blob/master/addon/mixins/serializer.js
 */
-export default Ember.Mixin.create({
+export default Mixin.create({
   /**
       Parse the links in the JSONAPI response and convert to a meta-object
   */

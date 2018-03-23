@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { copy } from '@ember/object/internals';
+import { isNone } from '@ember/utils';
+import Component from '@ember/component';
 
 /*
   This component edit string-sets.
   The tagname is configurable, the default is a div, because otherwise we cannot use classNameBindings.
   The classes are configurable, the default is "".
 */
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: "div",
   classNameBindings: ['classes'],
   classes: "",
@@ -13,21 +15,21 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
     const strings = this.get("data");
-    var newStrings = Ember.isNone(strings) ? [] : Ember.copy(strings, true);
+    var newStrings = isNone(strings) ? [] : copy(strings, true);
     this.set("view", newStrings);
   },
 
   actions: {
     changeStringSetElement(index, value) {
       const strings = this.get("data");
-      var newStrings = Ember.copy(strings, true);
+      var newStrings = copy(strings, true);
       newStrings[index] = value;
       this.set("data", newStrings);
     },
-    
+
     deleteLabel(index) {
       const strings = this.get("data");
-      var newStrings = Ember.copy(strings, true);
+      var newStrings = copy(strings, true);
       newStrings.removeAt(index);
       this.set("data", newStrings);
       this.get("view").removeAt(index);
@@ -39,7 +41,7 @@ export default Ember.Component.extend({
     */
     createLabel() {
       const strings = this.get("data");
-      var newStrings = Ember.isNone(strings) ? [] : Ember.copy(strings, true);
+      var newStrings = isNone(strings) ? [] : copy(strings, true);
 
       var newLabel = "";
 

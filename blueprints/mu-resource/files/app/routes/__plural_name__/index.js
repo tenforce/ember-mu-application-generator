@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { inject } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
   size: 20,
   page: 0,
   queryParams: {
@@ -15,7 +16,7 @@ export default Ember.Route.extend({
     }
   },
 
-  store: Ember.inject.service(),
+  store: inject(),
   model(params) {
     let page = params.page;
     let size = params.size;

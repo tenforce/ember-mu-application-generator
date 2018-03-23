@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from '../templates/components/display-attribute-string-set';
 
 /*
@@ -7,7 +7,7 @@ import layout from '../templates/components/display-attribute-string-set';
   The classes are configurable, the default is "".
   The innerTagName is used for the tagName for the inner elements (the strings itselfs).
 */
-export default Ember.Component.extend({
+export default Component.extend({
   layout: layout,
   tagName: "div",
   innerTagName: "div",

@@ -1,11 +1,12 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import { set } from '@ember/object';
 
-export default Ember.Route.extend({
+export default Route.extend({
   showError: false,
 
   actions: {
     toggleShowError(error) {
-      Ember.set(error, 'showError', !error.showError);
+      set(error, 'showError', !error.showError);
     }
   }
 });
