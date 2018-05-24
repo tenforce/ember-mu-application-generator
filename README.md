@@ -12,8 +12,25 @@ ember install https://github.com/tenforce/ember-mu-application-generator.git
 ember generate ember-mu-application-generator
 ```
 
-The ember generate is needed, because on install the application should install some necessary files (transforms, utils, etc.) and addons (ember-power-select, ember-changeset). If ember installation is done with a git url, ember install cannot find the package name and install the default blueprint (where packagename == blueprintname).
 
+The ember generate is needed, because on install the application should install some necessary files (transforms, utils, etc.). If ember installation is done with a git url, ember install cannot find the package name and install the default blueprint (where packagename == blueprintname). Don't forget to install the dependencies too!
+
+### Dependencies
+
+This addon requires the following addons:
+- [ember-power-select](https://github.com/cibernox/ember-power-select)
+- [ember-changeset](https://github.com/DockYard/ember-changeset)
+- [ember-datetimepicker](https://github.com/kellyselden/ember-datetimepicker) The `ember-datetimepicker` addon needs `jquery-datetimepicker`.
+
+They are not installed with the `ember generate ember-mu-application-generator`, please install them manually.
+
+```
+ember install ember-power-select
+ember install ember-changeset
+ember install ember-datetimepicker
+```
+
+### Different version
 If it's needed, you can modify the url with a tag or a branch:
 ```
 ember install https://github.com/tenforce/ember-mu-application-generator.git#tag
@@ -23,28 +40,9 @@ ember install https://github.com/tenforce/ember-mu-application-generator.git#bra
 ### Ember 2.14
 
 To use the addon with Ember version >=2.14 and <3.0.0, make sure to use the good tag:
-
 ```
 ember install https://github.com/tenforce/ember-mu-application-generator.git#ember-2.14
 ```
-
-### Dependencies
-
-This addon requires the following addons:
-- [ember-power-select](https://github.com/cibernox/ember-power-select)
-- [ember-changeset](https://github.com/DockYard/ember-changeset)
-- [ember-datetimepicker](https://github.com/kellyselden/ember-datetimepicker)
-
-If they are not installed with the `ember generate ember-mu-application-generator`, then please install them manually.
-
-```
-ember install ember-power-select
-ember install ember-changeset
-ember install ember-datetimepicker
-```
-
-The ember-datetimepicker addon needs jquery-datetimepicker to be able to run. Somehow the addon doesn't ember install it correctly, so make sure to use `ember install ember-datetimepicker` command!
-
 
 ### Design installation
 
